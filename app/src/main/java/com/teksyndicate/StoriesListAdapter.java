@@ -5,12 +5,18 @@ import android.database.DataSetObserver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.LruCache;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.Volley;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -28,6 +34,9 @@ public class StoriesListAdapter implements ListAdapter
 
     ArrayList<DataSetObserver> observers;
 
+    private RequestQueue mRequestQueue;
+    private ImageLoader mImageLoader;
+
     public StoriesListAdapter(StoriesList list, Context context)
     {
         currentList = list;
@@ -39,6 +48,22 @@ public class StoriesListAdapter implements ListAdapter
                 dispatchUpdateEvent();
             }
         });
+
+
+        mRequestQueue = Volley.newRequestQueue(context);
+        mImageLoader = new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() {
+            private final LruCache<String, Bitmap> mCache = new LruCache<String, Bitmap>(10);
+            public void putBitmap(String url, Bitmap bitmap) {
+                mCache.put(url, bitmap);
+            }
+            public Bitmap getBitmap(String url) {
+                return mCache.get(url);
+            }
+        });
+
+
+
+
 
     }
 
@@ -108,10 +133,10 @@ public class StoriesListAdapter implements ListAdapter
         StoriesList.Story story = currentList.GetItemById(i);
         TextView name = new TextView(viewContext);
         name.setText(story.GetName());
-        ImageView img = new ImageView(viewContext);
-        img.setImageBitmap(story.GetImg());
+        NetworkImageView img = new NetworkImageView(viewContext);
+        img.setImageUrl(story.GetImgUrl(), mImageLoader);
         LinearLayout layout = new LinearLayout(viewContext);
-        //layout.addView(img);
+        layout.addView(img);
         layout.addView(name);
         return layout;
     }
