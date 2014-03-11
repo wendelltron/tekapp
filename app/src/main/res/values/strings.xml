@@ -5,6 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="inboxStoriesName">inbox</string>
+    <string name="rootTekUrl">https://teksyndicate.com</string>
     <string name="inboxStoriesUrl">https://teksyndicate.com/stories/inbox</string>
     <string name="tekStoriesName">the tek</string>
     <string name="tekStoriesUrl">https://teksyndicate.com/stories/tek</string>

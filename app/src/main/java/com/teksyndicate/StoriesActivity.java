@@ -48,10 +48,9 @@ public class StoriesActivity extends Activity {
         storiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Log.e("NOT REALLY AN ERROR", " got touch event " + i + " " + l + " " +adapterView.getClass().getName() + " " + view.getClass().getName());
-                Object story = adapterView.getAdapter().getItem(i);
-                //Log.e("NOT REALLY AN ERROR", " got touch event " +story.getClass().getName());
+                StoriesList.Story story = (StoriesList.Story) adapterView.getAdapter().getItem(i);
                 Intent intent = new Intent(outer, VideoStoryActivity.class);
+                intent.putExtra(VideoStoryActivity.STORYPATH, story.GetPath());
                 startActivity(intent);
             }
         });
