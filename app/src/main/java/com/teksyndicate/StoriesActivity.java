@@ -1,8 +1,9 @@
 package com.teksyndicate;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class StoriesActivity extends Activity {
@@ -18,11 +19,12 @@ public class StoriesActivity extends Activity {
     private StoriesList inboxStories;
     private StoriesList tekStories;
 
-    private ListView storeiesList;
+    private ListView storiesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Get the data needed
+        final Context outer = this; //Needed in one of the unmaed classes.
         tekStories = new StoriesList(getString(R.string.tekStoriesName), getString(R.string.tekStoriesUrl));
         inboxStories = new StoriesList(getString(R.string.inboxStoriesName), getString(R.string.inboxStoriesUrl));
         tekStories.UpdateList();
@@ -39,10 +41,20 @@ public class StoriesActivity extends Activity {
         }
 
         //Get the ListView
-        storeiesList = (ListView) findViewById(R.id.articleList);
+        storiesList = (ListView) findViewById(R.id.articleList);
         //Connect the list view to the Article List via the adapter
         StoriesListAdapter adapter = new StoriesListAdapter(tekStories, this);
-        storeiesList.setAdapter(adapter);
+        storiesList.setAdapter(adapter);
+        storiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //Log.e("NOT REALLY AN ERROR", " got touch event " + i + " " + l + " " +adapterView.getClass().getName() + " " + view.getClass().getName());
+                Object story = adapterView.getAdapter().getItem(i);
+                //Log.e("NOT REALLY AN ERROR", " got touch event " +story.getClass().getName());
+                Intent intent = new Intent(outer, VideoStoryActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
