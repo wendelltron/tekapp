@@ -13,22 +13,25 @@
     <ListView
     android:id="@+id/articleList"
     android:layout_width="wrap_content"
-    android:layout_height="fill_parent"
-    android:layout_weight="10"/>
+    android:layout_height="900dp"
+    android:layout_weight="90"/>
 
     <LinearLayout android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="100dp"
+        android:minHeight="100dp"
         android:orientation="horizontal"
-        android:layout_weight="90">
+        android:layout_weight="10">
         <Button android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:ems="10"
             android:text="The Tek"
             android:onClick="ChooseTek">
         </Button>
         <Button android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:ems="10"
             android:text="Inbox"
             android:onClick="ChooseInbox">
         </Button>
