@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.LinearLayout;
 
 import com.android.volley.Request;
@@ -44,6 +45,8 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
     private YouTubePlayerFragment youTubePlayerFragment = null;
 
     private View textContentView = null;
+
+    private String descriptionHTML = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +104,17 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
 
 
                     }
+
+                    try{
+                        descriptionHTML = document.select(".field-name-body").get(0).outerHtml();
+                    }
+                    catch(Exception e)
+                    {
+                        descriptionHTML = "no descrption";
+                    }
+
+                    WebView wv = (WebView)textContentView;
+                    wv.loadData("<html><head/><body>" + descriptionHTML +"</body></html>",  "text/html", "UTF-8");
 
                     Log.e("GOT ID", "Got youtube Id " + youtubeId);
 
@@ -178,10 +192,12 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
         {
            params.weight=0;
+           params.height=0;
         }
         else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
         {
             params.weight=60;
+            params.height=60;
         }
         textContentView.setLayoutParams((params));
     }
