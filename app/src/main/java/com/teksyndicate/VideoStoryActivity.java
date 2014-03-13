@@ -45,8 +45,6 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
 
     private View textContentView = null;
 
-    private Boolean waitingForLoad = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestQueue = Volley.newRequestQueue(this);
@@ -117,7 +115,6 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
                 if(null != youTubePlayer)
                 {
                     youTubePlayer.cueVideo(youtubeId);
-                    VideoStoryActivity.this.waitingForLoad = true;
                 }
 
 
@@ -163,7 +160,6 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
         if(null != youtubeId)
         {
             youTubePlayer.cueVideo(youtubeId);
-            VideoStoryActivity.this.waitingForLoad = true;
         }
 
     }
