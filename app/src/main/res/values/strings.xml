@@ -10,5 +10,6 @@
     <string name="tekStoriesName">the tek</string>
     <string name="tekStoriesUrl">https://teksyndicate.com/stories/tek</string>
     <string name="title_activity_video_story">VideoStoryActivity</string>
+    <string name="youtubeDevKey">AIzaSyBYiZMdN0Agn8M7Wc_Io2oFNmndUrlrmb0</string>
 
 </resources>

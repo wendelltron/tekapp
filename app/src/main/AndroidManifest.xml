@@ -18,7 +18,9 @@
         </activity>
         <activity
             android:name="com.teksyndicate.VideoStoryActivity"
-            android:label="@string/title_activity_video_story" >
+            android:label="@string/title_activity_video_story"
+            android:configChanges="orientation|screenSize"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
         </activity>
     </application>
 

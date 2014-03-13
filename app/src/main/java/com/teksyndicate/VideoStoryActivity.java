@@ -1,15 +1,11 @@
 package com.teksyndicate;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +14,9 @@ import com.android.volley.VolleyError;
 //import com.android.volley.toolbox.JsonObjectRequest; //will probably convert to this later.
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerFragment;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -25,13 +24,18 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
-public class VideoStoryActivity extends Activity {
+public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnInitializedListener {
 
     public static final String STORYPATH = "videostory_path";
 
     private String url;
 
     private RequestQueue requestQueue;
+
+    private String youtubeId;
+
+    private YouTubePlayer youTubePlayer = null;
+    private YouTubePlayerFragment youTubePlayerFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +47,16 @@ public class VideoStoryActivity extends Activity {
         setContentView(R.layout.activity_video_story);
         Log.e("NotReallyAnError", "Startup-url " + url);
 
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
+        if(null == youTubePlayerFragment)
+        {
+            youTubePlayerFragment =
+                   (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtube_fragment);
+            assert youTubePlayerFragment != null;
+            youTubePlayerFragment.setRetainInstance(true);
+            //if(!youTubePlayerFragment.g)
+            youTubePlayerFragment.initialize(getString(R.string.youtubeDevKey), this);
         }
+
 
         Response.Listener success = new Response.Listener() {
             @Override
@@ -88,6 +97,15 @@ public class VideoStoryActivity extends Activity {
                 {
                     Log.e("BADCLASS", "Don't know how to deal with this. we were expecting a string. Got a " + o.getClass().getName());
                 }
+
+                VideoStoryActivity.this.youtubeId = youtubeId;
+
+                if(null != youTubePlayer)
+                {
+                    youTubePlayer.cueVideo(youtubeId);
+                }
+
+
             }
         };
 
@@ -124,20 +142,18 @@ public class VideoStoryActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+        this.youTubePlayer = youTubePlayer;
+        if(null != youtubeId)
+        {
+            youTubePlayer.cueVideo(youtubeId);
         }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_video_story, container, false);
-            return rootView;
-        }
     }
 
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+        Log.e("YOUTUBE", "Failed initalising youtube.");
+    }
 }
