@@ -1,11 +1,16 @@
 package com.teksyndicate;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,7 +40,12 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
     private String youtubeId;
 
     private YouTubePlayer youTubePlayer = null;
+
     private YouTubePlayerFragment youTubePlayerFragment = null;
+
+    private View textContentView = null;
+
+    private Boolean waitingForLoad = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +55,10 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
         url =  getString(R.string.rootTekUrl) + intent.getStringExtra(this.STORYPATH);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_story);
+        textContentView = findViewById(R.id.webView);
+        onConfigurationChanged(getResources().getConfiguration());
+
+
         Log.e("NotReallyAnError", "Startup-url " + url);
 
         if(null == youTubePlayerFragment)
@@ -103,6 +117,7 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
                 if(null != youTubePlayer)
                 {
                     youTubePlayer.cueVideo(youtubeId);
+                    VideoStoryActivity.this.waitingForLoad = true;
                 }
 
 
@@ -148,6 +163,7 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
         if(null != youtubeId)
         {
             youTubePlayer.cueVideo(youtubeId);
+            VideoStoryActivity.this.waitingForLoad = true;
         }
 
     }
@@ -155,5 +171,22 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
         Log.e("YOUTUBE", "Failed initalising youtube.");
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        LinearLayout.LayoutParams params =  (LinearLayout.LayoutParams)textContentView.getLayoutParams();
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+        {
+           params.weight=0;
+        }
+        else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
+        {
+            params.weight=60;
+        }
+        textContentView.setLayoutParams((params));
     }
 }
