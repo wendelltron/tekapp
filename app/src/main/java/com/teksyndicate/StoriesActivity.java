@@ -18,6 +18,8 @@ public class StoriesActivity extends Activity {
 
     private StoriesList inboxStories;
     private StoriesList tekStories;
+    private StoriesListAdapter inboxAdapter;
+    private StoriesListAdapter tekAdapter;
 
     private ListView storiesList;
 
@@ -43,8 +45,9 @@ public class StoriesActivity extends Activity {
         //Get the ListView
         storiesList = (ListView) findViewById(R.id.articleList);
         //Connect the list view to the Article List via the adapter
-        StoriesListAdapter adapter = new StoriesListAdapter(tekStories, this);
-        storiesList.setAdapter(adapter);
+        inboxAdapter = new StoriesListAdapter(inboxStories, this);
+        tekAdapter = new StoriesListAdapter(tekStories, this);
+        storiesList.setAdapter(tekAdapter);
         storiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -75,6 +78,24 @@ public class StoriesActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void ChooseTek(View view)
+    {
+        if(tekAdapter != storiesList.getAdapter())
+        {
+            storiesList.setAdapter(tekAdapter);
+        }
+
+    }
+
+    public void ChooseInbox(View view)
+    {
+        if(inboxAdapter != storiesList.getAdapter())
+        {
+            storiesList.setAdapter(inboxAdapter);
+        }
+
     }
 
     /**

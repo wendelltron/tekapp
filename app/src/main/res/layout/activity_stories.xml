@@ -6,9 +6,38 @@
     tools:context="com.teksyndicate.StoriesActivity"
     tools:ignore="MergeRootFrame" >
 
-<ListView
-android:id="@+id/articleList"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"/>
+<LinearLayout android:layout_width="match_parent"
+     android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+    android:id="@+id/articleList"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:layout_weight="10"/>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:layout_weight="90">
+        <Button android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="The Tek"
+            android:onClick="ChooseTek">
+        </Button>
+        <Button android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Inbox"
+            android:onClick="ChooseInbox">
+        </Button>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
 
 </FrameLayout>
