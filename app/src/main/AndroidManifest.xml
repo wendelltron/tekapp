@@ -27,6 +27,9 @@
             android:configChanges="orientation|screenSize"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
         </activity>
+
+        <service android:enabled="true" android:name=".NewStoryService"/>
+        <service android:enabled="true" android:name="com.teksyndicate.NewStoryService"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

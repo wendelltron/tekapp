@@ -1,8 +1,16 @@
 apply plugin: 'android'
 
+
+
+buildscript {
+
+    dependencies {
+
+    }
+}
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.0"
+    buildToolsVersion '19.0.0'
 
     defaultConfig {
         minSdkVersion 14
@@ -22,4 +30,5 @@ dependencies {
     compile files('lib/jsoup-1.7.3.jar')
     compile files('lib/volley.jar')
     compile files('lib/YouTubeAndroidPlayerApi.jar')
+    compile 'com.android.support:support-v4:18.0.+'
 }

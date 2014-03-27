@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 /**
  * Created by speedfox on 3/13/14.
@@ -18,6 +19,13 @@ public class SplashScreen extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        if(!NewStoryService.isRunning())
+        {
+            Log.e("*NewStoryService", "Creating service");
+            Intent i = new Intent(this, NewStoryService.class);
+            startService(i);
+        }
 
         new Handler().postDelayed(new Runnable() {
 
