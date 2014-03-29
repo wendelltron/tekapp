@@ -27,8 +27,8 @@ public class StoriesActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         //Get the data needed
         final Context outer = this; //Needed in one of the unmaed classes.
-        tekStories = new StoriesList(getString(R.string.tekStoriesName), getString(R.string.tekStoriesUrl));
-        inboxStories = new StoriesList(getString(R.string.inboxStoriesName), getString(R.string.inboxStoriesUrl));
+        tekStories = new StoriesList(getString(R.string.tekStoriesName), getString(R.string.tekStoriesUrl), this);
+        inboxStories = new StoriesList(getString(R.string.inboxStoriesName), getString(R.string.inboxStoriesUrl), this);
         tekStories.UpdateList();
         inboxStories.UpdateList();
 

@@ -1,9 +1,18 @@
 package com.teksyndicate;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.webkit.WebView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,7 +33,7 @@ import java.util.ArrayList;
 /**
  * Created by speedfox on 2/25/14.
  */
-public class StoriesList  extends AsyncTask<Void, Void, String>
+public class StoriesList
 {
 
     public class Story
@@ -68,47 +77,50 @@ public class StoriesList  extends AsyncTask<Void, Void, String>
 
     private StoryUpdateObserver observer;
 
-    public StoriesList(String type, String url)
+    private Context context;
+
+    public StoriesList(String type, String url, Context context)
     {
         storiesType = type;
         storiesUrl = url;
+        this.context = context;
         Log.e("****INFO", "Will get stories from " + url);
         list = new ArrayList<Story>();
     }
 
     public void UpdateList()
     {
-        this.execute();
+        RequestQueue requestQueue = Volley.newRequestQueue(this.context);
+
+        Response.Listener success = new Response.Listener() {
+            @Override
+            public void onResponse(Object o) {
+            if(String.class.getName() == o.getClass().getName())
+            {
+                StoriesList.this.onPostRequest((String) o);
+            }
+            else
+            {
+                Log.e("BADCLASS", "Don't know how to deal with this. we were expecting a string. Got a " + o.getClass().getName());
+            }
+            }
+        };
+
+        Response.ErrorListener error = new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
+        };
+
+        StringRequest req = new StringRequest(Request.Method.GET, storiesUrl, success, error);
+        requestQueue.add(req);
+
+
     }
 
-    @Override
-    protected String doInBackground(Void... voids)
-    {
-        String rawResponse = null;
-        try {
-            //Request the XML
-            DefaultHttpClient httpClient = new DefaultHttpClient();
-            Log.e("Station URL: ", storiesUrl);
-            HttpGet httpGet = new HttpGet(storiesUrl);
-
-            HttpResponse httpResponse = httpClient.execute(httpGet);
-            HttpEntity httpEntity = httpResponse.getEntity();
-            rawResponse = EntityUtils.toString(httpEntity);
-
-        }
-        catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return rawResponse;
-    }
-
-    @Override
-    protected void onPostExecute(String rawHtml) {
+    protected void onPostRequest(String rawHtml) {
         Document document = Jsoup.parse(rawHtml);
         Element top = document.select(".view--content-by-tags-termid").get(0);
         Elements storyElements = top.select(".feed");

@@ -74,7 +74,6 @@
     <orderEntry type="library" exported="" name="YouTubeAndroidPlayerApi" level="project" />
     <orderEntry type="library" exported="" name="jsoup-1.7.3" level="project" />
     <orderEntry type="library" exported="" name="volley" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-r6" level="project" />
   </component>
 </module>
 
