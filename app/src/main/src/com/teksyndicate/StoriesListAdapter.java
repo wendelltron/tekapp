@@ -28,131 +28,147 @@ import java.util.ArrayList;
  */
 public class StoriesListAdapter implements ListAdapter
 {
-    StoriesList currentList;
+	StoriesList currentList;
 
-    Context viewContext;
+	Context viewContext;
 
-    ArrayList<DataSetObserver> observers;
+	ArrayList<DataSetObserver> observers;
 
-    private RequestQueue mRequestQueue;
-    private ImageLoader mImageLoader;
+	private RequestQueue mRequestQueue;
+	private ImageLoader mImageLoader;
 
-    public StoriesListAdapter(StoriesList list, Context context)
-    {
-        currentList = list;
-        viewContext = context;
-        observers = new ArrayList<DataSetObserver>();
-        list.SetObserver(new StoriesList.StoryUpdateObserver() {
-            @Override
-            public void DoUpdate() {
-                dispatchUpdateEvent();
-            }
-        });
+	public StoriesListAdapter(StoriesList list, Context context)
+	{
+		currentList = list;
+		viewContext = context;
+		observers = new ArrayList<DataSetObserver>();
+		list.SetObserver(new StoriesList.StoryUpdateObserver()
+		{
+			@Override
+			public void DoUpdate()
+			{
+				dispatchUpdateEvent();
+			}
+		});
 
+		mRequestQueue = Volley.newRequestQueue(context);
+		mImageLoader = new ImageLoader(mRequestQueue,
+				new ImageLoader.ImageCache()
+				{
+					private final LruCache<String, Bitmap> mCache = new LruCache<String, Bitmap>(
+							10);
 
-        mRequestQueue = Volley.newRequestQueue(context);
-        mImageLoader = new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() {
-            private final LruCache<String, Bitmap> mCache = new LruCache<String, Bitmap>(10);
-            public void putBitmap(String url, Bitmap bitmap) {
-                mCache.put(url, bitmap);
-            }
-            public Bitmap getBitmap(String url) {
-                return mCache.get(url);
-            }
-        });
+					public void putBitmap(String url, Bitmap bitmap)
+					{
+						mCache.put(url, bitmap);
+					}
 
+					public Bitmap getBitmap(String url)
+					{
+						return mCache.get(url);
+					}
+				});
 
+	}
 
+	@Override
+	public boolean areAllItemsEnabled()
+	{
+		return true;
+	}
 
+	@Override
+	public boolean isEnabled(int i)
+	{
+		return true;
+	}
 
-    }
+	@Override
+	public void registerDataSetObserver(DataSetObserver dataSetObserver)
+	{
+		observers.add(dataSetObserver);
 
-    @Override
-    public boolean areAllItemsEnabled() {
-        return true;
-    }
+	}
 
-    @Override
-    public boolean isEnabled(int i) {
-        return true;
-    }
+	@Override
+	public void unregisterDataSetObserver(DataSetObserver dataSetObserver)
+	{
+		for (int i = 0; i < observers.size(); i++)
+		{
+			if (dataSetObserver == observers.get(i))
+			{
+				observers.remove(i);
+				break;
+			}
 
-    @Override
-    public void registerDataSetObserver(DataSetObserver dataSetObserver) {
-        observers.add(dataSetObserver);
+		}
 
-    }
+	}
 
-    @Override
-    public void unregisterDataSetObserver(DataSetObserver dataSetObserver) {
-        for(int i =0 ; i< observers.size(); i++)
-        {
-            if(dataSetObserver == observers.get(i))
-            {
-                observers.remove(i);
-                break;
-            }
+	public void dispatchUpdateEvent()
+	{
+		for (int i = 0; i < observers.size(); i++)
+		{
+			observers.get(i).onChanged();
+		}
 
-        }
+	}
 
-    }
+	@Override
+	public int getCount()
+	{
+		return currentList.GetCount();
+	}
 
-    public void dispatchUpdateEvent()
-    {
-        for(int i =0 ; i< observers.size(); i++)
-        {
-            observers.get(i).onChanged();
-        }
+	@Override
+	public StoriesList.Story getItem(int i)
+	{
 
-    }
+		return currentList.GetItemById(i);
+	}
 
-    @Override
-    public int getCount() {
-        return currentList.GetCount();
-    }
+	@Override
+	public long getItemId(int i)
+	{
+		return i;
+	}
 
-    @Override
-    public StoriesList.Story getItem(int i) {
+	@Override
+	public boolean hasStableIds()
+	{
+		return true;
+	}
 
-        return currentList.GetItemById(i);
-    }
+	@Override
+	public View getView(int i, View view, ViewGroup viewGroup)
+	{
 
-    @Override
-    public long getItemId(int i) {
-        return i;
-    }
+		StoriesList.Story story = currentList.GetItemById(i);
+		TextView name = new TextView(viewContext);
+		name.setText(story.GetName());
+		NetworkImageView img = new NetworkImageView(viewContext);
+		img.setImageUrl(story.GetImgUrl(), mImageLoader);
+		LinearLayout layout = new LinearLayout(viewContext);
+		layout.addView(img);
+		layout.addView(name);
+		return layout;
+	}
 
-    @Override
-    public boolean hasStableIds() {
-        return true;
-    }
+	@Override
+	public int getItemViewType(int i)
+	{
+		return i;
+	}
 
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+	@Override
+	public int getViewTypeCount()
+	{
+		return 1;
+	}
 
-        StoriesList.Story story = currentList.GetItemById(i);
-        TextView name = new TextView(viewContext);
-        name.setText(story.GetName());
-        NetworkImageView img = new NetworkImageView(viewContext);
-        img.setImageUrl(story.GetImgUrl(), mImageLoader);
-        LinearLayout layout = new LinearLayout(viewContext);
-        layout.addView(img);
-        layout.addView(name);
-        return layout;
-    }
-
-    @Override
-    public int getItemViewType(int i) {
-        return i;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return 1;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return false;
-    }
+	@Override
+	public boolean isEmpty()
+	{
+		return false;
+	}
 }

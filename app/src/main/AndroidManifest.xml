@@ -3,7 +3,7 @@
     package="com.teksyndicate" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-sdk android:minSdkVersion="13" android:targetSdkVersion="21"/>
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="21"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"

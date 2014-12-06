@@ -1,6 +1,7 @@
 package com.teksyndicate;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,39 +13,50 @@ import android.util.Log;
 public class SplashScreen extends Activity
 {
 
-    // Splash screen timer
-    private static int SPLASH_TIME_OUT = 3000;
+	// Splash screen timer
+	private static int SPLASH_TIME_OUT = 3000;
+	private static Context applicationContext;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+	@Override
+	protected void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_splash);
 
-        if(!NewStoryService.isRunning())
-        {
-            Log.i("*NewStoryService", "Creating service");
-            Intent i = new Intent(this, NewStoryService.class);
-            startService(i);
-        }
+		applicationContext = getApplicationContext();
 
-        new Handler().postDelayed(new Runnable() {
+		if (!NewStoryService.isRunning())
+		{
+			Log.i("*NewStoryService", "Creating service");
+			Intent i = new Intent(this, NewStoryService.class);
+			startService(i);
+		}
 
-            /*
-             * Showing splash screen with a timer. This will be useful when you
-             * want to show case your app logo / company
-             */
+		new Handler().postDelayed(new Runnable()
+		{
 
-            @Override
-            public void run() {
-                // This method will be executed once the timer is over
-                // Start your app main activity
-                Intent i = new Intent(SplashScreen.this, StoriesActivity.class);
-                startActivity(i);
+			/*
+			 * Showing splash screen with a timer. This will be useful when you
+			 * want to show case your app logo / company
+			 */
 
-                // close this activity
-                finish();
-            }
-        }, SPLASH_TIME_OUT);
-    }
+			@Override
+			public void run()
+			{
+				// This method will be executed once the timer is over
+				// Start your app main activity
+				Intent i = new Intent(SplashScreen.this, StoriesActivity.class);
+				startActivity(i);
+
+				// close this activity
+				finish();
+			}
+		}, SPLASH_TIME_OUT);
+	}
+
+	public static Context getAppContext()
+	{
+		return applicationContext;
+	}
 
 }
