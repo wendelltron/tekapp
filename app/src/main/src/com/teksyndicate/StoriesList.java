@@ -84,7 +84,7 @@ public class StoriesList
         storiesType = type;
         storiesUrl = url;
         this.context = context;
-        Log.e("****INFO", "Will get stories from " + url);
+        Log.i("****INFO", "Will get stories from " + url);
         list = new ArrayList<Story>();
     }
 
@@ -92,18 +92,19 @@ public class StoriesList
     {
         RequestQueue requestQueue = Volley.newRequestQueue(this.context);
 
-        Response.Listener success = new Response.Listener() {
-            @Override
-            public void onResponse(Object o) {
-            if(String.class.getName() == o.getClass().getName())
-            {
-                StoriesList.this.onPostRequest((String) o);
-            }
-            else
-            {
-                Log.e("BADCLASS", "Don't know how to deal with this. we were expecting a string. Got a " + o.getClass().getName());
-            }
-            }
+        Response.Listener<String> success = new Response.Listener<String>() {
+			@Override
+			public void onResponse(String str)
+			{
+				try
+				{
+					StoriesList.this.onPostRequest(str);
+				}
+				catch(Exception e)
+				{
+					Log.e("ERROR", "NOT SURE WHY");
+				}
+			}
         };
 
         Response.ErrorListener error = new Response.ErrorListener(){
@@ -145,7 +146,7 @@ public class StoriesList
                 continue;
             }
 
-        Log.e("INFO", "Got " + storyElements.size() + " stories for " + storiesType);
+        Log.i("INFO", "Got " + storyElements.size() + " stories for " + storiesType);
         if(null != observer)
         {
             observer.DoUpdate();

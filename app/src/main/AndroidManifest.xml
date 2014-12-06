@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.teksyndicate" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-sdk android:minSdkVersion="13" android:targetSdkVersion="21"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -31,7 +33,5 @@
         <service android:enabled="true" android:name=".NewStoryService"/>
         <service android:enabled="true" android:name="com.teksyndicate.NewStoryService"/>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

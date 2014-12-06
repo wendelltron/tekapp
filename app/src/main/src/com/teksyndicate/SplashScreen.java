@@ -22,7 +22,7 @@ public class SplashScreen extends Activity
 
         if(!NewStoryService.isRunning())
         {
-            Log.e("*NewStoryService", "Creating service");
+            Log.i("*NewStoryService", "Creating service");
             Intent i = new Intent(this, NewStoryService.class);
             startService(i);
         }

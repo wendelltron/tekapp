@@ -116,7 +116,7 @@ public class VideoStoryActivity extends Activity implements  YouTubePlayer.OnIni
                     WebView wv = (WebView)textContentView;
                     wv.loadData("<html><head/><body>" + descriptionHTML +"</body></html>",  "text/html", "UTF-8");
 
-                    Log.e("GOT ID", "Got youtube Id " + youtubeId);
+                    Log.i("GOT ID", "Got youtube Id " + youtubeId);
 
                 }
                 else

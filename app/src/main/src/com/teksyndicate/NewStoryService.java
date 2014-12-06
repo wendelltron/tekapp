@@ -9,7 +9,6 @@ import android.os.IBinder;
 import android.util.Log;
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.support.v4.app.NotificationCompat;
 
 
 /**
@@ -61,7 +60,7 @@ public class NewStoryService extends Service
         Log.e(TAG, "onCreate Done");
         //Just to show how to create a notification..
         int mNotificationId = 001;
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+        Notification.Builder mBuilder = new Notification.Builder(this)
                         .setContentTitle("TekSyndicate")
                         .setContentText("Welcome to the world of tek syndicate")
                         .setSmallIcon(R.drawable.rtwwhite);
