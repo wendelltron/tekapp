@@ -1,7 +1,19 @@
 package com.teksyndicate.views;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,6 +27,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,6 +47,7 @@ public class ArticleView extends Activity
 	LinearLayout storyLayout;
 	TextView storyText;
 	Button commentToggleButton;
+	CommentListView commentListView;
 	YouTubePlayerFragment youtube;
 	Date pauseDate;
 
@@ -44,8 +60,6 @@ public class ArticleView extends Activity
 		storyLayout = (LinearLayout) findViewById(R.id.linearLayoutStory); //get linear layout
 		
 		youtube = (YouTubePlayerFragment) this.getFragmentManager().findFragmentById(R.id.youtubeFragment); //get the youtube player fragment
-		
-		youtube.initialize(getString(R.string.youtube_api_key), new initializationListener()); //initialize youtube player
 		
 		try
 		{
@@ -66,6 +80,29 @@ public class ArticleView extends Activity
 		
 		storyText = new TextView(ArticleView.this.getApplicationContext()); //create textview for all that wonderful text			
 		storyLayout.addView(storyText); //add to linear layout
+		commentToggleButton = new Button(ArticleView.this.getApplicationContext());
+		commentToggleButton.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		commentToggleButton.setText("Show Comments");
+		commentToggleButton.setOnClickListener(new OnClickListener() 
+		{
+			@Override
+			public void onClick(View v) 
+			{
+				if(commentListView.getVisibility() == View.VISIBLE)
+				{
+					commentListView.setVisibility(View.INVISIBLE);
+					commentToggleButton.setText("Show Comments");
+					return;
+				}
+				else
+				{
+					commentListView.setVisibility(View.VISIBLE);
+					commentToggleButton.setText("Hide Comments");
+					return;
+				}
+			}
+		});
+		storyLayout.addView(commentToggleButton);
 	}
 
 	@Override
@@ -146,7 +183,93 @@ public class ArticleView extends Activity
 		@Override
 		protected Void doInBackground(JSONObject... params)
 		{
-			toShow = new Article(params[0]); //setup article that needs to be shown
+			try
+			{
+				String requestAddress = getString(R.string.api_root); //API address
+				requestAddress += "page-or-topic/"; //should be the last part of api address, the 'tag'
+				requestAddress += params[0].getString("Topic Key");
+				StringBuilder url = new StringBuilder(requestAddress);
+				HttpClient client = new DefaultHttpClient();
+				HttpGet get = new HttpGet(url.toString());
+				HttpResponse r = client.execute(get);
+				int status = r.getStatusLine().getStatusCode();
+				if(status >= 200 && status < 300) //if code is success code
+				{
+					HttpEntity e = r.getEntity();
+					
+					InputStream content = e.getContent(); //prepare to read
+					BufferedReader br = new BufferedReader(new InputStreamReader(content)); //buffer the read
+					StringBuilder builder = new StringBuilder();
+					String line;
+					
+					while((line = br.readLine()) != null) //READ the lines
+					{
+						builder.append(line);
+					}
+					
+					//this was a pain
+					JSONObject json = new JSONObject(builder.toString()); //create new object
+					JSONArray stories = json.getJSONArray("nodes"); //get the nodes
+					
+					if(stories.length() == 0)
+					{
+						toShow = new Article(params[0]);
+					}
+					else
+					{
+						JSONObject story = new JSONObject(stories.getJSONObject(0).getString("node"));
+					
+						toShow = new Article(params[0], story); //setup article that needs to be shown
+					}
+				}
+			}
+			//ERROR handling
+			catch (UnsupportedEncodingException e) 
+			{
+				Log.e("BAD_ENCODE", e.getMessage());
+				e.printStackTrace();
+			} 
+			catch (ClientProtocolException e) 
+			{
+				Log.e("CLIENT_PROTOCOL_ERROR", e.getMessage());
+				e.printStackTrace();
+			} 
+			catch (IOException e) 
+			{
+				Log.e("IO_ERROR", e.getMessage());
+				e.printStackTrace();
+			} 
+			catch(JSONException e)
+			{
+				Log.e("JSON_ERROR", e.getMessage());
+				e.printStackTrace();
+			}
+			
+//			toShow = new Article(params[0]); //setup article that needs to be shown
+						
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Void v)
+		{
+			storyText.setText(toShow.getSummary()); //set the story text to the article text
+			
+			new CommentListViewCreator().execute(toShow.getTopicKey());
+			
+			youtube.initialize(getString(R.string.youtube_api_key), new initializationListener()); //initialize youtube player
+			
+			ArticleView.this.setTitle(toShow.getTitle()); //change the title
+		}
+	}
+	
+	private class CommentListViewCreator extends AsyncTask<String, Void, Void>
+	{
+		@Override
+		protected Void doInBackground(String... params)
+		{
+			commentListView = new CommentListView(ArticleView.this.getApplicationContext(), params[0]);
+			commentListView.setVisibility(View.INVISIBLE);
 			
 			return null;
 		}
@@ -154,9 +277,7 @@ public class ArticleView extends Activity
 		@Override
 		protected void onPostExecute(Void v)
 		{
-			storyText.setText(toShow.getDescription()); //set the story text to the article text
-			
-			ArticleView.this.setTitle(toShow.getTitle()); //change the title
+			storyLayout.addView(commentListView);
 		}
 	}
 }

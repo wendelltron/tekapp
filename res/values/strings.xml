@@ -10,10 +10,20 @@
     <string name="title_activity_splash_screen">Tek Syndicate</string>
 
     <string-array name="viewable_tags">
-        <item>All Videos</item><item>The Tek</item>
-        <item>INBOX.EXE</item><item>WASD</item>
-        <item>Build A PC</item><item>DIY</item>
+        <item>@string/all_videos</item>
+        <item>@string/the_tek</item>
+        <item>@string/inbox</item>
+        <item>@string/wasd</item>
+        <item>@string/build_a_pc</item>
+        <item>@string/diy</item>
     </string-array>
+    
+    <string name="all_videos">All Videos</string>
+    <string name="the_tek">The Tek</string>
+    <string name="inbox">INBOX.EXE</string>
+    <string name="wasd">WASD</string>
+    <string name="build_a_pc">Build A PC</string>
+    <string name="diy">DIY</string>
 
     <string name="api_root">https://teksyndicate.com/json/v1/</string>
     <string name="title_activity_story_view">SET TITLE</string>

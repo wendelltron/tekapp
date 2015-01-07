@@ -87,7 +87,7 @@ public class ArticleSummaryView extends GridLayout
 		textLayout.addView(authorView); //add to text layout
 		
 		TextView descriptionView = new TextView(context); //textview for video description (waiting for JSON data)
-		descriptionView.setText(article.getDescription()); //set description
+		descriptionView.setText(article.getSummary()); //set summary
 		descriptionView.setLayoutParams(textLayoutParams); //set layout params
 		descriptionView.setWidth(width);
 		textLayout.addView(descriptionView); //add to text layout

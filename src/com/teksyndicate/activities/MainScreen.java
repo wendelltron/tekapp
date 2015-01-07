@@ -24,6 +24,7 @@ import com.teksyndicate.views.ArticleView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -107,34 +108,35 @@ public class MainScreen extends Activity
 			articles.clear();
 			storyLayout.removeAllViews();
 			MainScreen.this.setTitle(selectedTag); //change the title of the MainScreen
+			Resources res = parent.getResources();
 			
-			if(selectedTag.equals("The Tek")) //The Tek
+			if(selectedTag.equals(res.getString(R.string.the_tek))) //The Tek
 			{
 				selectedTag = "tag/the-tek";
 			}
-			if(selectedTag.equals("INBOX.EXE")) //INBOX.EXE
+			if(selectedTag.equals(res.getString(R.string.inbox))) //INBOX.EXE
 			{
 				selectedTag = "tag/inbox";
 			}
-			if(selectedTag.equals("DIY")) //DIY & How To
+			if(selectedTag.equals(res.getString(R.string.diy))) //DIY & How To
 			{
 				selectedTag = "tag/diy";
 			}
-			if(selectedTag.equals("Build A PC")) //Build A PC
+			if(selectedTag.equals(res.getString(R.string.build_a_pc))) //Build A PC
 			{
 				selectedTag = "tag/buildapc";
 			}
-			if(selectedTag.equals("WASD")) //WASD
+			if(selectedTag.equals(res.getString(R.string.wasd))) //WASD
 			{
 				selectedTag = "tag/wasd";
 			}
-			if(selectedTag.equals("All Videos")) //All Videos
+			if(selectedTag.equals(res.getString(R.string.all_videos))) //All Videos
 			{
 				selectedTag = "tag/all";
 			}			
 			
 			progressBarActivity.setVisibility(View.VISIBLE);
-			new JsonRequest().execute(selectedTag); //create JSON request
+			new SummaryDownloader().execute(selectedTag); //create JSON request
 		}
 
 		@Override
@@ -144,7 +146,7 @@ public class MainScreen extends Activity
 		}	
 	}
 	
-	private class JsonRequest extends AsyncTask<String, Void, Boolean>
+	private class SummaryDownloader extends AsyncTask<String, Void, Boolean>
 	{
 		@Override
 		protected Boolean doInBackground(String... params)

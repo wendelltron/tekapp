@@ -54,7 +54,7 @@ public class CommentView extends GridLayout
 	public CommentView(Context context, JSONObject comment)
 	{
 		super(context);
-		
+				
 		imgLayout = new LinearLayout(context);
 		imgLayout.setLayoutParams(new GridLayout.LayoutParams(GridLayout.spec(1), GridLayout.spec(1)));
 		imgLayout.setOrientation(LinearLayout.VERTICAL);
@@ -112,27 +112,31 @@ public class CommentView extends GridLayout
 					JSONObject json = new JSONObject(builder.toString());
 					JSONArray users = json.getJSONArray("nodes");
 					JSONObject user = new JSONObject(users.getJSONObject(0).getString("node"));
-					
+					InputStream avatarContent;
 					Author a;
 					
-					if(user.getString("User Picture").equals(""))
+					if(user.getString("user_picture").equals(""))
 					{
 						URL avatarUrl = new URL(res.getString(R.string.default_avatar));
-						InputStream avatarContent = (InputStream)avatarUrl.getContent();
+						avatarContent = (InputStream)avatarUrl.getContent();
 						Drawable d = Drawable.createFromStream(avatarContent, "src");
 						
 						a = new Author(d, user.getString("name"));
 					}
 					else
 					{
-						URL avatarUrl = new URL(user.getString("User Picture"));
-						InputStream avatarContent = (InputStream)avatarUrl.getContent();
+						URL avatarUrl = new URL(user.getString("user_picture"));
+						avatarContent = (InputStream)avatarUrl.getContent();
 						Drawable d = Drawable.createFromStream(avatarContent, "src");
 						
 						a = new Author(d, user.getString("name"));
 					}
 					
 					comment = new Comment(a, Jsoup.parse(params[0].getString("Comment")).text());
+					
+					avatarContent.close();
+					br.close();
+					content.close();
 				}
 			}
 			catch (UnsupportedEncodingException e) 

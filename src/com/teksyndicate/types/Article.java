@@ -24,7 +24,7 @@ public class Article
 	private String articleAddress;
 	private String thumbNailAddress;
 	private String topicKey;
-	private String description;
+	private String summary;
 	private String videoId;
 	private Drawable thumbNail;
 	private JSONObject json;
@@ -40,31 +40,31 @@ public class Article
 	
 	/**
 	 * Creates new Article
-	 * @param toParse JSONObject containing ALL key values for an Article
+	 * @param jsonSummary JSONObject containing ALL key values for an Article
 	 */
-	public Article(JSONObject toParse)
+	public Article(JSONObject jsonSummary)
 	{
 		try
 		{
-			json = toParse;
-			termNodeTid = toParse.getString("term_node_tid");
-			title = Jsoup.parse(toParse.getString("title")).text();
-			commentCount = Jsoup.parse(toParse.getString("comment_count")).text();
-			createdByUserName = Jsoup.parse(toParse.getString("name")).text();
-			dateCreated = toParse.getString("created");
-			articleAddress = toParse.getString("view_node");
-			thumbNailAddress = toParse.getString("field__news_thumb");
-			topicKey = toParse.getString("Topic Key");
-			description = Jsoup.parse(toParse.getString("Body")).text();
-			if(!toParse.getString("video").toString().equals("null"))
+			json = jsonSummary;
+			termNodeTid = jsonSummary.getString("term_node_tid");
+			title = Jsoup.parse(jsonSummary.getString("title")).text();
+			commentCount = Jsoup.parse(jsonSummary.getString("comment_count")).text();
+			createdByUserName = Jsoup.parse(jsonSummary.getString("name")).text();
+			dateCreated = jsonSummary.getString("created");
+			articleAddress = jsonSummary.getString("view_node");
+			thumbNailAddress = jsonSummary.getString("field__news_thumb");
+			topicKey = jsonSummary.getString("Topic Key");
+			summary = Jsoup.parse(jsonSummary.getString("Body")).text();
+			if(!jsonSummary.getString("video").toString().equals("null"))
 			{
-				String videoSource = Jsoup.parse(toParse.getString("video")).getElementsByAttribute("src").attr("src").toString();
+				String videoSource = Jsoup.parse(jsonSummary.getString("video")).getElementsByAttribute("src").attr("src").toString();
 				String[] splitSource = videoSource.split("/");
 				videoId = splitSource[4].substring(0, splitSource[4].indexOf('?'));
 			}
 			else
 			{
-				videoId = toParse.getString("video");
+				videoId = jsonSummary.getString("video");
 			}
 			URL url = new URL(thumbNailAddress);
 			InputStream content = (InputStream)url.getContent();
@@ -82,6 +82,48 @@ public class Article
 			e.printStackTrace();
 		}
 	}
+	
+	public Article(JSONObject jsonSummary, JSONObject story)
+	{
+		try
+		{
+			json = jsonSummary;
+			termNodeTid = jsonSummary.getString("term_node_tid");
+			title = Jsoup.parse(jsonSummary.getString("title")).text();
+			commentCount = Jsoup.parse(jsonSummary.getString("comment_count")).text();
+			createdByUserName = Jsoup.parse(jsonSummary.getString("name")).text();
+			dateCreated = jsonSummary.getString("created");
+			articleAddress = jsonSummary.getString("view_node");
+			thumbNailAddress = jsonSummary.getString("field__news_thumb");
+			topicKey = jsonSummary.getString("Topic Key");
+			summary = Jsoup.parse(story.getString("Body")).text();
+			if(!jsonSummary.getString("video").toString().equals("null"))
+			{
+				String videoSource = Jsoup.parse(jsonSummary.getString("video")).getElementsByAttribute("src").attr("src").toString();
+				String[] splitSource = videoSource.split("/");
+				videoId = splitSource[4].substring(0, splitSource[4].indexOf('?'));
+			}
+			else
+			{
+				videoId = jsonSummary.getString("video");
+			}
+			URL url = new URL(thumbNailAddress);
+			InputStream content = (InputStream)url.getContent();
+			Drawable d = Drawable.createFromStream(content , "src");
+			thumbNail = d;
+		}
+		catch(JSONException e)
+		{
+			Log.e("JSON_ERROR", e.getMessage());
+			e.printStackTrace();
+		}
+		catch(IOException e)
+		{
+			Log.e("IO_ERROR", e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public String getTermNodeTid()
 	{
@@ -149,9 +191,9 @@ public class Article
 		return topicKey;
 	}
 	
-	public String getDescription()
+	public String getSummary()
 	{
-		return description;
+		return summary;
 	}
 	
 	public String getVideoId()
