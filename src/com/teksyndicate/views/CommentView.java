@@ -51,7 +51,7 @@ public class CommentView extends GridLayout
 	 * @param context viewing context
 	 * @param comment JSON representation of the comment to be viewed
 	 */
-	public CommentView(Context context, JSONObject comment)
+	public CommentView(Context context, JSONObject comment, int width)
 	{
 		super(context);
 				
@@ -64,12 +64,15 @@ public class CommentView extends GridLayout
 		textLayout.setOrientation(LinearLayout.VERTICAL);
 		
 		imgView = new ImageView(context);
+		imgView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1.0f));
 		imgLayout.addView(imgView);
 		
 		usernameView = new TextView(context);
+		usernameView.setLayoutParams(new LinearLayout.LayoutParams((int) (width * .1), LayoutParams.WRAP_CONTENT, 1.0f));
 		imgLayout.addView(usernameView);
 		
 		commentView = new TextView(context);
+		commentView.setLayoutParams(new LinearLayout.LayoutParams((int) (width * .9), LayoutParams.WRAP_CONTENT, 1.0f));
 		textLayout.addView(commentView);
 		
 		this.addView(imgLayout);
@@ -169,6 +172,8 @@ public class CommentView extends GridLayout
 			imgView.setImageDrawable(comment.getAuthor().getAvatar());
 			usernameView.setText(comment.getAuthor().getUserName());
 			commentView.setText(comment.getCommentBody());
+			
+			usernameView.setWidth(comment.getAuthor().getAvatar().getIntrinsicWidth());
 		}
 	}
 }

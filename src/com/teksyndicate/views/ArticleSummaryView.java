@@ -4,13 +4,15 @@ import com.teksyndicate.types.Article;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ArticleSummaryView extends GridLayout 
 {
@@ -54,7 +56,12 @@ public class ArticleSummaryView extends GridLayout
 		textLayoutParams.setMargins(5, 2, 5, 2);		
 		this.addView(textLayout); //add text layout for viewing
 		
-		int width = screenWidth;
+		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		Display d = wm.getDefaultDisplay();
+		Point size = new Point();
+		d.getSize(size);
+		
+		int width = size.x;
 		try
 		{
 			width = screenWidth - article.getThumbNail().getIntrinsicWidth();
@@ -91,9 +98,6 @@ public class ArticleSummaryView extends GridLayout
 		descriptionView.setLayoutParams(textLayoutParams); //set layout params
 		descriptionView.setWidth(width);
 		textLayout.addView(descriptionView); //add to text layout
-		
-//		this.addView(imgLayout); //add image layout for viewing
-//		this.addView(textLayout); //add text layout for viewing
 	}
 	
 	/**
@@ -103,10 +107,5 @@ public class ArticleSummaryView extends GridLayout
 	public Article getArticle()
 	{
 		return article;
-	}
-	
-	public void showSize()
-	{
-		Toast.makeText(textLayout.getContext(), "WIDTH: " + String.valueOf(textLayout.getWidth()), Toast.LENGTH_LONG).show();
 	}
 }

@@ -36,6 +36,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -50,6 +51,8 @@ public class MainScreen extends Activity
 	ProgressBar progressBarActivity;
 	LinearLayout storyLayout;
 	ScrollView scrollViewStories;
+	Button pageButton;
+	int currentPage = 0;
 	
 	ArrayList<Article> articles;
 	
@@ -74,6 +77,21 @@ public class MainScreen extends Activity
 		// Apply the adapter to the spinner
 		tagSpinner.setAdapter(adapter);
 		tagSpinner.setOnItemSelectedListener(new SpinnerActivity());
+		
+		pageButton = new Button(this.getApplicationContext());
+		pageButton.setText("Show More");
+		pageButton.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				storyLayout.removeView(pageButton);
+				currentPage++;
+				
+				progressBarActivity.setVisibility(View.VISIBLE);
+				new SummaryDownloader().execute(getSelectedTag()); //create JSON request
+			}
+		});
 	}
 
 	@Override
@@ -100,43 +118,18 @@ public class MainScreen extends Activity
 	
 	private class SpinnerActivity extends Activity implements OnItemSelectedListener
 	{
-
 		@Override
 		public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
 		{
+			storyLayout.removeView(pageButton);
+			currentPage = 0;
 			String selectedTag = parent.getItemAtPosition(position).toString(); //tag that was selected
 			articles.clear();
 			storyLayout.removeAllViews();
 			MainScreen.this.setTitle(selectedTag); //change the title of the MainScreen
-			Resources res = parent.getResources();
-			
-			if(selectedTag.equals(res.getString(R.string.the_tek))) //The Tek
-			{
-				selectedTag = "tag/the-tek";
-			}
-			if(selectedTag.equals(res.getString(R.string.inbox))) //INBOX.EXE
-			{
-				selectedTag = "tag/inbox";
-			}
-			if(selectedTag.equals(res.getString(R.string.diy))) //DIY & How To
-			{
-				selectedTag = "tag/diy";
-			}
-			if(selectedTag.equals(res.getString(R.string.build_a_pc))) //Build A PC
-			{
-				selectedTag = "tag/buildapc";
-			}
-			if(selectedTag.equals(res.getString(R.string.wasd))) //WASD
-			{
-				selectedTag = "tag/wasd";
-			}
-			if(selectedTag.equals(res.getString(R.string.all_videos))) //All Videos
-			{
-				selectedTag = "tag/all";
-			}			
-			
+					
 			progressBarActivity.setVisibility(View.VISIBLE);
-			new SummaryDownloader().execute(selectedTag); //create JSON request
+			new SummaryDownloader().execute(getSelectedTag()); //create JSON request
 		}
 
 		@Override
@@ -146,16 +139,53 @@ public class MainScreen extends Activity
 		}	
 	}
 	
+	private String getSelectedTag()
+	{
+		String selectedTag = tagSpinner.getSelectedItem().toString(); //tag that was selected
+
+		Resources res = this.getResources();
+		
+		if(selectedTag.equals(res.getString(R.string.the_tek))) //The Tek
+		{
+			selectedTag = "tag/the-tek";
+		}
+		if(selectedTag.equals(res.getString(R.string.inbox))) //INBOX.EXE
+		{
+			selectedTag = "tag/inbox";
+		}
+		if(selectedTag.equals(res.getString(R.string.diy))) //DIY & How To
+		{
+			selectedTag = "tag/diy";
+		}
+		if(selectedTag.equals(res.getString(R.string.build_a_pc))) //Build A PC
+		{
+			selectedTag = "tag/buildapc";
+		}
+		if(selectedTag.equals(res.getString(R.string.wasd))) //WASD
+		{
+			selectedTag = "tag/wasd";
+		}
+		if(selectedTag.equals(res.getString(R.string.all_videos))) //All Videos
+		{
+			selectedTag = "tag/all";
+		}
+		
+		return selectedTag;
+	}
+	
 	private class SummaryDownloader extends AsyncTask<String, Void, Boolean>
 	{
+		ArrayList<Article> newArticles;
 		@Override
 		protected Boolean doInBackground(String... params)
 		{
 			Boolean success = true;
 			try
 			{
+				newArticles = new ArrayList<Article>();
 				String requestAddress = getString(R.string.api_root); //API address
 				requestAddress += params[0]; //should be the last part of api address, the 'tag'
+				requestAddress += "?page=" + String.valueOf(currentPage);
 				StringBuilder url = new StringBuilder(requestAddress);
 				HttpClient client = new DefaultHttpClient();
 				HttpGet get = new HttpGet(url.toString());
@@ -180,7 +210,7 @@ public class MainScreen extends Activity
 					JSONArray stories = json.getJSONArray("nodes"); //get the nodes
 					for(int i=0;i<stories.length();i++)
 					{
-						articles.add(new Article(new JSONObject(stories.getJSONObject(i).getString("node")))); //get one node
+						newArticles.add(new Article(new JSONObject(stories.getJSONObject(i).getString("node")))); //get one node
 					}
 				}
 			}
@@ -219,8 +249,9 @@ public class MainScreen extends Activity
 		{
 			if(success) //if we were successful in getting articles
 			{				
-				for(Article a : articles) //Iterate all the articles
+				for(Article a : newArticles) //Iterate all the articles
 				{
+					articles.add(a);
 					ArticleSummaryView summary = new ArticleSummaryView(MainScreen.this.getApplicationContext(), a, tagSpinner.getWidth());
 					summary.setOnClickListener(new onClickListener());
 					summary.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f));
@@ -236,6 +267,8 @@ public class MainScreen extends Activity
 			{
 				Toast.makeText(MainScreen.this, "Error Occured", Toast.LENGTH_LONG).show(); //show a little message (something went wrong)
 			}
+			
+			storyLayout.addView(pageButton);
 			progressBarActivity.setVisibility(View.INVISIBLE);
 		}
 	}

@@ -19,7 +19,10 @@ import org.json.JSONObject;
 import com.teksyndicate.R;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Space;
 
@@ -75,9 +78,14 @@ public class CommentListView extends LinearLayout
 				s.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 15));
 				addView(s);
 				
+				WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+				Display d = wm.getDefaultDisplay();
+				Point size = new Point();
+				d.getSize(size);
+								
 				for(int i=0;i<comments.length();i++)
 				{
-					addView(new CommentView(context, new JSONObject(comments.getJSONObject(i).getString("node")))); //get one node
+					addView(new CommentView(context, new JSONObject(comments.getJSONObject(i).getString("node")), size.x)); //get one node
 				}
 			}
 		}
