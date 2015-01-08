@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tek Syndicate</string>
+    <string name="title_activity_main_screen">Main Screen</string>
+    <string name="action_settings">Settings</string>
+    <string name="view_videos">Videos</string>
+    <string name="view_forums">Forums</string>
+    <string name="view_latest">The Latest</string>
+    <string name="title_activity_splash_screen">Tek Syndicate</string>
+
+    <string-array name="viewable_tags">
+        <item>@string/all_videos</item>
+        <item>@string/the_tek</item>
+        <item>@string/inbox</item>
+        <item>@string/wasd</item>
+        <item>@string/build_a_pc</item>
+        <item>@string/diy</item>
+    </string-array>
+    
+    <string name="all_videos">All Videos</string>
+    <string name="the_tek">The Tek</string>
+    <string name="inbox">INBOX.EXE</string>
+    <string name="wasd">WASD</string>
+    <string name="build_a_pc">Build A PC</string>
+    <string name="diy">DIY</string>
+
+    <string name="api_root">https://teksyndicate.com/json/v1/</string>
+    <string name="title_activity_story_view">SET TITLE</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="default_text_view">TEXT HERE</string>
+    <string name="youtube_api_key">AIzaSyAdHhmXyr3wNEajiy3nmaXgyz7FEMWaXXk</string>
+    <string name="default_avatar">https://teksyndicate.com/sites/all/themes/bootstrap/images/defaultavatar.png</string>
+
+</resources>
