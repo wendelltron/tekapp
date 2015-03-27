@@ -1,11 +1,11 @@
 <div class="flex-container full-height">
-    <form class="col-xs-12 flex-item">
+    <form class="col-xs-12 flex-item" novalidate ng-submit="Login()">
         <img class="img img-responsive" src="images/dark-logo.png" />
         <div class="form-group">
-            <input class="form-control" type="text" autocomplete="on" autofocus />
+            <input class="form-control" placeholder="Username" type="text" autocomplete="on" autofocus ng-model="user.username" />
         </div>
         <div class="form-group">
-            <input class="form-control" type="password" autocomplete="on" autofocus />
+            <input class="form-control" placeholder="Password" type="password" autocomplete="on" autofocus ng-model="user.password" />
         </div>
         <input class="btn btn-default btn-block" type="submit" value="submit" />
     </form>

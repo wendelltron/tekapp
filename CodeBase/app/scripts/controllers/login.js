@@ -8,10 +8,11 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-  .controller('LoginCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('LoginCtrl', function ($scope, FactoryUser) {
+        $scope.user = {};
+        $scope.Login = function () {
+            FactoryUser.login($scope.user).success(function (data) {
+
+            });
+        };
+    });
