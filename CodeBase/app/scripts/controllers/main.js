@@ -8,7 +8,7 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $routeParams) {
+    .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $routeParams, PhoneGapBackground) {
         /**
          * Loads the categories from the database to be renddered to the page
          * @method GetCategories
@@ -44,7 +44,6 @@ angular.module('tekForumApp')
          **/
         $scope.UpdateTopics = function (Data, storage, refresh) {
             console.log(Data);
-            console.log($scope.page);
 
             // if refreshing data, rebuild array
             if (refresh) {
@@ -83,6 +82,9 @@ angular.module('tekForumApp')
          **/
         $scope.init = function () {
             $cookies['XSRF-TOKEN'] = 'M8JjiA4/pV6L2pR94qd4BQMoaCmLXsmgLks7xdNd+HA=';
+            // begin listening to the phones network status
+            PhoneGapBackground.monitorConnection();
+
             // if not a category and available, load the categories and topics from local storage, to quickly render results to user before rebuilding from data on server
             if (!$routeParams.id) {
                 $scope.categoryList = localStorageService.get('categoryList');

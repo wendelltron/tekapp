@@ -81,6 +81,14 @@
         <!-- /.container-fluid -->
     </nav>
 
+    <div class="container flash-container">
+        <div class="col-xs-12">
+            <div flash-alert active-class="in alert" class="fade">
+                <span class="alert-message">{{flash.message}}</span>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <div ng-view="" class="col-xs-12 pad-top"></div>
     </div>
@@ -99,11 +107,13 @@
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
     <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-flash/dist/angular-flash.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/phonegap/init.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>
@@ -121,6 +131,7 @@
     <script src="scripts/filters/extractfile.js"></script>
     <script src="scripts/filters/moment.js"></script>
     <script src="scripts/custom/lazyYT.js"></script>
+    <script src="scripts/services/phonegapbackground.js"></script>
     <!-- endbuild -->
 
 </body>
