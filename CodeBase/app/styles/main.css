@@ -14,3 +14,33 @@
 .pad-top-5 {
     padding-top: 5px;
 }
+
+.flex-container {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.flex-item {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.full-height-padded {
+    height: calc(100% - 95px);
+}

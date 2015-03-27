@@ -8,10 +8,10 @@
  * Factory in the tekForumApp.
  */
 angular.module('tekForumApp')
-    .factory('FactoryTopic', function ($http, ServerAddress) {
+    .factory('FactoryTopic', function ($http, ServerAddress, flash) {
         var loadPage = function (page) {
-            return '?no_definitions=true&page=' + page + '&slow_platform=true'
-        }
+            return '?no_definitions=true&page=' + page + '&slow_platform=true';
+        };
 
         // Public API here
         return {
@@ -30,7 +30,7 @@ angular.module('tekForumApp')
                 if (page) {
                     extend = loadPage(page);
                 }
-                return $http.get(ServerAddress + '/c/' + id + '/l/latest.json' + extend)
+                return $http.get(ServerAddress + '/c/' + id + '/l/latest.json' + extend);
             },
             getPosts: function (id, request) {
                 return $http.get(ServerAddress + "t/" + id + "/posts.json?" + request);

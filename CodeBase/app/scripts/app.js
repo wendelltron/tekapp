@@ -31,7 +31,7 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            .when('/:id', {
+            .when('/category/:id', {
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
@@ -42,6 +42,10 @@ angular
             .when('/topic/:id', {
                 templateUrl: 'views/topic.html',
                 controller: 'TopicCtrl'
+            })
+            .when('/login', {
+                templateUrl: 'views/login.html',
+                controller: 'LoginCtrl'
             })
             .otherwise({
                 redirectTo: '/'

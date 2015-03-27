@@ -31,6 +31,10 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
+                <button ng-if="User.loggedIn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                </button>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#other">
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-bars"></i>
@@ -65,32 +69,35 @@
                     </li>
                     <li><a href="#" class="local">Badges</a>
                     </li>
-                    <li><a href="#" class="local">Keyboard Shortcuts</a>
-                    </li>
                     <li><a href="#" class="local">FAQ</a>
                     </li>
                     <li><a href="#/about" class="local">About</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="#/about" class="local">Categories</a>
+                    <li ng-switch on="User.loggedIn">
+                        <a ng-switch-when="User.loggedIn" href="#/about" class="local">Log Out</a>
+                        <a ng-switch-default href="#/login" class="local">Log In</a>
                     </li>
+
                 </ul>
+            </div>
+            <div ng-if="User.loggedIn" class="collapse navbar-collapse" id="user">
+                <p>User stuff</p>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
 
-    <div class="container flash-container">
-        <div class="col-xs-12">
-            <div flash-alert active-class="in alert" class="fade">
-                <span class="alert-message">{{flash.message}}</span>
+    <div class="container-fluid pad-top full-height">
+        <div class="flash-container">
+            <div class="col-xs-12">
+                <div flash-alert active-class="in alert " class="fade ">
+                    <span class="alert-message ">{{flash.message}}</span>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="container-fluid">
-        <div ng-view="" class="col-xs-12 pad-top"></div>
+        <div ng-view="" class="col-xs-12 full-height-padded"></div>
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -113,25 +120,27 @@
 
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/phonegap/init.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
-    <script src="scripts/services/factorycategory.js"></script>
-    <script src="scripts/services/factorytopic.js"></script>
-    <script src="scripts/services/factorypost.js"></script>
-    <script src="scripts/services/factoryuser.js"></script>
-    <script src="scripts/services/factorybadge.js"></script>
-    <script src="scripts/services/factorynotification.js"></script>
-    <script src="scripts/services/factoryprivatemessage.js"></script>
-    <script src="scripts/services/serveraddress.js"></script>
-    <script src="scripts/controllers/topic.js"></script>
-    <script src="scripts/filters/sanitize.js"></script>
-    <script src="scripts/custom/aLinkFix.js" type="application/javascript"></script>
-    <script src="scripts/filters/extractfile.js"></script>
-    <script src="scripts/filters/moment.js"></script>
-    <script src="scripts/custom/lazyYT.js"></script>
-    <script src="scripts/services/phonegapbackground.js"></script>
+    <script src="scripts/phonegap/init.js "></script>
+    <script src="scripts/app.js "></script>
+    <script src="scripts/controllers/main.js "></script>
+    <script src="scripts/controllers/about.js "></script>
+    <script src="scripts/services/factorycategory.js "></script>
+    <script src="scripts/services/factorytopic.js "></script>
+    <script src="scripts/services/factorypost.js "></script>
+    <script src="scripts/services/factoryuser.js "></script>
+    <script src="scripts/services/factorybadge.js "></script>
+    <script src="scripts/services/factorynotification.js "></script>
+    <script src="scripts/services/factoryprivatemessage.js "></script>
+    <script src="scripts/services/serveraddress.js "></script>
+    <script src="scripts/controllers/topic.js "></script>
+    <script src="scripts/filters/sanitize.js "></script>
+    <script src="scripts/custom/aLinkFix.js " type="application/javascript "></script>
+    <script src="scripts/filters/extractfile.js "></script>
+    <script src="scripts/filters/moment.js "></script>
+    <script src="scripts/custom/lazyYT.js "></script>
+    <script src="scripts/services/phonegapbackground.js "></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/custom/nofications.js"></script>
     <!-- endbuild -->
 
 </body>

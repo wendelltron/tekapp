@@ -8,16 +8,12 @@
  * Factory in the tekForumApp.
  */
 angular.module('tekForumApp')
-  .factory('FactoryUser', function () {
-    // Service logic
-    // ...
+    .factory('FactoryUser', function ($http, ServerAddress) {
 
-    var meaningOfLife = 42;
-
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
-  });
+        // Public API here
+        return {
+            login: function (request) {
+                return $http.post('https://teksyndicate.com/user/login?', request);
+            }
+        };
+    });

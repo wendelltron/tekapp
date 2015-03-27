@@ -1,3 +1,4 @@
+/*jslint node: true */
 'use strict';
 
 /**
@@ -17,20 +18,20 @@ angular.module('tekForumApp')
                     running = true;
                     $interval(function () {
                         if ($Phonegap.deviceReady) {
-                            console.log(navigator);
-                            var networkState = navigator.connection.type;
+                            var networkState = navigator.connection.type || null;
 
-                            if (networkState == Connection.NONE || networkState == Connection.UNKNOWN) {
+                            // check the connection type, if it is unknown or no connection exist, throw error notification that the connection was lost
+                            if (networkState === Connection.NONE || networkState === Connection.UNKNOWN || !networkState) {
                                 $Phonegap.connection = null;
-                                flash.error('lost connection');
+                                flash.error = $flash_notifications.error.connection;
                             } else {
-                                $Phonegap.connection = networkState;
+                                $Phonegap.connection = true;
                             }
 
                         }
-                    }, 3000)
+                    }, 3000);
                 }
 
             }
-        }
+        };
     });
