@@ -1,2 +1,2 @@
 cd CodeBase/
-grunt build android && phonegap run android
+grunt build --force && phonegap run android

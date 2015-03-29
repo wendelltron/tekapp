@@ -14,5 +14,5 @@ angular.module('tekForumApp')
             FactoryTopic.search($scope.query).success(function (data) {
                 console.log(data);
             });
-        }
+        };
     });
