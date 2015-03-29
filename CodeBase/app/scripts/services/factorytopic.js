@@ -36,7 +36,13 @@ angular.module('tekForumApp')
                 return $http.get(ServerAddress + "t/" + id + "/posts.json?" + request);
             },
             search: function (query) {
-                return $http.post(ServerAddress + 'search/', query);
+                return $http.get(ServerAddress + 'search/?term=', {
+                    params: {
+                        term: query,
+                        include_blurbs: true
+                    },
+                    responseType: "json"
+                });
             }
         };
     });

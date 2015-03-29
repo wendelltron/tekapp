@@ -1,0 +1,2 @@
+// api call to get latest uploads for teksyndicate
+GET https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&pageToken=1&playlistId=UUNovoA9w0KnxyDP5bGrOYzg&key={YOUR_API_KEY}
