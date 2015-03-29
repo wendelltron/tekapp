@@ -14,9 +14,9 @@
 
 <ul class="list-group" infinite-scroll="FetchTopics()" infinite-scroll-distance="1">
     <li class="list-group-item" ng-if="topicList" ng-repeat="topic in topicList">
-        <a href="#/topic/{{topic.id}}" class="local">
+        <a href="#/topic/{{topic.id}}" class="local no-styling">
             <h4>{{topic.title}}</h4>
-            <p>{{topic.excerpt}}</p>
+            <p class="no-styling">{{topic.excerpt}}</p>
         </a>
     </li>
 </ul>

@@ -44,3 +44,10 @@ body {
 .full-height-padded {
     height: calc(100% - 95px);
 }
+
+.no-styling,
+.no-styling:hover,
+.no-styling:focus {
+    color: #888;
+    text-decoration: none !important;
+}

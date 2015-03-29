@@ -28,7 +28,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavigationCtrl">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button ng-if="User.loggedIn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user">
@@ -53,10 +53,10 @@
             <div class="collapse navbar-collapse" id="chat">
                 <p>Chat stuff</p>
             </div>
-            <div class="collapse navbar-collapse" id="search">
+            <div class="collapse navbar-collapse" id="search" ng-submit="search()">
                 <form class="nav navbar-nav" role="menu">
                     <div class="form-group">
-                        <input class="form-control" type="text" />
+                        <input class="form-control" type="text" ng-model="query" />
                     </div>
                     <div class="form-group">
                         <input class="btn btn-default btn-block" type="submit" value="Submit" />
@@ -141,6 +141,7 @@
     <script src="scripts/services/phonegapbackground.js "></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/custom/nofications.js"></script>
+    <script src="scripts/controllers/navigation.js"></script>
     <!-- endbuild -->
 
 </body>

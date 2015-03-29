@@ -80,9 +80,9 @@
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/assets/www/plugins/org.apache.cordova.network-information/www \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/assets/www/plugins/org.apache.cordova.network-information/www/Connection.js \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/assets/www/plugins/org.apache.cordova.network-information/www/network.js \
-/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/assets/www/scripts/scripts.7d8bd0bf.js \
+/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/assets/www/scripts/scripts.d6873cad.js \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/assets/www/scripts/vendor.38b3f4de.js \
-/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/assets/www/styles/main.4b33c219.css \
+/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/assets/www/styles/main.2f543aa2.css \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/assets/www/styles/vendor.737932a2.css \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/assets/www/views/about.html \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/assets/www/views/login.html \

@@ -5,7 +5,7 @@ Built using angular framework, and phonegap
 
 =================
 
-To build the app, use phonegap"
+To build the app, use phonegap
 
     phonegap build android
     
