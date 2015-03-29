@@ -47,6 +47,10 @@ angular
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
             })
+            .when('/search', {
+              templateUrl: 'views/search.html',
+              controller: 'SearchCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

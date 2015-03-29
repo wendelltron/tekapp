@@ -36,7 +36,7 @@ angular.module('tekForumApp')
                 return $http.get(ServerAddress + "t/" + id + "/posts.json?" + request);
             },
             search: function (query) {
-                return $http.get(ServerAddress + 'search/?term=', {
+                return $http.get(ServerAddress + 'search.json?term=', {
                     params: {
                         term: query,
                         include_blurbs: true
