@@ -47,12 +47,19 @@ angular
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
             })
-            .when('/search', {
-              templateUrl: 'views/search.html',
-              controller: 'SearchCtrl'
+            .when('/search/:query', {
+                templateUrl: 'views/search.html',
+                controller: 'SearchCtrl'
             })
             .otherwise({
                 redirectTo: '/'
             });
         localStorageServiceProvider.setPrefix('TekForum');
+    }).run(function ($rootScope, $location) {
+        $rootScope.$watch(function () {
+                return $location.path();
+            },
+            function (a) {
+                $('.collapse').collapse('hide');
+            });
     });

@@ -8,10 +8,16 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-  .controller('SearchCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('SearchCtrl', function ($scope, FactoryTopic, $routeParams, FormatHTML) {
+
+        var init = function () {
+            $scope.query = $routeParams.query;
+            FactoryTopic.search($scope.query).success(function (data) {
+                $scope.topics = data.topics;
+                $scope.posts = data.posts;
+                FormatHTML.format();
+            });
+        }
+
+        init();
+    });

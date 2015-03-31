@@ -8,11 +8,9 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('NavigationCtrl', function ($scope, FactoryTopic) {
+    .controller('NavigationCtrl', function ($scope, FactoryTopic, $location) {
         $scope.query = '';
         $scope.search = function () {
-            FactoryTopic.search($scope.query).success(function (data) {
-                console.log(data);
-            });
+            $location.path('/search/' + $scope.query);
         };
     });

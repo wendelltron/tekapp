@@ -1,6 +1,7 @@
 // Wait for device API libraries to load
 //
 document.addEventListener("deviceready", onDeviceReady, false);
+
 var $Phonegap = {
     deviceReady: false,
     connection: true
