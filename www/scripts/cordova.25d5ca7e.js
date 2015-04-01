@@ -1,1 +1,0 @@
-function onDeviceReady(){$Phonegap.deviceReady=!0}document.addEventListener("deviceready",onDeviceReady,!1);var $Phonegap={deviceReady:!1,connection:!0};

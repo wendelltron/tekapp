@@ -8,7 +8,11 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $routeParams, PhoneGapBackground) {
+    .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $routeParams, PhoneGapBackground, $interval) {
+        // set loading flag
+        $scope.busyLoadingData = false;
+        var nginfiniteActive = false;
+
         /**
          * Loads the categories from the database to be renddered to the page
          * @method GetCategories
@@ -63,27 +67,42 @@ angular.module('tekForumApp')
          * @method FetchTopics
          **/
         $scope.FetchTopics = function () {
+            nginfiniteActive = true;
+            // set loading flag
+            $scope.busyLoadingData = true;
             $scope.page++;
             if ($routeParams.id) {
                 FactoryTopic.getLatestCategory($routeParams.id, $scope.page).success(function (Data) {
+                    // set loading flag
+                    $scope.busyLoadingData = false;
                     $scope.UpdateTopics(Data);
                 });
 
             } else {
                 FactoryTopic.getLatest($scope.page).success(function (Data) {
+                    // set loading flag
+                    $scope.busyLoadingData = false;
                     $scope.UpdateTopics(Data);
                 });
             }
         };
 
+        var polling = function () {
+            $interval(function () {
+                if (!nginfiniteActive && !$Phonegap.paused) {
+                    $scope.GetTopics();
+                }
+            }, 3000)
+        }
+
         /**
          * Loads the topics from the database to be renddered to the page
          * @method GetTopics
          **/
-        $scope.init = function () {
-            $cookies['XSRF-TOKEN'] = 'M8JjiA4/pV6L2pR94qd4BQMoaCmLXsmgLks7xdNd+HA=';
+        var init = function () {
             // begin listening to the phones network status
             PhoneGapBackground.monitorConnection();
+            polling();
 
             // if not a category and available, load the categories and topics from local storage, to quickly render results to user before rebuilding from data on server
             if (!$routeParams.id) {
@@ -98,6 +117,6 @@ angular.module('tekForumApp')
 
         };
 
-        $scope.init();
+        init();
 
     });

@@ -9,6 +9,14 @@
  */
 angular.module('tekForumApp')
     .controller('TopicCtrl', function ($scope, $routeParams, FactoryTopic, FormatHTML) {
+        // set loading flag
+        $scope.busyLoadingData = false;
+
+        /**
+         * Initializes the controller, and formats the html content on load
+         * @method init
+         * @private
+         **/
         var init = function () {
             FactoryTopic.get($routeParams.id).success(function (data) {
                 $scope.topic = data;
@@ -18,9 +26,14 @@ angular.module('tekForumApp')
             });
         };
 
-        // called when nearing bottom of the page, looks for more posts, if available
+        /**
+         * Called when nearing bottom of the page, looks for more posts, if available
+         * @method FetchPosts
+         **/
         $scope.FetchPosts = function () {
             if ($scope.postCount < $scope.MAXPOSTCOUNT) {
+                $scope.busyLoadingData = true;
+                $('.infinite-scroll').addClass
                 var request = '',
                     requestAttach = '';
                 // build array of post ids to fetch
@@ -42,6 +55,7 @@ angular.module('tekForumApp')
 
                 // fetch posts and add to posts array
                 FactoryTopic.getPosts($scope.topic.id, request).success(function (data) {
+                    $scope.busyLoadingData = true;
                     $scope.topic.post_stream.posts.push.apply($scope.topic.post_stream.posts, data.post_stream.posts);
                     FormatHTML.format();
                 })

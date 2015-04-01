@@ -1,0 +1,1 @@
+var myScroll = new IScroll('#wrapper');

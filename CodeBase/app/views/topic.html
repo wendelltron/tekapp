@@ -1,5 +1,5 @@
 <h4>{{topic.title}}</h4>
-<ul id="topic-board" class="list-group" infinite-scroll="FetchPosts()" infinite-scroll-distance="1">
+<ul id="topic-board" class="list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchPosts()" infinite-scroll-distance="1">
     <li class="list-group-item" ng-if="topic" ng-repeat="post in topic.post_stream.posts">
         <user class="col-xs-12 user-panel">
             <p class="col-xs-6 pull-right">{{post.created_at | moment}}</p>

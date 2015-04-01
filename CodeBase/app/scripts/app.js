@@ -60,6 +60,6 @@ angular
                 return $location.path();
             },
             function (a) {
-                $('.collapse').collapse('hide');
+                $('.collapseng-in').collapse('hide');
             });
     });

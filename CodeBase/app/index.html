@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/lazyYT.css">
     <!-- endbuild -->
+    <script src="cordova.js"></script>
 </head>
 
 <body ng-app="tekForumApp">
@@ -96,7 +97,7 @@
                 </div>
             </div>
         </div>
-        <div ng-view="" class="col-xs-12 full-height-padded"></div>
+        <div ng-view="" class="col-xs-12 full-height-padded" id="wrapper"></div>
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -142,11 +143,12 @@
     <script src="scripts/controllers/navigation.js"></script>
     <script src="scripts/controllers/search.js"></script>
     <script src="scripts/services/formathtml.js"></script>
+    <script src="scripts/custom/iscroll-lite.js"></script>
+    <script src="scripts/custom/iscroll_config.js"></script>
     <!-- endbuild -->
 
 
-    <!-- build:js({.tmp,app}) scripts/cordova.js -->
-    <script src="cordova.js"></script>
+    <!-- build:js({.tmp,app}) scripts/phonegap_.js -->
     <script src="scripts/phonegap/init.js "></script>
     <!-- endbuild -->
 
