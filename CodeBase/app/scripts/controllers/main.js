@@ -11,7 +11,8 @@ angular.module('tekForumApp')
     .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $routeParams, PhoneGapBackground, $interval) {
         // set loading flag
         $scope.busyLoadingData = false;
-        var nginfiniteActive = false;
+        var nginfiniteActive = false,
+            wait = 3000;
 
         /**
          * Loads the categories from the database to be renddered to the page
@@ -19,7 +20,6 @@ angular.module('tekForumApp')
          **/
         $scope.GetCategories = function () {
             FactoryCategory.get().success(function (Data) {
-                console.log(Data);
                 $scope.categoryList = Data.category_list.categories;
                 localStorageService.set('categoryList', JSON.stringify(Data.category_list.categories));
             });
@@ -47,8 +47,6 @@ angular.module('tekForumApp')
          * @method UpdateTopics
          **/
         $scope.UpdateTopics = function (Data, storage, refresh) {
-            console.log(Data);
-
             // if refreshing data, rebuild array
             if (refresh) {
                 $scope.page = 1;
@@ -90,9 +88,12 @@ angular.module('tekForumApp')
         var polling = function () {
             $interval(function () {
                 if (!nginfiniteActive && !$Phonegap.paused) {
+                    wait = 3000;
                     $scope.GetTopics();
+                } else {
+                    wait = 5000;
                 }
-            }, 3000)
+            }, wait)
         }
 
         /**
@@ -103,6 +104,11 @@ angular.module('tekForumApp')
             // begin listening to the phones network status
             PhoneGapBackground.monitorConnection();
             polling();
+
+            if ($cookies['_t']) {
+                $user.loggedIn = true;
+                $user.token = $cookies['_t'];
+            }
 
             // if not a category and available, load the categories and topics from local storage, to quickly render results to user before rebuilding from data on server
             if (!$routeParams.id) {

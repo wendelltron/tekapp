@@ -1,6 +1,6 @@
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes.dex : \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/teksyndicate/forum/BuildConfig.class \
-/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/teksyndicate/forum/CordovaApp.class \
+/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/teksyndicate/forum/MainActivity.class \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/teksyndicate/forum/R$attr.class \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/teksyndicate/forum/R$drawable.class \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/teksyndicate/forum/R$string.class \
@@ -20,4 +20,6 @@
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser.class \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowserDialog.class \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppChromeClient.class \
+/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/org/apache/cordova/networkinformation/NetworkManager$1.class \
+/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/org/apache/cordova/networkinformation/NetworkManager.class \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/dexedLibs/classes-1345d817f1bc0f6d35c74eb12d2f3261.jar \

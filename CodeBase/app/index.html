@@ -3,9 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Tek Syndicate App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <script src="cordova.js"></script>
+    <!-- build:js({.tmp,app}) scripts/phonegap_.js -->
+    <script src="scripts/phonegap/init.js "></script>
+    <!-- endbuild -->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -19,7 +23,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/lazyYT.css">
     <!-- endbuild -->
-    <script src="cordova.js"></script>
+
 </head>
 
 <body ng-app="tekForumApp">
@@ -89,7 +93,7 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <div class="container-fluid pad-top full-height">
+    <div class="container-fluid pad-top full-height" id="wrapper">
         <div class="flash-container">
             <div class="col-xs-12">
                 <div flash-alert active-class="in alert " class="fade ">
@@ -97,7 +101,7 @@
                 </div>
             </div>
         </div>
-        <div ng-view="" class="col-xs-12 full-height-padded" id="wrapper"></div>
+        <div ng-view="" class="col-xs-12 full-height-padded"></div>
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -118,6 +122,10 @@
     <!-- endbower -->
     <!-- endbuild -->
 
+    <!-- build:js({.tmp,app}) scripts/iscroll.js -->
+    <script src="scripts/custom/iscroll-lite.js"></script>
+    <script src="scripts/custom/documentReady.js"></script>
+    <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js "></script>
@@ -143,13 +151,7 @@
     <script src="scripts/controllers/navigation.js"></script>
     <script src="scripts/controllers/search.js"></script>
     <script src="scripts/services/formathtml.js"></script>
-    <script src="scripts/custom/iscroll-lite.js"></script>
-    <script src="scripts/custom/iscroll_config.js"></script>
-    <!-- endbuild -->
-
-
-    <!-- build:js({.tmp,app}) scripts/phonegap_.js -->
-    <script src="scripts/phonegap/init.js "></script>
+    <script src="scripts/custom/User.js"></script>
     <!-- endbuild -->
 
 </body>

@@ -13,4 +13,5 @@ angular.module('tekForumApp')
         $scope.search = function () {
             $location.path('/search/' + $scope.query);
         };
+        $scope.user = $user;
     });

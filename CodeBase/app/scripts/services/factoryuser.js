@@ -12,8 +12,18 @@ angular.module('tekForumApp')
 
         // Public API here
         return {
+            getFormID: function () {
+                return $http.get('https://teksyndicate.com/user/login');
+            },
             login: function (request) {
-                return $http.post('https://teksyndicate.com/teksyndicate-test', request);
+                return $http({
+                    method: 'POST',
+                    url: 'https://teksyndicate.com/user/login',
+                    data: $.param(request),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
             }
         };
     });

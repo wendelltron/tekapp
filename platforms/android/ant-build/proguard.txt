@@ -1,3 +1,3 @@
 # view AndroidManifest.xml #generated:6
--keep class com.teksyndicate.forum.CordovaApp { <init>(...); }
+-keep class com.teksyndicate.forum.MainActivity { <init>(...); }
 
