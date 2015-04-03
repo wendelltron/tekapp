@@ -10,5 +10,19 @@
             "type": "registry",
             "id": "org.apache.cordova.network-information"
         }
+    },
+    "com.jean1880.CookieManager": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jean1880/Phonegap-Cookies-Plugin",
+            "subdir": "."
+        }
+    },
+    "com.jean1880.CookieJar": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jean1880/Phonegap-Cookies-Plugin",
+            "subdir": "."
+        }
     }
 }

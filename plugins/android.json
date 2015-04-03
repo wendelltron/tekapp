@@ -15,6 +15,10 @@
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"CookieJar\"><param name=\"android-package\" value=\"com.jean1880.CookieJar.CookieJar\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -36,6 +40,9 @@
             "PACKAGE_NAME": "com.teksyndicate.forum"
         },
         "org.apache.cordova.network-information": {
+            "PACKAGE_NAME": "com.teksyndicate.forum"
+        },
+        "com.jean1880.CookieJar": {
             "PACKAGE_NAME": "com.teksyndicate.forum"
         }
     },

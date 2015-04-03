@@ -1,4 +1,8 @@
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes.dex : \
+/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/jean1880/CookieJar/CookieJar$ACTION.class \
+/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/jean1880/CookieJar/CookieJar.class \
+/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/jean1880/CookieManager/CookieJar$ACTION.class \
+/mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/jean1880/CookieManager/CookieJar.class \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/teksyndicate/forum/BuildConfig.class \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/teksyndicate/forum/MainActivity.class \
 /mnt/F04E1AB34E1A7298/Users/Jean-Luc/Documents/github/tekapp/platforms/android/ant-build/classes/com/teksyndicate/forum/R$attr.class \

@@ -21,13 +21,21 @@ module.exports = [
         "clobbers": [
             "Connection"
         ]
+    },
+    {
+        "file": "plugins/com.jean1880.CookieJar/www/CookieJar.js",
+        "id": "com.jean1880.CookieJar.CookieJar",
+        "clobbers": [
+            "CookieJar"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "org.apache.cordova.inappbrowser": "0.6.0",
-    "org.apache.cordova.network-information": "0.2.15"
+    "org.apache.cordova.network-information": "0.2.15",
+    "com.jean1880.CookieJar": "0.1.0"
 }
 // BOTTOM OF METADATA
 });

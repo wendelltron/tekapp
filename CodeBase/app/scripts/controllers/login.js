@@ -8,7 +8,7 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('LoginCtrl', function ($scope, FactoryUser, $cookies, localStorageService) {
+    .controller('LoginCtrl', function ($scope, FactoryUser, $cookies, localStorageService, $location) {
         $scope.user = {
             form_id: 'user_login',
             op: 'Log in'
@@ -16,12 +16,18 @@ angular.module('tekForumApp')
         };
         $scope.Login = function () {
             FactoryUser.login($scope.user).success(function (data) {
-                if ($cookies['_t']) {
+                CookieJar.get(function (data) {
+                    console.log('success');
+                    var tokens = JSON.parse(data);
                     $user.loggedIn = true;
-                    $user.token = $cookies['_t'];
+                    $user.token = tokens._t;
+                    $cookies._t = tokens._t;
                     localStorageService.set('user', JSON.stringify($user));
                     $location.path('/');
-                }
+                }, function () {
+                    console.log('fail');
+                    console.log(data);
+                }, "https://teksyndicate.com/");
             });
         };
         var init = function () {

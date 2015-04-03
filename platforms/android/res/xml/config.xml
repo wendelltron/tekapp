@@ -7,6 +7,9 @@
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
     </feature>
+    <feature name="CookieJar">
+        <param name="android-package" value="com.jean1880.CookieJar.CookieJar" />
+    </feature>
     <name>The Tek Forum</name>
     <description>
         Hello World sample application that responds to the deviceready event.
