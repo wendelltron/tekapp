@@ -21,7 +21,7 @@ angular
     'angular-flash.service',
     'angular-flash.flash-alert-directive'
   ])
-    .config(function ($routeProvider, localStorageServiceProvider, flashProvider) {
+    .config(function ($routeProvider, localStorageServiceProvider, flashProvider, $httpProvider) {
         flashProvider.successClassnames.push('alert-success');
         flashProvider.infoClassnames.push('alert-info');
         flashProvider.warnClassnames.push('alert-warning');
@@ -55,12 +55,13 @@ angular
                 redirectTo: '/'
             });
         localStorageServiceProvider.setPrefix('TekForum');
+        $httpProvider.defaults.withCredentials = true;
+        $httpProvider.defaults.xsrfCookieName = '_t';
     }).run(function ($rootScope, $location) {
         $rootScope.$watch(function () {
                 return $location.path();
             },
             function (a) {
                 $('.collapse.in').collapse('hide');
-                $Phonegap.myScroll.refresh();
             });
     });

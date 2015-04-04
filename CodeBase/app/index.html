@@ -35,29 +35,29 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavigationCtrl">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button ng-if="User.loggedIn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#user">
+                <button ng-if="user.loggedIn" type="button" class="visible-xs-* navbar-toggle collapsed" data-toggle="collapse" data-target="#user">
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-bars"></i>
                 </button>
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#other">
+                <button type="button" class="visible-xs-* navbar-toggle collapsed" data-toggle="collapse" data-target="#other">
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-bars"></i>
                 </button>
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#search">
+                <button type="button" class="visible-xs-* navbar-toggle collapsed" data-toggle="collapse" data-target="#search">
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-search"></i>
                 </button>
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#chat">
+                <button type="button" class="visible-xs-* navbar-toggle collapsed" data-toggle="collapse" data-target="#chat">
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-comment"></i>
                 </button>
                 <a class="navbar-brand no-padding" href="#/"><img class="img img-brand" src="images/rtwwhite.png" />
                 </a>
             </div>
-            <div class="collapse navbar-collapse" id="chat">
+            <div class="visible-xs-* collapse navbar-collapse" id="chat">
                 <p>Chat stuff</p>
             </div>
-            <div class="collapse navbar-collapse" id="search" ng-submit="search()">
+            <div class="visible-xs-* collapse navbar-collapse" id="search" ng-submit="search()">
                 <form class="nav navbar-nav" role="menu">
                     <div class="form-group">
                         <input class="form-control" type="text" ng-model="query" />
@@ -67,7 +67,7 @@
                     </div>
                 </form>
             </div>
-            <div class="collapse navbar-collapse" id="other">
+            <div class="visible-xs-* collapse navbar-collapse" id="other">
                 <ul class="nav navbar-nav" role="menu">
                     <li><a href="#/" class="local">Latest</a>
                     </li>
@@ -78,15 +78,15 @@
                     <li><a href="#/about" class="local">About</a>
                     </li>
                     <li class="divider"></li>
-                    <li ng-switch on="User.loggedIn">
-                        <a ng-switch-when="User.loggedIn" href="#/about" class="local">Log Out</a>
-                        <a ng-switch-default href="#/login" class="local">Log In</a>
+                    <li>
+                        <a ng-if="user.loggedIn" ng-click="logOut()" class="local">Log Out</a>
+                        <a ng-if="!user.loggedIn" href="#/login" class="local">Log In</a>
                     </li>
 
                 </ul>
             </div>
-            <div ng-if="User.loggedIn" class="collapse navbar-collapse" id="user">
-                <p>User stuff</p>
+            <div ng-if="visible-xs-* User.loggedIn" class="collapse navbar-collapse" id="user">
+                <img ng-src="user.avatar">
             </div>
             <!-- /.navbar-collapse -->
         </div>

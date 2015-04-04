@@ -8,7 +8,7 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $routeParams, PhoneGapBackground, $interval) {
+    .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $routeParams, PhoneGapBackground, $interval, FactoryUser, ServerAddress) {
         // set loading flag
         $scope.busyLoadingData = false;
         var nginfiniteActive = false,
@@ -85,11 +85,16 @@ angular.module('tekForumApp')
             }
         };
 
+        var checkNotifications = function () {
+
+        };
+
         var polling = function () {
             $interval(function () {
                 if (!nginfiniteActive && !$Phonegap.paused) {
                     wait = 3000;
                     $scope.GetTopics();
+                    checkNotifications();
                 } else {
                     wait = 5000;
                 }
@@ -105,9 +110,13 @@ angular.module('tekForumApp')
             PhoneGapBackground.monitorConnection();
             polling();
 
-            if ($cookies['_t']) {
-                $user.loggedIn = true;
-                $user.token = $cookies['_t'];
+            if (localStorageService.get('user')) {
+                $user = localStorageService.get('user');
+                $cookies._t = $user.token;
+                FactoryUser.get().success(function (data) {
+                    console.log(data);
+                    $user.avatar = ServerAddress + data.user.avatar_template
+                });
             }
 
             // if not a category and available, load the categories and topics from local storage, to quickly render results to user before rebuilding from data on server

@@ -24,6 +24,9 @@ angular.module('tekForumApp')
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 });
+            },
+            get: function () {
+                return $http.get(ServerAddress + 'users/' + $user.username + '.json');
             }
         };
     });

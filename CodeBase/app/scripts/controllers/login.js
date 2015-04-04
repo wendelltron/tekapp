@@ -17,12 +17,18 @@ angular.module('tekForumApp')
         $scope.Login = function () {
             FactoryUser.login($scope.user).success(function (data) {
                 CookieJar.get(function (data) {
-                    console.log('success');
+                    console.log(data);
                     var tokens = JSON.parse(data);
                     $user.loggedIn = true;
+                    $user.username = $scope.user.name;
                     $user.token = tokens._t;
-                    $cookies._t = tokens._t;
+                    $.each(tokens, function (key, value) {
+                        $cookies[key] = value;
+                    });
                     localStorageService.set('user', JSON.stringify($user));
+                    FactoryUser.get().success(function (data) {
+                        console.log(data);
+                    });
                     $location.path('/');
                 }, function () {
                     console.log('fail');
