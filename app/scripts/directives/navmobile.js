@@ -9,7 +9,7 @@
 angular.module('tekForumApp')
     .directive('navMobile', function () {
         return {
-            template: 'views/navmobile.html',
-            replace: true
+            //template: 'views/navmobile.html',
+            //replace: true
         };
     });

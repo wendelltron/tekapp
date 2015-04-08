@@ -66,11 +66,50 @@
                 MOBILE ONLY SECTION 
                 This section is only visible on phones, and small screens, and takes advantage of the collapse barse to hide and show content 
             -->
-            <nav-mobile></nav-mobile>
+            <div class="visible-xs">
+                <div class="collapse navbar-collapse" id="chat">
+                    <ul>
+                        <li>
+                            <p>Chat stuff</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse" id="search" ng-submit="search()">
+                    <form class="nav navbar-nav" role="menu">
+                        <div class="form-group">
+                            <input class="form-control" type="text" ng-model="query" />
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-default btn-block" type="submit" value="Submit" />
+                        </div>
+                    </form>
+                </div>
+                <div class="collapse navbar-collapse" id="other">
+                    <ul class="nav navbar-nav" role="menu">
+                        <li><a href="#/" class="local">Latest</a>
+                        </li>
+                        <li><a href="#" class="local">Badges</a>
+                        </li>
+                        <li><a href="#" class="local">FAQ</a>
+                        </li>
+                        <li><a href="#/about" class="local">About</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a ng-if="user.loggedIn" ng-click="logOut()" class="local">Log Out</a>
+                            <a ng-if="!user.loggedIn" href="#/login" class="local">Log In</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div ng-if="User.loggedIn" class="collapse navbar-collapse" id="user">
+                    <img ng-src="user.avatar" class="img img-responsive" />
+                </div>
+            </div>
             <!-- END MOBILE SECTION -->
             <ul class="hidden-xs nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-comment"></i>
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-comment"></i>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
@@ -79,7 +118,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-search"></i>
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-search"></i>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
@@ -94,7 +133,7 @@
                         </li>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-bars"></i>
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-bars"></i>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#/" class="local">Latest</a>
@@ -176,13 +215,14 @@
     <script src="scripts/controllers/search.js"></script>
     <script src="scripts/services/formathtml.js"></script>
     <script src="scripts/custom/User.js"></script>
-    <script src="scripts/directives/navnotification.js"></script>
+    <!-- endbuild -->
+
+    <!--<script src="scripts/directives/navnotification.js"></script>
     <script src="scripts/directives/navuser.js"></script>
     <script src="scripts/directives/navsearch.js"></script>
     <script src="scripts/directives/navother.js"></script>
     <script src="scripts/directives/navmobile.js"></script>
-    <script src="scripts/directives/navtablet.js"></script>
-    <!-- endbuild -->
+    <script src="scripts/directives/navtablet.js"></script>-->
 
 </body>
 
