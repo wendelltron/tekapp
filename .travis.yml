@@ -3,11 +3,10 @@ node_js:
   - '0.10'
   - '0.11'
   - '0.12'
-before_install: 'npm install -g npm@'>=2.7.4'
+before_install: 'npm install -g npm@">=2.7.4"'
 install:
   - 'npm install -g node-gyp grunt grunt-cli bower yo generator-karma generator-angular phonegap'
   - 'npm install'
   - 'bower install'
-script:
-  - 'npm fullBuild'
+script: 'npm fullBuild'
 
