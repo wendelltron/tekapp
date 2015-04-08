@@ -1,7 +1,7 @@
-CodeBase/npm_modules/
-CodeBase/bower_components/
-platforms/
-CodeBase/dist
+node_modules/
+app/bower_components/
+platforms/*
+www/*
 *.tmp
 *.sass-cache
 *.log

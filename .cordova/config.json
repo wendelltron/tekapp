@@ -1,9 +1,9 @@
 {
     "lib": {
         "www": {
-            "id": "hello-world-template",
+            "id": "tekApp",
             "version": "master",
-            "uri": "https://github.com/phonegap/phonegap-app-hello-world/archive/master.tar.gz",
+            "uri": "https://github.com/wendelltron/tekapp/archive/master.tar.gz",
             "link": false
         }
     }
