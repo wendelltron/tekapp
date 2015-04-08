@@ -12,7 +12,7 @@ This app is built with Grunt and PhoneGap. Grunt will move and prepare files fro
 The following are needed to build the app:
 
  - [NodeJS](https://nodejs.org/) and [NPM](https://npmjs.com/) [\[Download\]](https://nodejs.org/download/) (NPM is included with NodeJS) *The NodeJS package in the Linux repositories are usually old (like Debian and Ubuntu). Instead, please see [here](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).*
- - Android platform SDKs (other platforms have not been tested, but [you can try](http://docs.phonegap.com/en/4.0.0/guide_platforms_index.md.html#Platform%20Guides))
+ - Android SDKs [\[Download\]](https://developer.android.com/sdk/installing/index.html) (other platforms have not been tested, but [you can try](http://docs.phonegap.com/en/4.0.0/guide_platforms_index.md.html#Platform%20Guides))
 
 ### Pre-Building
 The following NPM libraries must be installed globally:
