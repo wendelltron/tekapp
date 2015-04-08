@@ -1,7 +1,10 @@
 node_modules/
 app/bower_components/
-platforms/*
+!.gitignore
+!www/
 www/*
+!platforms/
+platforms/*
 *.tmp
 *.sass-cache
 *.log
