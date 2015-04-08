@@ -62,11 +62,11 @@ Currently unsupported (you will receive countless errors, but the app works):
 grunt default
 ```
 
-## Help and Support
-Feel free to open an issue!
+## Bugs, Help. and Support
+Please see [matching section of the contribution guide](https://github.com/wendelltron/tekapp/blob/master/CONTRIBUTING.md#bugs-help-and-support).
 
 ## Development
-For anything other than fixing bugs, please ask in an issue first. Nobody wants to do work just to have it rejected.
+Please see [matching section of the contribution guide](https://github.com/wendelltron/tekapp/blob/master/CONTRIBUTING.md#pull-requests).
 
 ## Contributors
  - [wendelltron](https://github.com/wendelltron)
