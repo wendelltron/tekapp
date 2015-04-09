@@ -12,3 +12,6 @@ Built using  Angular, NodeJS, Yeoman, Grunt, and PhoneGap
  - [wendelltron](https://github.com/wendelltron)
  - [jean1880](https://github.com/jean1880)
  - [DaAwesomeP](https://github.com/DaAwesomeP)
+
+---
+###### Copyright teksyndicate LLC
