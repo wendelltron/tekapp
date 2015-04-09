@@ -1,5 +1,5 @@
-#Tek Syndicate App
 
+<p align="center"><img alt="header image" src="https://cloud.githubusercontent.com/assets/4472083/7058394/eac9cf36-de26-11e4-921a-d786750fabb8.png"/></p>
 Built using  Angular, NodeJS, Yeoman, Grunt, and PhoneGap
 
 ---
