@@ -23,7 +23,7 @@ angular.module('tekForumApp')
                             // check the connection type, if it is unknown or no connection exist, throw error notification that the connection was lost
                             if (networkState === Connection.NONE || networkState === Connection.UNKNOWN || !networkState) {
                                 $Phonegap.connection = null;
-                                flash.error = $flash_notifications.error.connection;
+                                flash.error = $flash_notification.error.connection;
                             } else {
                                 $Phonegap.connection = true;
                             }

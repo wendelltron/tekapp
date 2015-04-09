@@ -33,14 +33,14 @@ angular.module('tekForumApp')
         $scope.FetchPosts = function () {
             if ($scope.postCount < $scope.MAXPOSTCOUNT) {
                 $scope.busyLoadingData = true;
-                $('.infinite-scroll').addClass
+                // $('.infinite-scroll').addClass                                                     FINISH!
                 var request = '',
                     requestAttach = '';
                 // build array of post ids to fetch
                 for (var i = 0; i < 20; i++) {
                     // if target id exists push into fetch array, otherwise exit loop
                     if ($scope.topic.post_stream.stream[i + $scope.postCount]) {
-                        if (i == 1) {
+                        if (i === 1) {
                             requestAttach = '&';
                         }
                         request = request +
@@ -58,7 +58,7 @@ angular.module('tekForumApp')
                     $scope.busyLoadingData = true;
                     $scope.topic.post_stream.posts.push.apply($scope.topic.post_stream.posts, data.post_stream.posts);
                     FormatHTML.format();
-                })
+                });
             }
         };
         init();

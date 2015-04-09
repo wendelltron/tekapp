@@ -18,6 +18,6 @@ angular.module('tekForumApp')
             $user.loggedIn = false;
             $user.token = null;
             $user.username = null;
-        }
+        };
         $scope.user = $user;
     });

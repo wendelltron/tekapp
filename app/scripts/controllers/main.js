@@ -98,8 +98,8 @@ angular.module('tekForumApp')
                 } else {
                     wait = 5000;
                 }
-            }, wait)
-        }
+            }, wait);
+        };
 
         /**
          * Loads the topics from the database to be renddered to the page
@@ -115,7 +115,7 @@ angular.module('tekForumApp')
                 $cookies._t = $user.token;
                 FactoryUser.get().success(function (data) {
                     console.log(data);
-                    $user.avatar = ServerAddress + data.user.avatar_template
+                    $user.avatar = ServerAddress + data.user.avatar_template;
                 });
             }
 

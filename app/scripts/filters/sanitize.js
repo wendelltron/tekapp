@@ -13,5 +13,5 @@ angular.module('tekForumApp')
 
         return function (htmlCode) {
             return $sce.trustAsHtml(htmlCode);
-        }
+        };
     });

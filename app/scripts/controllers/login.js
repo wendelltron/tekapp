@@ -33,7 +33,7 @@ angular.module('tekForumApp')
                 }, function () {
                     console.log('fail');
                     console.log(data);
-                }, "https://teksyndicate.com/");
+                }, 'https://teksyndicate.com/');
             });
         };
         var init = function () {
