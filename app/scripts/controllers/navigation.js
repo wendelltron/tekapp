@@ -18,6 +18,18 @@ angular.module('tekForumApp')
             $user.loggedIn = false;
             $user.token = null;
             $user.username = null;
-        }
+        };
         $scope.user = $user;
+        $scope.showNav = false;
+
+        $scope.toggleScroll = function () {
+            $scope.showNav = !$scope.showNav;
+            if ($scope.showNav) {
+                console.log('no scroll');
+                $('#wrapper').css('scroll-y', 'hidden');
+            } else {
+                $('#wrapper').css('scroll-y', 'auto');
+                console.log('scroll');
+            }
+        };
     });
