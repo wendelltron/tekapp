@@ -1,8 +1,7 @@
 {
-    "menu": [
-        {
-            type: 'dropdown',
-
-        }
-    ]
+  "menu":[
+    {
+      "type":"dropdown"
+    }
+  ]
 }

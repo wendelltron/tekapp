@@ -150,6 +150,13 @@ module.exports = function (grunt) {
             },
             server: '.tmp'
         },
+        
+        // Check JOSN files
+        jsonlint: {
+          all: {
+            src: [ '<%= yeoman.app %>/JSON/{,*/}*.json' ]
+          }
+        },
 
         // Add vendor prefixed styles
         autoprefixer: {
@@ -326,13 +333,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // Replace Google CDN references
-        cdnify: {
-            dist: {
-                html: ['<%= yeoman.dist %>/*.html']
-            }
-        },
-
         // Copies remaining files to places other tasks can use
         copy: {
             dist: {
@@ -346,7 +346,8 @@ module.exports = function (grunt) {
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'JSON/{,*/}*.*'
           ]
         }, {
                         expand: true,
@@ -373,7 +374,13 @@ module.exports = function (grunt) {
                 src: '{,*/}*.css'
             }
         },
-
+        
+        'json-minify': {
+          all: {
+            files: '<%= yeoman.dist %>/JSON/{,*/}*.json'
+          }
+        },
+        
         // Run some tasks in parallel to speed up the build process
         concurrent: {
             server: [
@@ -437,16 +444,17 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    // 'cdnify',
     'cssmin',
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'json-minify'
   ]);
 
     grunt.registerTask('default', [
     'newer:jshint',
+    'jsonlint',
     //'test',                                                                      TESTING DISABLED - WILL ALWAYS FAIL!
     'build'
   ]);

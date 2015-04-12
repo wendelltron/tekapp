@@ -19,7 +19,7 @@ angular.module('tekForumApp')
          **/
         $scope.ShowMenu = function () {
             if (!$scope.menuVisible) {
-                $('#right-menu').offcanvas("show");
+                $('#right-menu').offcanvas('show');
             }
         };
 
@@ -29,10 +29,18 @@ angular.module('tekForumApp')
          **/
         $scope.SwipeRight = function () {
             if ($scope.menuVisible) {
-                $('#right-menu').offcanvas("hide");
+                $('#right-menu').offcanvas('hide');
             } else {
                 window.history.back();
             }
+        };
+        
+        /**
+         * Toggles the off canvas menu
+         * @method ToggleMenu
+         **/
+        $scope.ToggleMenu = function () {
+            $('#right-menu').offcanvas('toggle');
         };
 
         // Bind events for navigating through the app
@@ -44,5 +52,5 @@ angular.module('tekForumApp')
         });
 
 
-        document.addEventListener("menubutton", $scope.ShowMenu, false);
+        document.addEventListener('menubutton', $scope.ToggleMenu, false);
     });

@@ -1,0 +1,45 @@
+{
+  "wifiOnly":{
+    "name":"Wifi Only",
+    "description":"This option will cause the app to only fetch information when on WiFi. Cellular data will not be used.",
+    "type":"onoff",
+    "default":false
+  },
+  "pushFreq":{
+    "name":"Push Update Frequency",
+    "description":"This option sets how frequently the app will check for notifications when the app is closed. The 'Manual' option will disable background notifications and instead require the app open for a refresh.",
+    "type":"select",
+    "select":{
+      "0":"Manual",
+      "15":"15 minutes",
+      "30":"30 minutes",
+      "60":"1 hour",
+      "120":"2 hours",
+      "180":"3 hours"
+    },
+    "default":"60"
+  },
+  "numberTest":{
+    "name":"Number",
+    "description":"This is a number field.",
+    "type":"number",
+    "number":{
+      "rangeMin":20,
+      "rangeMax":42,
+      "increments":0.5
+    },
+    "default":22.5
+  },
+  "stringText":{
+    "name":"Text",
+    "description":"This is a text field.",
+    "type":"text",
+    "text":{
+      "case":"lower",
+      "maxChars":3,
+      "allowAllChars":false,
+      "allowChars":"abcdefghijklmnopqrstuvwxyz1234567890"
+    },
+    "default":""
+  }
+}

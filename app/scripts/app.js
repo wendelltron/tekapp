@@ -19,7 +19,8 @@ angular
     'LocalStorageModule',
     'infinite-scroll',
     'angular-flash.service',
-    'angular-flash.flash-alert-directive'
+    'angular-flash.flash-alert-directive',
+    'toggle-switch'
   ])
     .config(function ($routeProvider, localStorageServiceProvider, flashProvider, $httpProvider) {
         flashProvider.successClassnames.push('alert-success');
@@ -47,6 +48,10 @@ angular
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
             })
+            .when('/profile', {
+                templateUrl: 'views/profile.html',
+                controller: 'ProfileCtrl'
+            })
             .when('/search/:query', {
                 templateUrl: 'views/search.html',
                 controller: 'SearchCtrl'
@@ -58,10 +63,6 @@ angular
             .when('/searchTopics', {
                 templateUrl: 'views/searchtopics.html',
                 controller: 'SearchtopicsCtrl'
-            })
-            .when('/settings', {
-                templateUrl: 'views/settings.html',
-                controller: 'SettingsCtrl'
             })
             .when('/settings', {
                 templateUrl: 'views/settings.html',

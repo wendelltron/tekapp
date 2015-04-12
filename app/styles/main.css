@@ -54,3 +54,13 @@ body,
 .navbar-offcanvas {
     width: 50px !important;
 }
+
+ul.settings-list li p {
+	text-align: left;
+	display: inline-block;
+}
+ul.settings-list li div {
+	float: right;
+	text-align: right;
+	display: inline-block;
+}

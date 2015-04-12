@@ -8,10 +8,9 @@
  * Controller of the tekApp
  */
 angular.module('tekForumApp')
-    .controller('SettingsCtrl', function ($scope) {
-        $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    .controller('SettingsCtrl', function ($scope, $http) {
+        $http.get('JSON/settings/defaults.json')
+           .then(function(res){
+                $scope.prefs = res.data;                
+            });
     });
