@@ -32,6 +32,7 @@ module.exports = function(config) {
       'app/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js',
       'app/bower_components/moment/moment.js',
       'app/bower_components/angular-flash/dist/angular-flash.js',
+      'app/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

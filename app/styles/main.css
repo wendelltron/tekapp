@@ -2,6 +2,10 @@
     padding-top: 75px;
 }
 
+.pad-top-50 {
+    padding-top: 50px;
+}
+
 .overflow-limit {
     word-wrap: break-word;
 }
@@ -15,26 +19,20 @@
     padding-top: 5px;
 }
 
-.flex-container {
-    display: flex;
-    flex-direction: column-reverse;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-}
-
-.flex-item {
-    order: 0;
-    flex: 0 1 auto;
-    align-self: auto;
-}
-
 html,
-body {
+body,
+#body {
     height: 100%;
     margin: 0px;
     padding: 0px;
+}
+
+#body {
+    overflow: hidden;
+}
+
+#wrapper {
+    overflow: auto;
 }
 
 .full-height {
@@ -50,4 +48,9 @@ body {
 .no-styling:focus {
     color: #888;
     text-decoration: none !important;
+}
+
+.navmenu,
+.navbar-offcanvas {
+    width: 50px !important;
 }

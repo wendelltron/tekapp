@@ -8,16 +8,39 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('NavigationCtrl', function ($scope, FactoryTopic, $location, localStorageService) {
-        $scope.query = '';
-        $scope.search = function () {
-            $location.path('/search/' + $scope.query);
+    .controller('NavigationCtrl', function ($scope, FactoryTopic, $location, localStorageService, $swipe) {
+        // listen for android options button
+        document.addEventListener("menubutton", $scope.ShowMenu, false);
+
+        $scope.menuVisible = false;
+
+        /**
+         * Reveals the off canvas menu
+         * @method ShowMenu
+         **/
+        $scope.ShowMenu = function () {
+            if (!$scope.menuVisible) {
+                $('#right-menu').offcanvas("show");
+            }
         };
-        $scope.logOut = function () {
-            localStorageService.remove('user');
-            $user.loggedIn = false;
-            $user.token = null;
-            $user.username = null;
+
+        /**
+         * Hides the off canvas menu, if open, otherwise navigate back
+         * @method SwipeRight
+         **/
+        $scope.SwipeRight = function () {
+            if ($scope.menuVisible) {
+                $('#right-menu').offcanvas("hide");
+            } else {
+                window.history.back();
+            }
         };
-        $scope.user = $user;
+
+        // Bind events for navigating through the app
+        $('#right-menu').on('show.bs.offcanvas', function () {
+            $scope.menuVisible = true;
+        });
+        $('#right-menu').on('hide.bs.offcanvas', function () {
+            $scope.menuVisible = false;
+        });
     });
