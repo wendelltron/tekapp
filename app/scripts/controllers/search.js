@@ -17,7 +17,7 @@ angular.module('tekForumApp')
                 $scope.posts = data.posts;
                 FormatHTML.format();
             });
-        }
+        };
 
         init();
     });

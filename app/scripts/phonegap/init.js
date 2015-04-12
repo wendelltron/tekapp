@@ -1,3 +1,4 @@
+'use strict';
 var $Phonegap = {
     deviceReady: false,
     connection: true,
@@ -8,8 +9,8 @@ var $Phonegap = {
      **/
     onDeviceReady: function () {
         $Phonegap.deviceReady = true;
-        document.addEventListener("pause", $Phonegap.pausedDevice, false);
-        document.addEventListener("resume", $Phonegap.resumedDevice, false);
+        document.addEventListener('pause', $Phonegap.pausedDevice, false);
+        document.addEventListener('resume', $Phonegap.resumedDevice, false);
     },
     pausedDevice: function () {
         $Phonegap.paused = true;
@@ -21,4 +22,4 @@ var $Phonegap = {
 };
 // Wait for device API libraries to load
 //
-document.addEventListener("deviceready", $Phonegap.onDeviceReady, false);
+document.addEventListener('deviceready', $Phonegap.onDeviceReady, false);

@@ -3,7 +3,7 @@
   "browser": true,
   "esnext": true,
   "bitwise": true,
-  "camelcase": true,
+  "camelcase": false,
   "curly": true,
   "eqeqeq": true,
   "immed": true,
@@ -13,11 +13,19 @@
   "noarg": true,
   "quotmark": "single",
   "undef": true,
-  "unused": true,
+  "unused": false,
   "strict": true,
   "trailing": true,
   "smarttabs": true,
   "globals": {
-    "angular": false
+    "angular": false,
+	"jQuery": false,
+	"$": false,
+	"moment": false,
+	"$Phonegap": true,
+	"$user": true,
+	"$flash_notification": true,
+	"Connection": true,
+	"CookieJar": true
   }
 }

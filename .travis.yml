@@ -8,5 +8,5 @@ install:
   - 'npm install -g node-gyp grunt grunt-cli bower yo generator-karma generator-angular phonegap'
   - 'npm install'
   - 'bower install'
-script: 'grunt test'
+script: 'grunt default'
 

@@ -12,7 +12,7 @@ angular.module('tekForumApp')
         // Public API here
         return {
             get: function (request) {
-                return $http.get(ServerAddress + "posts.json?" + request);
+                return $http.get(ServerAddress + 'posts.json?' + request);
             }
         };
     });
