@@ -10,7 +10,6 @@
 angular.module('tekForumApp')
     .controller('NavigationCtrl', function ($scope, FactoryTopic, $location, localStorageService, $swipe) {
         // listen for android options button
-        document.addEventListener("menubutton", $scope.ShowMenu, false);
 
         $scope.menuVisible = false;
 
@@ -43,4 +42,7 @@ angular.module('tekForumApp')
         $('#right-menu').on('hide.bs.offcanvas', function () {
             $scope.menuVisible = false;
         });
+
+
+        document.addEventListener("menubutton", $scope.ShowMenu, false);
     });

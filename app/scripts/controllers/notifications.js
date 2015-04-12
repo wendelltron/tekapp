@@ -7,11 +7,11 @@
  * # NotificationsCtrl
  * Controller of the tekApp
  */
-angular.module('tekApp')
-  .controller('NotificationsCtrl', function ($scope) {
-    $scope.awesomeThings = [
+angular.module('tekForumApp')
+    .controller('NotificationsCtrl', function ($scope) {
+        $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+    });
