@@ -79,6 +79,5 @@ angular
             },
             function (a) {
                 $('.canvas-slid').offcanvas('hide');
-                //$('#right-menu').offcanvas("hide");
             });
     });
