@@ -65,6 +65,7 @@ angular.module('tekForumApp')
          * @method FetchTopics
          **/
         $scope.FetchTopics = function () {
+            console.log('loading infinite');
             nginfiniteActive = true;
             // set loading flag
             $scope.busyLoadingData = true;

@@ -28,38 +28,33 @@
 </head>
 
 <body ng-app="tekForumApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    <div id="body" ng-controller="NavigationCtrl" ng-swipe-left="ShowMenu()" ng-swipe-right="SwipeRight()">
+        <nav id="right-menu" class="navmenu navmenu-inverse navmenu-fixed-right offcanvas" role="navigation">
+            <div data-right-control></div>
+        </nav>
 
-    <!-- Add your site or application content here -->
-    <nav id="right-menu" class="navmenu navmenu-inverse navmenu-fixed-right offcanvas" role="navigation">
-        <include ng-include="views/right-control.html"></include>
-    </nav>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavigationCtrl">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" ng-click="toggleScroll()" data-toggle="offcanvas" data-target="#right-menu" data-canvas="body">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header col-xs-12">
+                <a class="navbar-brand no-padding" href="#/"><img class="img img-brand" src="images/rtwwhite.png" />
+                </a>
+                <button type="button" class="btn btn-default pull-right" style="margin-top:6px;" data-toggle="offcanvas" data-target="#right-menu" data-canvas="body">
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand no-padding" href="#/"><img class="img img-brand" src="images/rtwwhite.png" />
-                </a>
             </div>
+            <!-- /.container-fluid -->
         </div>
-        <!-- /.container-fluid -->
-    </nav>
 
-    <div class="container-fluid pad-top full-height" id="wrapper">
-        <div class="flash-container">
-            <div class="col-xs-12">
-                <div flash-alert active-class="in alert " class="fade ">
-                    <span class="alert-message ">{{flash.message}}</span>
+        <div class="container-fluid pad-top full-height" id="wrapper" style="overflow-y: scroll">
+            <div class="flash-container">
+                <div class="col-xs-12">
+                    <div flash-alert active-class="in alert " class="fade ">
+                        <span class="alert-message ">{{flash.message}}</span>
+                    </div>
                 </div>
             </div>
+            <div ng-view="" class="col-xs-12 full-height-padded"></div>
         </div>
-        <div ng-view="" class="col-xs-12 full-height-padded"></div>
     </div>
 
     <!-- build:js({.tmp,app}) scripts/vendor.js -->
@@ -77,14 +72,8 @@
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-flash/dist/angular-flash.js"></script>
-    <script src="bower_components/jquery-touchswipe/jquery.touchSwipe.js"></script>
     <script src="bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js"></script>
     <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:js({.tmp,app}) scripts/iscroll.js -->
-    <script src="scripts/custom/iscroll-lite.js"></script>
-    <script src="scripts/custom/documentReady.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -112,6 +101,7 @@
     <script src="scripts/controllers/search.js"></script>
     <script src="scripts/services/formathtml.js"></script>
     <script src="scripts/custom/User.js"></script>
+    <script src="scripts/directives/right-control.js"></script>
     <!-- endbuild -->
 
 </body>

@@ -8,7 +8,7 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('NavigationCtrl', function ($scope, FactoryTopic, $location, localStorageService) {
+    .controller('NavigationCtrl', function ($scope, FactoryTopic, $location, localStorageService, $swipe) {
         $scope.query = '';
         $scope.search = function () {
             $location.path('/search/' + $scope.query);
@@ -20,16 +20,37 @@ angular.module('tekForumApp')
             $user.username = null;
         };
         $scope.user = $user;
-        $scope.showNav = false;
+        $scope.menuVisible = false;
 
-        $scope.toggleScroll = function () {
-            $scope.showNav = !$scope.showNav;
-            if ($scope.showNav) {
-                console.log('no scroll');
-                $('#wrapper').css('scroll-y', 'hidden');
-            } else {
-                $('#wrapper').css('scroll-y', 'auto');
-                console.log('scroll');
+
+        /**
+         * Reveals the off canvas menu
+         * @method ShowMenu
+         **/
+        $scope.ShowMenu = function () {
+            if (!$scope.menuVisible) {
+                console.log('open');
+                $('#right-menu').offcanvas("show");
             }
         };
+
+        /**
+         * Hides the off canvas menu, if open, otherwise navigate back
+         * @method SwipeRight
+         **/
+        $scope.SwipeRight = function () {
+            if ($scope.menuVisible) {
+                $('#right-menu').offcanvas("hide");
+            } else {
+                window.history.back();
+            }
+        };
+
+        // Bind events for navigating through the app
+        $('#right-menu').on('show.bs.offcanvas', function () {
+            $scope.menuVisible = true;
+        });
+        $('#right-menu').on('hide.bs.offcanvas', function () {
+            $scope.menuVisible = false;
+        });
     });
