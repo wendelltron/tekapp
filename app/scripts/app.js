@@ -51,6 +51,22 @@ angular
                 templateUrl: 'views/search.html',
                 controller: 'SearchCtrl'
             })
+            .when('/notifications', {
+                templateUrl: 'views/notifications.html',
+                controller: 'NotificationsCtrl'
+            })
+            .when('/searchTopics', {
+                templateUrl: 'views/searchtopics.html',
+                controller: 'SearchtopicsCtrl'
+            })
+            .when('/settings', {
+                templateUrl: 'views/settings.html',
+                controller: 'SettingsCtrl'
+            })
+            .when('/settings', {
+                templateUrl: 'views/settings.html',
+                controller: 'SettingsCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
@@ -62,6 +78,7 @@ angular
                 return $location.path();
             },
             function (a) {
-                $('.collapse.in').collapse('hide');
+                $('.canvas-slid').offcanvas('hide');
+                //$('#right-menu').offcanvas("hide");
             });
     });

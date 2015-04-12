@@ -29,15 +29,18 @@
 
 <body ng-app="tekForumApp">
     <div id="body" ng-controller="NavigationCtrl" ng-swipe-left="ShowMenu()" ng-swipe-right="SwipeRight()">
-        <nav id="right-menu" class="navmenu navmenu-inverse navmenu-fixed-right offcanvas" role="navigation">
+
+        <!-- Menu to the right of the screen -->
+        <nav id="right-menu" class="navmenu navmenu-inverse navmenu-fixed-right offcanvas pad-top-50" role="navigation">
             <div data-right-control></div>
         </nav>
 
+        <!-- Menu at the top of the screen -->
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header col-xs-12">
                 <a class="navbar-brand no-padding" href="#/"><img class="img img-brand" src="images/rtwwhite.png" />
                 </a>
-                <button type="button" class="btn btn-default pull-right" style="margin-top:6px;" data-toggle="offcanvas" data-target="#right-menu" data-canvas="body">
+                <button type="button" class="btn btn-default pull-right" style="margin-top:6px;" data-toggle="offcanvas" data-target="#right-menu">
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-bars"></i>
                 </button>
@@ -102,6 +105,9 @@
     <script src="scripts/services/formathtml.js"></script>
     <script src="scripts/custom/User.js"></script>
     <script src="scripts/directives/right-control.js"></script>
+    <script src="scripts/controllers/notifications.js"></script>
+    <script src="scripts/controllers/searchtopics.js"></script>
+    <script src="scripts/controllers/settings.js"></script>
     <!-- endbuild -->
 
 </body>

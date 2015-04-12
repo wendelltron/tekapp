@@ -9,10 +9,7 @@
  */
 angular.module('tekForumApp')
     .controller('NavigationCtrl', function ($scope, FactoryTopic, $location, localStorageService, $swipe) {
-        $scope.query = '';
-        $scope.search = function () {
-            $location.path('/search/' + $scope.query);
-        };
+
         $scope.logOut = function () {
             localStorageService.remove('user');
             $user.loggedIn = false;
@@ -29,7 +26,6 @@ angular.module('tekForumApp')
          **/
         $scope.ShowMenu = function () {
             if (!$scope.menuVisible) {
-                console.log('open');
                 $('#right-menu').offcanvas("show");
             }
         };
