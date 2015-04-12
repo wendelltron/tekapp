@@ -9,16 +9,10 @@
  */
 angular.module('tekForumApp')
     .controller('NavigationCtrl', function ($scope, FactoryTopic, $location, localStorageService, $swipe) {
+        // listen for android options button
+        document.addEventListener("menubutton", $scope.ShowMenu, false);
 
-        $scope.logOut = function () {
-            localStorageService.remove('user');
-            $user.loggedIn = false;
-            $user.token = null;
-            $user.username = null;
-        };
-        $scope.user = $user;
         $scope.menuVisible = false;
-
 
         /**
          * Reveals the off canvas menu
