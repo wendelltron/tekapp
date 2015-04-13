@@ -50,6 +50,25 @@ body,
     text-decoration: none !important;
 }
 
+@media (max-width: 555px) {
+	.container-fluid {
+		padding-left: 10px !important;
+		padding-right: 10px !important;
+	}
+}
+@media (max-width: 545px) {
+	.container-fluid {
+		padding-left: 5px !important;
+		padding-right: 5px !important;
+	}
+}
+@media (max-width: 535px) {
+	.container-fluid {
+		padding-left: 2px !important;
+		padding-right: 2px !important;
+	}
+}
+
 .navmenu,
 .navbar-offcanvas {
     width: 50px !important;

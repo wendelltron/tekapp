@@ -1,23 +1,21 @@
 <h3>Settings</h3>
 <p>Tap an option to view details.</p>
-<!--<div class="container">-->
-    <form name="settingsForm">
-        <ul class="list-group settings-list">
-            <li ng-repeat="(key, value) in prefs" class="list-group-item">
-                <p>{{value.name}}</p>
-                <div>
-                    <select ng-if="value.type === 'select'" ng-attr-ng-model="$user.prefs.{{key}}" ng-attr-name="{{key}}">
-                        <option ng-repeat="(keySelect, valueSelect) in value.select" ng-attr-value="{{keySelect}}">{{valueSelect}}</option>
-                    </select>
-                    <toggle-switch ng-if="value.type === 'onoff'" ng-attr-ng-model="$user.prefs.{{key}}" ng-attr-name="{{key}}"><toggle-switch>
-                </div>
-            </li>
-        </ul>
-    </form>
-
+<form name="settingsForm">
     <ul class="list-group settings-list">
-        <li class="list-group-item">
-            <p><a href="#/about" class="no-styling btn local" role="button" aria-expanded="false">About</a></p>
+        <li ng-repeat="(key, value) in prefs" class="list-group-item">
+            <p>{{value.name}}</p>
+            <div>
+                <select ng-if="value.type === 'select'" ng-attr-ng-model="$user.prefs.{{key}}" ng-attr-name="{{key}}">
+                    <option ng-repeat="(keySelect, valueSelect) in value.select" ng-attr-value="{{keySelect}}">{{valueSelect}}</option>
+                </select>
+                <toggle-switch ng-if="value.type === 'onoff'" ng-attr-ng-model="$user.prefs.{{key}}" ng-attr-name="{{key}}"><toggle-switch>
+            </div>
         </li>
     </ul>
-<!--</div>-->
+</form>
+
+<ul class="list-group settings-list">
+    <li class="list-group-item">
+        <p><a href="#/about" class="no-styling btn local" role="button" aria-expanded="false">About</a></p>
+    </li>
+</ul>
