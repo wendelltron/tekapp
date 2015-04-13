@@ -83,3 +83,16 @@ ul.settings-list li div {
 	text-align: right;
 	display: inline-block;
 }
+
+.topic-user {
+    border-top: 1px solid #666;
+	background-color: #333;
+	color: #fff;
+}
+.topic-user p.created_at {
+	line-height: 76px;
+	text-align: right;
+}
+.topic-user img {
+	padding-top: 15px;
+}
