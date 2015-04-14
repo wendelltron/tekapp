@@ -7,6 +7,7 @@ Built using  Angular, Bootsrap, NodeJS, Yeoman, Grunt, and PhoneGap
  - [Wiki](https://github.com/wendelltron/tekapp/wiki) - All technical information (building, emulating, etc.) 
  - [Bugs, Help, and Support](https://github.com/wendelltron/tekapp/blob/master/CONTRIBUTING.md#bugs-help-and-support) - Rules for Issues
  - [Development](https://github.com/wendelltron/tekapp/blob/master/CONTRIBUTING.md#pull-requests) - Rules for Pull Requests
+ - [Official Forum Topic](https://forum.teksyndicate.com/t/tek-syndicate-app/77016) - Talk about it here
 
 ## Contributors
  - [wendelltron](https://github.com/wendelltron)
