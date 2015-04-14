@@ -11,6 +11,7 @@ angular.module('tekForumApp')
     .controller('SettingsCtrl', function ($scope, $http) {
         $http.get('JSON/settings/defaults.json')
            .then(function(res){
-                $scope.prefs = res.data;                
+                $scope.prefs = res.data;
+                $scope.userPrefs = $user.prefs;
             });
     });

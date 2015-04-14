@@ -1,11 +1,20 @@
-{
-  "wifiOnly":{
+[
+  {
+    "id": "wifiOnly",
     "name":"Wifi Only",
     "description":"This option will cause the app to only fetch information when on WiFi. Cellular data will not be used.",
     "type":"onoff",
     "default":false
   },
-  "pushFreq":{
+  {
+    "id": "wifiOnly",
+    "name":"Wifi Only",
+    "description":"This option will cause the app to only fetch information when on WiFi. Cellular data will not be used.",
+    "type":"onoff",
+    "default":false
+  },
+  {
+	"id": "pushFreq",
     "name":"Push Update Frequency",
     "description":"This option sets how frequently the app will check for notifications when the app is closed. The 'Manual' option will disable background notifications and instead require the app open for a refresh.",
     "type":"select",
@@ -19,27 +28,155 @@
     },
     "default":"60"
   },
-  "numberTest":{
+  {
+	"id": "numberTest",
     "name":"Number",
     "description":"This is a number field.",
     "type":"number",
     "number":{
-      "rangeMin":20,
-      "rangeMax":42,
-      "increments":0.5
+      "min":20,
+      "max":42,
+      "increment":0.5
     },
     "default":22.5
   },
-  "stringText":{
+  {
+	"id": "stringText",
     "name":"Text",
     "description":"This is a text field.",
     "type":"text",
     "text":{
-      "case":"lower",
-      "maxChars":3,
-      "allowAllChars":false,
-      "allowChars":"abcdefghijklmnopqrstuvwxyz1234567890"
+      "maxLength":3,
+	  "placeholder": "testing123",
+      "pattern": "[A-Za-z]{3}"
     },
     "default":""
+  },
+  {
+	"id": "stringText",
+    "name":"Text",
+    "description":"This is a text field.",
+    "type":"text",
+    "text":{
+      "maxLength":3,
+	  "placeholder": "testing123",
+      "pattern": "[A-Za-z]{3}"
+    },
+    "default":""
+  },
+  {
+	"id": "colorTest",
+    "name":"Color",
+    "description":"This is a color field.",
+    "type":"color",
+    "default":"#00ff00"
+  },
+  {
+	"id": "dateTest",
+    "name":"Date",
+    "description":"This is a date field.",
+    "type":"date",
+	"date": {
+	  "min": "2015-04-13",
+	  "max": "2015-04-17",
+      "increment": 1
+	},
+    "default":""
+  },
+  {
+	"id": "datetimeTest",
+    "name":"Date and Time",
+    "description":"This is a date and time field.",
+    "type":"datetime",
+	"datetime": {
+	  "min": "2015-04-13",
+	  "max": "2015-04-17",
+      "increment": 2
+	},
+    "default":""
+  },
+  {
+	"id": "datetime-localTest",
+    "name":"Local date and Time",
+    "description":"This is a local date and time field.",
+    "type":"datetime-local",
+	"datetime-local": {
+	  "min": "2015-04-13",
+	  "max": "2015-04-17",
+      "increment": 2
+	},
+    "default":""
+  },
+  {
+	"id": "emailTest",
+    "name":"Email",
+    "description":"This is an email field.",
+    "type":"email",
+	"email": {
+	  "min": "1",
+	  "max": "255",
+      "pattern": "[A-Za-z\\.@]{3}"
+	},
+    "default":""
+  },
+  {
+	"id": "monthTest",
+    "name":"Month",
+    "description":"This is a month field.",
+    "type":"month",
+	"month": {
+	  "min": "2015-04",
+	  "max": "2015-06",
+      "increment": 1
+	},
+    "default":""
+  },
+  {
+	"id": "rangeTest",
+    "name":"Range",
+    "description":"This is a Range field.",
+    "type":"range",
+	"range": {
+	  "min": "45",
+	  "max": "83.2",
+      "increment": 0.2
+	},
+    "default":""
+  },
+  {
+	"id": "timeTest",
+    "name":"Time",
+    "description":"This is a time field.",
+    "type":"time",
+	"time": {
+	  "min": "20:00",
+	  "max": "24:00",
+      "increment": 300
+	},
+    "default":""
+  },
+  {
+	"id": "urlText",
+    "name":"Text",
+    "description":"This is a url field.",
+    "type":"url",
+    "text":{
+      "maxLength":50,
+	  "placeholder": "URL goes here",
+      "pattern": ""
+    },
+    "default":""
+  },
+  {
+	"id": "weekTest",
+    "name":"Week",
+    "description":"This is a week field.",
+    "type":"week",
+	"week": {
+	  "min": "2014-W12",
+	  "max": "2015-W02",
+      "increment": 2
+	},
+    "default":""
   }
-}
+]

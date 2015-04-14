@@ -1,21 +1,35 @@
-<h3>Settings</h3>
-<p>Tap an option to view details.</p>
-<form name="settingsForm">
+<div ng-controller="SettingsCtrl">
+    <h3>Settings</h3>
+    <p>All options are effective immediately.</p>
+    <form name="settingsForm">
+        <ul class="list-group settings-list">
+            <li ng-repeat="pref in prefs" class="list-group-item">
+                <p>{{pref.name}}</p>
+                <div ng-switch="pref.type">{{$user.prefs[pref.id]}}
+                    <input type="color" ng-switch-when="color" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}"/>
+                    <input type="date" ng-switch-when="date" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.date.min}}" ng-attr-max="{{pref.date.max}}" ng-attr-step="{{pref.date.increment}}"/>
+                    <input type="datetime" ng-switch-when="datetime" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.datetime.min}}" ng-attr-max="{{pref.datetime.max}}" ng-attr-step="{{pref.datetime.increment}}"/>
+                    <input type="datetime-local" ng-switch-when="datetime-local" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref['datetime-local'].min}}" ng-attr-max="{{pref['datetime-local'].max}}" ng-attr-step="{{pref['datetime-local'].increment}}"/>
+                    <input type="email" ng-switch-when="email" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-maxLength="{{pref.email.maxLength}}" ng-attr-placeholder="{{pref.email.placeholder}}" ng-attr-pattern="{{pref.email.pattern}}"/>
+                    <input type="month" ng-switch-when="month" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.month.min}}" ng-attr-max="{{pref.month.max}}" ng-attr-step="{{pref.month.increment}}"/>
+                    <input type="number" ng-switch-when="number" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-min="{{pref.number.min}}" ng-attr-max="{{pref.number.max}}" ng-attr-step="{{pref.number.increment}}"/>
+                    <input type="range" ng-switch-when="range" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-min="{{pref.range.min}}" ng-attr-max="{{pref.range.max}}" ng-attr-step="{{pref.range.increment}}"/><strong ng-switch-when="range">{{userPrefs[pref.id]}}</strong>
+                    <input type="text" ng-switch-when="text" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-maxLength="{{pref.text.maxLength}}" ng-attr-placeholder="{{pref.text.placeholder}}" ng-attr-pattern="{{pref.text.pattern}}"/>
+                    <input type="time" ng-switch-when="time" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.time.min}}" ng-attr-max="{{pref.time.max}}" ng-attr-step="{{pref.time.increment}}"/>
+                    <input type="url" ng-switch-when="url" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-maxLength="{{pref.url.maxLength}}" ng-attr-placeholder="{{pref.url.placeholder}}" ng-attr-pattern="{{pref.url.pattern}}"/>
+                    <input type="week" ng-switch-when="week" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.week.min}}" ng-attr-max="{{pref.week.max}}" ng-attr-step="{{pref.week.increment}}"/>
+                    <select ng-switch-when="select" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}">
+                        <option ng-repeat="(key, value) in pref.select" ng-attr-value="{{key}}">{{value}}</option>
+                    </select>
+                    <toggle-switch ng-switch-when="onoff" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" on-label="On" off-label="Off"></toggle-switch>
+                </div>
+            </li>
+        </ul>
+    </form>
+
     <ul class="list-group settings-list">
-        <li ng-repeat="(key, value) in prefs" class="list-group-item">
-            <p>{{value.name}}</p>
-            <div>
-                <select ng-if="value.type === 'select'" ng-attr-ng-model="$user.prefs.{{key}}" ng-attr-name="{{key}}">
-                    <option ng-repeat="(keySelect, valueSelect) in value.select" ng-attr-value="{{keySelect}}">{{valueSelect}}</option>
-                </select>
-                <toggle-switch ng-if="value.type === 'onoff'" ng-attr-ng-model="$user.prefs.{{key}}" ng-attr-name="{{key}}"><toggle-switch>
-            </div>
+        <li class="list-group-item">
+            <p><a href="#/about" class="no-styling btn local" role="button" aria-expanded="false">About</a></p>
         </li>
     </ul>
-</form>
-
-<ul class="list-group settings-list">
-    <li class="list-group-item">
-        <p><a href="#/about" class="no-styling btn local" role="button" aria-expanded="false">About</a></p>
-    </li>
-</ul>
+</div>
