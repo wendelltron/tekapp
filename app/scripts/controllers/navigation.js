@@ -12,6 +12,7 @@ angular.module('tekForumApp')
         // listen for android options button
 
         $scope.menuVisible = false;
+        $scope.user = $user;
 
         /**
          * Reveals the off canvas menu

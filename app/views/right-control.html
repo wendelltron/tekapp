@@ -1,5 +1,5 @@
 <ul class="nav navbar-nav">
-    <li ng-if="$user.loggedIn">
+    <li ng-if="user.loggedIn">
         <a href="#/profile" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user"></i>
             </a>
     </li>
@@ -8,8 +8,9 @@
             </a>
     </li>
     <li>
-        <a href="#/notifications" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comment"></i>
-            </a>
+        <a href="#/notifications" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false">
+            <i class="fa fa-comment"><span ng-if="user.notificationsCount > 0" class="badge bootstrap-fa-badge">{{user.notificationsCount}}</span></i>
+        </a>
     </li>
     <li>
         <a href="#/searchTopics" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-search"></i>
@@ -19,11 +20,11 @@
         <a href="#/settings" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-gear"></i>
         </a>
     </li>
-    <li ng-if="!$user.loggedIn">
+    <li ng-if="!user.loggedIn">
         <a href="#/login" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sign-in"></i>
             </a>
     </li>
-    <li ng-if="$user.loggedIn">
+    <li ng-if="user.loggedIn">
         <a href="#/logout" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sign-out"></i>
             </a>
     </li>

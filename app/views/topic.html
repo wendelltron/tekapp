@@ -2,7 +2,7 @@
 <ul id="topic-board" class="list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchPosts()" infinite-scroll-distance="1" infinite-scroll-container="'#wrapper'">
     <li class="list-group-item" ng-if="topic" ng-repeat="post in topic.post_stream.posts">
         <div class="topic-user col-xs-12 user-panel">
-            <p class="created_at col-xs-6 pull-right"><em>{{post.created_at | moment}}</em></p>
+            <p class="created_at text-right col-xs-6 pull-right"><em>{{post.created_at | moment}}</em></p>
             <img class="img img-responsive img-rounded pad-top-5" src="http://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{post.username}}/40/{{post.avatar_template | ExtractFile}}" />
             <p class="username"><strong>{{post.username}}</strong></p>
         </div>
