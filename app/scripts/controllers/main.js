@@ -8,7 +8,7 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $routeParams, PhoneGapBackground, $interval, FactoryUser, ServerAddress) {
+    .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $http, $routeParams, PhoneGapBackground, $interval, FactoryUser, ServerAddress) {
         // set loading flag
         $scope.busyLoadingData = false;
         var nginfiniteActive = false,
@@ -110,15 +110,6 @@ angular.module('tekForumApp')
             // begin listening to the phones network status
             PhoneGapBackground.monitorConnection();
             polling();
-
-            if (localStorageService.get('user')) {
-                $user = localStorageService.get('user');
-                $cookies._t = $user.token;
-                FactoryUser.get().success(function (data) {
-                    console.log(data);
-                    $user.avatar = ServerAddress + data.user.avatar_template;
-                });
-            }
 
             // if not a category and available, load the categories and topics from local storage, to quickly render results to user before rebuilding from data on server
             if (!$routeParams.id) {

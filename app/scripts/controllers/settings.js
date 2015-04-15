@@ -8,10 +8,14 @@
  * Controller of the tekApp
  */
 angular.module('tekForumApp')
-    .controller('SettingsCtrl', function ($scope, $http) {
+    .controller('SettingsCtrl', function ($scope, $http, FactoryUserStorage) {
         $http.get('JSON/settings/defaults.json')
            .then(function(res){
                 $scope.prefs = res.data;
-                $scope.userPrefs = $user.prefs;
+                $scope.userPrefs = FactoryUserStorage.user.prefs;
+                $scope.change = function() {
+                    FactoryUserStorage.user.prefs = $scope.userPrefs;
+                    FactoryUserStorage.save();
+                };
             });
     });

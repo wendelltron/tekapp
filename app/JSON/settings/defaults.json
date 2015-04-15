@@ -41,6 +41,6 @@
 	  "value": 180,
       "label": "3 Hours"
     }],
-    "default":"60"
+    "default": 60
   }
 ]

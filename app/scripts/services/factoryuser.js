@@ -8,7 +8,7 @@
  * Factory in the tekForumApp.
  */
 angular.module('tekForumApp')
-    .factory('FactoryUser', function ($http, ServerAddress) {
+    .factory('FactoryUser', function ($http, ServerAddress, FactoryUserStorage) {
 
         // Public API here
         return {
@@ -26,7 +26,14 @@ angular.module('tekForumApp')
                 });
             },
             get: function () {
-                return $http.get(ServerAddress + 'users/' + $user.username + '.json');
+                return $http.get(ServerAddress + 'users/' + FactoryUserStorage.user.username + '.json');
+            },
+            getAvatar: function () {
+              $http.get(ServerAddress + 'users/' + FactoryUserStorage.user.username + '.json').success(function (data) {
+                  console.log('user.get ' + data);
+                  FactoryUserStorage.user.avatar = ServerAddress + data.user.avatar_template;
+                  FactoryUserStorage.save();
+              });
             }
         };
     });

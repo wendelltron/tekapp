@@ -23,7 +23,6 @@
 	"$": false,
 	"moment": false,
 	"$Phonegap": true,
-	"$user": true,
 	"$flash_notification": true,
 	"Connection": true,
 	"CookieJar": true

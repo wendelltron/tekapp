@@ -8,11 +8,11 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('NavigationCtrl', function ($scope, FactoryTopic, $location, localStorageService, $swipe) {
+    .controller('NavigationCtrl', function ($scope, FactoryUserStorage) {
         // listen for android options button
 
         $scope.menuVisible = false;
-        $scope.user = $user;
+        $scope.user = FactoryUserStorage.user;
 
         /**
          * Reveals the off canvas menu
