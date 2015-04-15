@@ -8,9 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <script src="cordova.js"></script>
     <!-- build:js({.tmp,app}) scripts/phonegap_.js -->
-    <script src="scripts/phonegap/init.js "></script>
+    <script src="scripts/phonegap/init.js"></script>
     <!-- endbuild -->
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css({.tmp,app}) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -48,16 +47,16 @@
             </div>
             <!-- /.container-fluid -->
         </div>
-
+        
         <div class="container-fluid pad-top full-height" id="wrapper" style="overflow-y: scroll">
-            <div class="flash-container">
-                <div class="col-xs-12">
-                    <div flash-alert active-class="in alert " class="fade ">
-                        <span class="alert-message ">{{flash.message}}</span>
+            <div class="onscreen-alerts">
+                <div class="onscreen-alert" ng-repeat="alert in alerts">
+                    <div ng-attr-class="alert alert-{{alert.style}}">
+                        <strong>{{alert.title}}</strong> {{alert.text}}
                     </div>
                 </div>
             </div>
-            <div ng-view="" class="col-xs-12 full-height-padded"></div>
+            <div ng-view="" class="full-height-padded"></div>
         </div>
     </div>
 
@@ -83,31 +82,31 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js "></script>
-    <script src="scripts/controllers/main.js "></script>
-    <script src="scripts/controllers/about.js "></script>
-    <script src="scripts/services/factorycategory.js "></script>
-    <script src="scripts/services/factorytopic.js "></script>
-    <script src="scripts/services/factorypost.js "></script>
-    <script src="scripts/services/factoryuserstorage.js "></script>
-    <script src="scripts/services/factoryuser.js "></script>
-    <script src="scripts/services/factorybadge.js "></script>
-    <script src="scripts/services/factorynotification.js "></script>
-    <script src="scripts/services/factoryprivatemessage.js "></script>
-    <script src="scripts/services/serveraddress.js "></script>
-    <script src="scripts/controllers/topic.js "></script>
-    <script src="scripts/filters/sanitize.js "></script>
-    <script src="scripts/custom/aLinkFix.js " type="application/javascript "></script>
-    <script src="scripts/filters/extractfile.js "></script>
-    <script src="scripts/filters/moment.js "></script>
-    <script src="scripts/custom/vendor-lazyYT.js "></script>
-    <script src="scripts/services/phonegapbackground.js "></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/services/factorycategory.js"></script>
+    <script src="scripts/services/factorytopic.js"></script>
+    <script src="scripts/services/factorypost.js"></script>
+    <script src="scripts/services/factoryuserstorage.js"></script>
+    <script src="scripts/services/factoryuser.js"></script>
+    <script src="scripts/services/factorybadge.js"></script>
+    <script src="scripts/services/factorynotification.js"></script>
+    <script src="scripts/services/factoryonscreennotifications.js"></script>
+    <script src="scripts/services/factoryprivatemessage.js"></script>
+    <script src="scripts/services/serveraddress.js"></script>
+    <script src="scripts/controllers/topic.js"></script>
+    <script src="scripts/filters/sanitize.js"></script>
+    <script src="scripts/custom/aLinkFix.js" type="application/javascript "></script>
+    <script src="scripts/filters/extractfile.js"></script>
+    <script src="scripts/filters/moment.js"></script>
+    <script src="scripts/custom/vendor-lazyYT.js"></script>
+    <script src="scripts/services/phonegapbackground.js"></script>
     <script src="scripts/controllers/login.js"></script>
-    <script src="scripts/custom/nofications.js"></script>
     <script src="scripts/controllers/navigation.js"></script>
+    <script src="scripts/controllers/notifications.js"></script>
     <script src="scripts/controllers/search.js"></script>
     <script src="scripts/services/formathtml.js"></script>
     <script src="scripts/directives/right-control.js"></script>
-    <script src="scripts/controllers/notifications.js"></script>
     <script src="scripts/controllers/searchtopics.js"></script>
     <script src="scripts/controllers/settings.js"></script>
     <!-- endbuild -->

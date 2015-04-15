@@ -8,12 +8,13 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('NavigationCtrl', function ($scope, FactoryUserStorage) {
+    .controller('NavigationCtrl', function ($scope, FactoryUserStorage, FactoryOnscreenNotifications) {
         // listen for android options button
 
         $scope.menuVisible = false;
         $scope.user = FactoryUserStorage.user;
-
+        $scope.alerts = FactoryOnscreenNotifications.shown;
+        
         /**
          * Reveals the off canvas menu
          * @method ShowMenu

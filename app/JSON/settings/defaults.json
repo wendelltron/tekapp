@@ -1,8 +1,15 @@
 [
   {
+    "id": "offlineMode",
+    "name":"Offline Mode",
+    "description":"This option will stop all network connections.",
+    "type":"onoff",
+    "default":false
+  },
+  {
     "id": "wifiOnly",
     "name":"Wifi Only",
-    "description":"This option will cause the app to only fetch information when on WiFi. Cellular data will not be used.",
+    "description":"This option will enable offline mode when on cellular.",
     "type":"onoff",
     "default":false
   },

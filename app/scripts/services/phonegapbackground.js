@@ -9,7 +9,7 @@
  * Service in the tekForumApp.
  */
 angular.module('tekForumApp')
-    .service('PhoneGapBackground', function ($interval, flash) {
+    .service('PhoneGapBackground', function ($interval, FactoryOnscreenNotifications) {
         var running = false;
         // AngularJS will instantiate a singleton by calling "new" on this function
         return {
@@ -19,13 +19,13 @@ angular.module('tekForumApp')
                     $interval(function () {
                         if ($Phonegap.deviceReady) {
                             var networkState = navigator.connection.type || null;
-
                             // check the connection type, if it is unknown or no connection exist, throw error notification that the connection was lost
                             if (networkState === Connection.NONE || networkState === Connection.UNKNOWN || !networkState) {
                                 $Phonegap.connection = null;
-                                flash.error = $flash_notification.error.connection;
+                                FactoryOnscreenNotifications.add(0);
                             } else {
                                 $Phonegap.connection = true;
+                                FactoryOnscreenNotifications.remove(0);
                             }
 
                         }

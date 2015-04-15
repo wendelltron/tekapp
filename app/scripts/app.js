@@ -74,7 +74,7 @@ angular
         localStorageServiceProvider.setPrefix('TekForum');
         $httpProvider.defaults.withCredentials = true;
         $httpProvider.defaults.xsrfCookieName = '_t';
-    }).run(function ($rootScope, $location, $http, localStorageService, FactoryUserStorage, FactoryUser) {
+    }).run(function ($rootScope, $location, FactoryUserStorage, FactoryOnscreenNotifications, FactoryUser) {
         $rootScope.$watch(function () {
                 return $location.path();
             },
@@ -84,4 +84,5 @@ angular
           FactoryUserStorage.init(function() {
               FactoryUser.getAvatar();
           });
+          FactoryOnscreenNotifications.init(function(){});
     });
