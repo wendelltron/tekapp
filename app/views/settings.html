@@ -1,6 +1,10 @@
 <div ng-controller="SettingsCtrl">
     <h3>Settings</h3>
-    <p>All options are effective immediately.</p>
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Notice:</strong> None of these options currently affect anything.
+    </div>
+    <!--<p>All options are effective immediately.</p>-->
     <form name="settingsForm">
         <ul class="list-group">
             <li ng-repeat="pref in prefs" class="list-group-item">
