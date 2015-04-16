@@ -34,10 +34,12 @@ angular.module('tekForumApp')
                             localStorageService.set('user', JSON.stringify(userStorage.user));
                         }
                         $cookies._t = userStorage.user.token;
+                        callback();
                     }
                     else {
                       userStorage.user = res.data;
                       localStorageService.set('user', JSON.stringify(userStorage.user));
+                      callback();
                     }
                 }
             );

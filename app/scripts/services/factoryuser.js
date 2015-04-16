@@ -26,14 +26,23 @@ angular.module('tekForumApp')
                 });
             },
             get: function () {
-                return $http.get(ServerAddress + 'users/' + FactoryUserStorage.user.username + '.json');
+                if(FactoryUserStorage.user.loggedIn) {
+                    return $http.get(ServerAddress + 'users/' + FactoryUserStorage.user.username + '.json');
+                }
+                else {
+                    return false;
+                }
             },
             getAvatar: function () {
-              $http.get(ServerAddress + 'users/' + FactoryUserStorage.user.username + '.json').success(function (data) {
-                  console.log('user.get ' + data);
-                  FactoryUserStorage.user.avatar = ServerAddress + data.user.avatar_template;
-                  FactoryUserStorage.save();
-              });
+              if(FactoryUserStorage.user.loggedIn) {
+                $http.get(ServerAddress + 'users/' + FactoryUserStorage.user.username + '.json').success(function (data) {
+                    FactoryUserStorage.user.avatar = ServerAddress + data.user.avatar_template;
+                    FactoryUserStorage.save();
+                });
+              }
+              else {
+                  return false;
+              }
             }
         };
     });

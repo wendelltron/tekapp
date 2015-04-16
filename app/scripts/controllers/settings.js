@@ -8,7 +8,7 @@
  * Controller of the tekApp
  */
 angular.module('tekForumApp')
-    .controller('SettingsCtrl', function ($scope, $http, FactoryUserStorage) {
+    .controller('SettingsCtrl', function ($scope, $http, FactoryUserStorage, FactoryOnscreenNotifications) {
         $http.get('JSON/settings/defaults.json')
            .then(function(res){
                 $scope.prefs = res.data;

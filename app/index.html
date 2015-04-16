@@ -50,8 +50,12 @@
         
         <div class="container-fluid pad-top full-height" id="wrapper" style="overflow-y: scroll">
             <div class="onscreen-alerts">
-                <div class="onscreen-alert" ng-repeat="alert in alerts">
-                    <div ng-attr-class="alert alert-{{alert.style}}">
+                <div class="onscreen-alert" ng-repeat="alert in alerts"  role="alert" ng-switch="alert.dissmissable">
+                    <div ng-switch-when="false" ng-attr-class="alert alert-{{alert.style}}">
+                        <strong>{{alert.title}}</strong> {{alert.text}}
+                    </div>
+                    <div ng-switch-when="true" ng-attr-class="alert alert-{{alert.style}} alert-dismissible" role="alert">
+                        <button ng-click="closeAlert(alert.id)" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <strong>{{alert.title}}</strong> {{alert.text}}
                     </div>
                 </div>

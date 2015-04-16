@@ -77,8 +77,8 @@ body,
 .bootstrap-fa-badge {
 	position: absolute !important;
 	display: block !important;
-	margin-top: -10px;
-	right: -15px !important;
+	margin-top: 3px;
+	left: 38px !important;
 }
 
 .topic-user {

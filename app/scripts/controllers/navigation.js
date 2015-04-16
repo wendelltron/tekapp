@@ -9,50 +9,55 @@
  */
 angular.module('tekForumApp')
     .controller('NavigationCtrl', function ($scope, FactoryUserStorage, FactoryOnscreenNotifications) {
-        // listen for android options button
+      $scope.ajaxCall.promise.then(function() {
+          // listen for android options button
+          
+          $scope.menuVisible = false;
+          $scope.user = FactoryUserStorage.user;
+          $scope.alerts = FactoryOnscreenNotifications.shown;
+          $scope.closeAlert = function(id) {
+              FactoryOnscreenNotifications.remove(id);
+          };
+          
+          /**
+           * Reveals the off canvas menu
+           * @method ShowMenu
+           **/
+          $scope.ShowMenu = function () {
+              if (!$scope.menuVisible) {
+                  $('#right-menu').offcanvas('show');
+              }
+          };
 
-        $scope.menuVisible = false;
-        $scope.user = FactoryUserStorage.user;
-        $scope.alerts = FactoryOnscreenNotifications.shown;
-        
-        /**
-         * Reveals the off canvas menu
-         * @method ShowMenu
-         **/
-        $scope.ShowMenu = function () {
-            if (!$scope.menuVisible) {
-                $('#right-menu').offcanvas('show');
-            }
-        };
+          /**
+           * Hides the off canvas menu, if open, otherwise navigate back
+           * @method SwipeRight
+           **/
+          $scope.SwipeRight = function () {
+              if ($scope.menuVisible) {
+                  $('#right-menu').offcanvas('hide');
+              } else {
+                  window.history.back();
+              }
+          };
+          
+          /**
+           * Toggles the off canvas menu
+           * @method ToggleMenu
+           **/
+          $scope.ToggleMenu = function () {
+              $('#right-menu').offcanvas('toggle');
+          };
 
-        /**
-         * Hides the off canvas menu, if open, otherwise navigate back
-         * @method SwipeRight
-         **/
-        $scope.SwipeRight = function () {
-            if ($scope.menuVisible) {
-                $('#right-menu').offcanvas('hide');
-            } else {
-                window.history.back();
-            }
-        };
-        
-        /**
-         * Toggles the off canvas menu
-         * @method ToggleMenu
-         **/
-        $scope.ToggleMenu = function () {
-            $('#right-menu').offcanvas('toggle');
-        };
-
-        // Bind events for navigating through the app
-        $('#right-menu').on('show.bs.offcanvas', function () {
-            $scope.menuVisible = true;
-        });
-        $('#right-menu').on('hide.bs.offcanvas', function () {
-            $scope.menuVisible = false;
-        });
+          // Bind events for navigating through the app
+          $('#right-menu').on('show.bs.offcanvas', function () {
+              $scope.menuVisible = true;
+          });
+          $('#right-menu').on('hide.bs.offcanvas', function () {
+              $scope.menuVisible = false;
+          });
 
 
-        document.addEventListener('menubutton', $scope.ToggleMenu, false);
+          document.addEventListener('menubutton', $scope.ToggleMenu, false);
+    });
     });

@@ -74,15 +74,18 @@ angular
         localStorageServiceProvider.setPrefix('TekForum');
         $httpProvider.defaults.withCredentials = true;
         $httpProvider.defaults.xsrfCookieName = '_t';
-    }).run(function ($rootScope, $location, FactoryUserStorage, FactoryOnscreenNotifications, FactoryUser) {
-        $rootScope.$watch(function () {
-                return $location.path();
-            },
-            function (a) {
-                $('.canvas-slid').offcanvas('hide');
-            });
+    }).run(function ($rootScope, $q, $location, FactoryUserStorage, FactoryOnscreenNotifications, FactoryUser) {
+          $rootScope.ajaxCall = $q.defer();
+          $rootScope.$watch(function () {
+              return $location.path();
+          },
+          function (a) {
+              $('.canvas-slid').offcanvas('hide');
+          });
           FactoryUserStorage.init(function() {
               FactoryUser.getAvatar();
+              FactoryOnscreenNotifications.init(function(){
+                  $rootScope.ajaxCall.resolve();
+              });
           });
-          FactoryOnscreenNotifications.init(function(){});
     });

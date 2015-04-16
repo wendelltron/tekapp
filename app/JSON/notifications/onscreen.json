@@ -3,6 +3,7 @@
     "id": 0,
     "type": "error",
 	"style": "danger",
+	"dissmissable": false,
     "title": "Error:",
     "text": "No network connection detected; please check your network status"
   },
@@ -10,6 +11,7 @@
 	"id": 1,
 	"type": "info",
 	"style": "info",
+	"dissmissable": true,
     "title": "Offline Mode Enabled",
     "text": "This has either been set by the 'Enable Offline Mode' or 'WiFi Only' options in settings"
   }

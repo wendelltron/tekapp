@@ -29,16 +29,21 @@ angular.module('tekForumApp')
           }
       };
       onscreenExport.add = function(id) {
+          console.log('adding ' + id);
+          console.log(onscreenExport.shown);
           var check = onscreenExport.get(id, true);
           if (!check) {
               onscreenExport.shown.push(onscreenExport.get(id, false));
           }
       };
       onscreenExport.remove = function(id) {
+          console.log('removing ' + id);
           var check = onscreenExport.get(id, true);
           if (check !== false) {
+              console.log('removed ' + id);
               onscreenExport.shown.splice(onscreenExport.shown.indexOf(check), 1);
           }
+          console.log(onscreenExport.shown);
       };
       return onscreenExport;
   });
