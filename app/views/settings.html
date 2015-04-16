@@ -11,7 +11,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-6 col-md-8 text-left">
-                            <p><strong>{{pref.name}}</strong><small><em>{{pref.description}}</em></small></p>
+                            <strong>{{pref.name}}</strong><small> {{pref.description}}</small>
                         </div>
                         <div class="col-xs-6 col-md-4 text-right">
                             <div ng-switch="pref.type">
@@ -39,9 +39,9 @@
         </ul>
     </form>
 
-    <ul class="list-group">
-        <li class="list-group-item">
-            <p><a href="#/about" class="no-styling btn local" role="button" aria-expanded="false">About</a></p>
-        </li>
-    </ul>
+    <div class="list-group">
+            <a class="list-group-item" href="#/about" class="no-styling btn local" role="button" aria-expanded="false">
+                About
+            </a>
+    </div>
 </div>

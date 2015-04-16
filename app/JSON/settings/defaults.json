@@ -2,21 +2,21 @@
   {
     "id": "offlineMode",
     "name":"Offline Mode",
-    "description":"This option will stop all network connections.",
+    "description":"Stops all network connections",
     "type":"onoff",
     "default":false
   },
   {
     "id": "wifiOnly",
     "name":"Wifi Only",
-    "description":"This option will enable offline mode when on cellular.",
+    "description":"Enables offline mode when on cellular",
     "type":"onoff",
     "default":false
   },
   {
 	"id": "pushFreq",
     "name":"Push Update Frequency",
-    "description": "This option sets how frequently the app will check for notifications when the app is closed. The 'Manual' option will disable background notifications and instead require the app open for a refresh.",
+    "description": "Sets how frequently the app checks for notifications when closed. 'Manual' will disable background notifications and instead require the app to be open for a refresh.",
     "type":"select",
     "select":[{
       "id": 0,
