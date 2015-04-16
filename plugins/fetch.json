@@ -24,5 +24,11 @@
             "url": "https://github.com/jean1880/Phonegap-Cookies-Plugin",
             "subdir": "."
         }
+    },
+    "org.apache.cordova.console": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.console"
+        }
     }
 }
