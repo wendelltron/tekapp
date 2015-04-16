@@ -20,7 +20,8 @@ angular
     'infinite-scroll',
     'angular-flash.service',
     'angular-flash.flash-alert-directive',
-    'toggle-switch'
+    'toggle-switch',
+    'ngCordova'
   ])
     .config(function ($routeProvider, localStorageServiceProvider, flashProvider, $httpProvider) {
         flashProvider.successClassnames.push('alert-success');
@@ -74,7 +75,7 @@ angular
         localStorageServiceProvider.setPrefix('TekForum');
         $httpProvider.defaults.withCredentials = true;
         $httpProvider.defaults.xsrfCookieName = '_t';
-    }).run(function ($rootScope, $q, $location, FactoryUserStorage, FactoryOnscreenNotifications, FactoryUser) {
+    }).run(function ($rootScope, $q, $location, FactoryUserStorage, PhoneGapBackground, FactoryOnscreenNotifications, FactoryUser) {
           $rootScope.ajaxCall = $q.defer();
           $rootScope.$watch(function () {
               return $location.path();
@@ -85,6 +86,7 @@ angular
           FactoryUserStorage.init(function() {
               FactoryUser.getAvatar();
               FactoryOnscreenNotifications.init(function(){
+                  PhoneGapBackground.init();
                   $rootScope.ajaxCall.resolve();
               });
           });
