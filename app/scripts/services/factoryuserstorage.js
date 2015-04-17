@@ -45,7 +45,9 @@ angular.module('tekForumApp')
             );
         };
         userStorage.save = function() {
-          localStorageService.set('user', JSON.stringify(userStorage.user));
+            localStorageService.set('user', JSON.stringify(userStorage.user));
+            $rootScope.$broadcast('FactoryUserStorage:update');
+            console.log('broadcast');
         };
         return userStorage;
     });

@@ -6,8 +6,6 @@
     <title>Tek Syndicate App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- build:js({.tmp,app}) scripts/phonegap_.js -->
-    <script src="scripts/phonegap/init.js"></script>
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/vendor.css -->
     <!-- bower:css -->
@@ -49,7 +47,7 @@
         
         <div class="container-fluid pad-top full-height" id="wrapper" style="overflow-y: scroll">
             <div class="onscreen-alerts">
-                <div class="onscreen-alert" ng-repeat="alert in alerts"  role="alert" ng-switch="alert.dissmissable">
+                <div class="onscreen-alert fx-bounce-down" ng-repeat="alert in alerts"  role="alert" ng-switch="alert.dissmissable">
                     <div ng-switch-when="false" ng-attr-class="alert alert-{{alert.style}}">
                         <strong>{{alert.title}}</strong> {{alert.text}}
                     </div>
@@ -81,6 +79,8 @@
     <script src="bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js"></script>
     <script src="bower_components/angular-toggle-switch/angular-toggle-switch.js"></script>
     <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+    <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+    <script src="bower_components/ngFx/dist/ngFx.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -104,7 +104,7 @@
     <script src="scripts/filters/extractfile.js"></script>
     <script src="scripts/filters/moment.js"></script>
     <script src="scripts/custom/vendor-lazyYT.js"></script>
-    <script src="scripts/services/phonegapbackground.js"></script>
+    <script src="scripts/services/phonegap.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/navigation.js"></script>
     <script src="scripts/controllers/notifications.js"></script>
@@ -114,7 +114,9 @@
     <script src="scripts/controllers/searchtopics.js"></script>
     <script src="scripts/controllers/settings.js"></script>
     <!-- endbuild -->
-    
+    <script type="text/javascript">
+    $phone = {};
+    </script>
     <script src="cordova.js"></script>
 
 </body>

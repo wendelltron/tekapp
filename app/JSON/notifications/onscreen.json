@@ -4,8 +4,8 @@
     "type": "error",
     "style": "danger",
     "dissmissable": false,
-    "title": "Error:",
-    "text": "No network connection detected; please check your network status"
+    "title": "Disconnected",
+    "text": "No network connection"
   },
   {
     "id": 1,
@@ -13,7 +13,7 @@
     "style": "info",
     "dissmissable": true,
     "title": "Offline Mode Enabled",
-    "text": "This has either been set by the 'Enable Offline Mode' or 'WiFi Only' options in settings"
+    "text": "Set by either 'Enable Offline Mode' or 'WiFi Only' in settings"
   }
   
 ]

@@ -22,8 +22,6 @@
 	"jQuery": false,
 	"$": false,
 	"moment": false,
-	"$Phonegap": true,
-	"$flash_notification": true,
 	"Connection": true,
 	"CookieJar": true
   }

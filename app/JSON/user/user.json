@@ -4,8 +4,8 @@
   "username": null,
   "notificationsCount": 9,
   "prefs": {
-    "wifiOnly": false,
-    "pushFreq": 60,
-	"testing123": false
+    "offlineMode": false,
+	"wifiOnly": false,
+    "pushFreq": 60
   }
 }

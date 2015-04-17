@@ -21,6 +21,7 @@ angular
     'angular-flash.service',
     'angular-flash.flash-alert-directive',
     'toggle-switch',
+    'ngFx',
     'ngCordova'
   ])
     .config(function ($routeProvider, localStorageServiceProvider, flashProvider, $httpProvider) {
@@ -75,7 +76,7 @@ angular
         localStorageServiceProvider.setPrefix('TekForum');
         $httpProvider.defaults.withCredentials = true;
         $httpProvider.defaults.xsrfCookieName = '_t';
-    }).run(function ($rootScope, $q, $location, FactoryUserStorage, PhoneGapBackground, FactoryOnscreenNotifications, FactoryUser) {
+    }).run(function ($rootScope, $q, $location, FactoryUserStorage, PhoneGap, FactoryOnscreenNotifications, FactoryUser) {
           $rootScope.ajaxCall = $q.defer();
           $rootScope.$watch(function () {
               return $location.path();
@@ -86,7 +87,7 @@ angular
           FactoryUserStorage.init(function() {
               FactoryUser.getAvatar();
               FactoryOnscreenNotifications.init(function(){
-                  PhoneGapBackground.init();
+                  PhoneGap.init();
                   $rootScope.ajaxCall.resolve();
               });
           });

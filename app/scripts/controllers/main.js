@@ -8,7 +8,7 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $http, $routeParams, $interval, FactoryUser, ServerAddress) {
+    .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $http, $routeParams, $interval, PhoneGap, FactoryUser, ServerAddress) {
         // set loading flag
         $scope.busyLoadingData = false;
         var nginfiniteActive = false,
@@ -86,10 +86,6 @@ angular.module('tekForumApp')
             }
         };
 
-        var checkNotifications = function () {
-
-        };
-
         /**
          * Loads the topics from the database to be rendered to the page
          * @method GetTopics
@@ -98,10 +94,10 @@ angular.module('tekForumApp')
             // begin listening to the phones network status
             var polling = function () {
                 $interval(function () {
-                    if (!nginfiniteActive && !$Phonegap.paused) {
+                    if (!nginfiniteActive && !PhoneGap.paused) {
                         wait = 3000;
                         $scope.GetTopics();
-                        checkNotifications();
+                        //checkNotifications();
                     } else {
                         wait = 5000;
                     }
