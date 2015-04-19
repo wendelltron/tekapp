@@ -31,9 +31,8 @@ angular.module('tekForumApp')
          * @method FetchPosts
          **/
         $scope.FetchPosts = function () {
-            if ($scope.postCount < $scope.MAXPOSTCOUNT) {
+            if ($scope.postCount <= $scope.MAXPOSTCOUNT) {
                 $scope.busyLoadingData = true;
-                // $('.infinite-scroll').addClass                                                     FINISH!
                 var request = '',
                     requestAttach = '';
                 // build array of post ids to fetch

@@ -1,31 +1,31 @@
 <ul class="nav navbar-nav">
     <li ng-if="user.loggedIn">
-        <a href="#/profile" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user"></i>
+        <a href="#/profile" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user fa-2x"></i>
             </a>
     </li>
     <li>
-        <a href="#/main" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-home"></i>
+        <a href="#/main" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-home fa-2x"></i>
             </a>
     </li>
     <li>
         <a href="#/notifications" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false">
-            <i class="fa fa-comment"><span ng-if="user.notificationsCount > 0" class="badge bootstrap-fa-badge">{{user.notificationsCount}}</span></i>
+            <i class="fa fa-comment fa-2x"><span ng-if="user.notificationsCount > 0" class="badge bootstrap-fa-badge">{{user.notificationsCount}}</span></i>
         </a>
     </li>
     <li>
-        <a href="#/searchTopics" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-search"></i>
+        <a href="#/searchTopics" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-search fa-2x"></i>
         </a>
     </li>
     <li>
-        <a href="#/settings" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-gear"></i>
+        <a href="#/settings" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-gear fa-2x"></i>
         </a>
     </li>
     <li ng-if="!user.loggedIn">
-        <a href="#/login" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sign-in"></i>
+        <a href="#/login" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sign-in fa-2x"></i>
             </a>
     </li>
     <li ng-if="user.loggedIn">
-        <a href="#/logout" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sign-out"></i>
+        <a href="#/logout" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sign-out fa-2x"></i>
             </a>
     </li>
     <li ng-repeat="item in menu">
