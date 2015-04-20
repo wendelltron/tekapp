@@ -10,3 +10,8 @@
     width: auto;
     height: 50px;
 }
+
+.navmenu,
+.navbar-offcanvas {
+    width: 50px !important;
+}

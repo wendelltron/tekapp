@@ -80,11 +80,6 @@ body,
     }
 }
 
-.navmenu,
-.navbar-offcanvas {
-    width: 100px !important;
-}
-
 .bootstrap-fa-badge {
     position: absolute !important;
     display: block !important;
