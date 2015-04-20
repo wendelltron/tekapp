@@ -82,7 +82,7 @@ angular
             $location.hash($routeParams.scrollTo);
             $anchorScroll();
             $timeout(function () {
-                $('.canvas-slid').offcanvas('hide')
+                $('.canvas-slid').offcanvas('hide');
             }, 450);
         });
         FactoryUserStorage.init(function () {
