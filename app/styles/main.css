@@ -40,6 +40,7 @@ body,
 #infinite {
     overflow: auto;
     overflow-scrolling: touch;
+    padding-top: 10px;
 }
 
 .full-height {
