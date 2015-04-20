@@ -1,7 +1,11 @@
 <div pull-to-refresh="GetPosts()" id="infinite" class="full-height">
     <h4>{{topic.title}}</h4>
-    <ul id="topic-board" class="list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchPosts()" infinite-scroll-distance="1" infinite-scroll-parent="true">
+    <ul id="topic-board" class="list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchPosts()" infinite-scroll-distance="2" infinite-scroll-parent="true">
         <li class="list-group-item" ng-if="topic" ng-attr-id="post-{{post.number}}" ng-repeat="post in topic.post_stream.posts">
+
+            <!--
+                User Info panel
+            -->
             <div class="topic-user col-xs-12 user-panel">
                 <div class="col-xs-3 col-sm-2 col-md-1">
                     <img ng-if="post.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded pad-top-5" ng-src="http://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{post.username}}/40/{{post.avatar_template | ExtractFile}}">
@@ -21,7 +25,15 @@
                 <strong>{{post.reply_to_user.username}}</strong>
                 <strong class="pull-right margin-right-5px">#{{post.reply_to_post_number}}</strong>
             </a>
+
+            <!--
+                Post content
+            -->
             <div class="overflow-limit no-styling" ng-bind-html="post.cooked | Sanitize"></div>
+
+            <!--
+                Bottom infopage of post
+            -->
             <div class="row text-left">
                 <span class="col-xs-5 col-sm-9 col-md-9"></span>
                 <i class="fa fa-eye margin-right-5px"></i><span class="badge">{{post.reads}}</span>

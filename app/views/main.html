@@ -13,7 +13,7 @@
     </div>
     <h4>Latest</h4>
 
-    <ul class="list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchTopics()" infinite-scroll-distance="1" infinite-scroll-parent="true">
+    <ul class="list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchTopics()" infinite-scroll-distance="2" infinite-scroll-parent="true">
         <li class="list-group-item" ng-if="topicList" ng-repeat="topic in topicList">
             <a href="#/topic/{{topic.id}}" class="local no-styling">
                 <h4><span ng-if="topic.pinned"><i class="fa fa-thumb-tack"></i> </span>{{topic.title}}</h4>
