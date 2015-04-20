@@ -25,7 +25,15 @@
                 <strong>{{post.reply_to_user.username}}</strong>
                 <strong class="pull-right margin-right-5px">#{{post.reply_to_post_number}}</strong>
             </a>
+
+            <!-- 
+                Post content
+            -->
             <div class="overflow-limit no-styling" ng-bind-html="post.cooked | Sanitize"></div>
+
+            <!-- 
+                Post data
+            -->
             <div class="row text-left">
                 <span class="col-xs-5 col-sm-9 col-md-9"></span>
                 <nobr><i class="fa fa-eye margin-right-5px"></i><span class="badge badge-default">{{post.reads}}</span>

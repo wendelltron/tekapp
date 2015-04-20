@@ -105,7 +105,7 @@ angular.module('tekForumApp')
             polling();
 
             // if not a category and available, load the categories and topics from local storage, to quickly render results to user before rebuilding from data on server
-            if (!$routeParams.id) {
+            if (!$routeParams.id && !$scope.topicList) {
                 $scope.categoryList = localStorageService.get('categoryList');
                 $scope.topicList = localStorageService.get('topicList') || [];
             }
