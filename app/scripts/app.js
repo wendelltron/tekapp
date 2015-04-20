@@ -85,7 +85,7 @@ angular
                 var hide = function () {
                     $('.canvas-slid').offcanvas('hide');
                 };
-                $timeout(hide, 500);
+                $timeout(hide, 250);
 
             });
         FactoryUserStorage.init(function () {
