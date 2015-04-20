@@ -31,7 +31,7 @@ angular.module('tekForumApp')
          * @method FetchPosts
          **/
         $scope.FetchPosts = function () {
-            if ($scope.postCount <= $scope.MAXPOSTCOUNT) {
+            if ($scope.postCount < $scope.MAXPOSTCOUNT) {
                 $scope.busyLoadingData = true;
                 var request = '',
                     requestAttach = '';
@@ -54,7 +54,7 @@ angular.module('tekForumApp')
 
                 // fetch posts and add to posts array
                 FactoryTopic.getPosts($scope.topic.id, request).success(function (data) {
-                    $scope.busyLoadingData = true;
+                    $scope.busyLoadingData = false;
                     $scope.topic.post_stream.posts.push.apply($scope.topic.post_stream.posts, data.post_stream.posts);
                     FormatHTML.format();
                 });

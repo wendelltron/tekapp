@@ -1,4 +1,4 @@
-<div pull-to-refresh="GetTopics()">
+<div pull-to-refresh="GetTopics()" id="infinite" class="full-height">
     <div class="btn-group pull-right">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             Category <span class="caret"></span>
@@ -13,11 +13,17 @@
     </div>
     <h4>Latest</h4>
 
-    <ul class="list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchTopics()" infinite-scroll-distance="1" infinite-scroll-container="'#wrapper'">
+    <ul class="list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchTopics()" infinite-scroll-distance="1" infinite-scroll-parent="true">
         <li class="list-group-item" ng-if="topicList" ng-repeat="topic in topicList">
             <a href="#/topic/{{topic.id}}" class="local no-styling">
-                <h4>{{topic.title}}</h4>
+                <h4><span ng-if="topic.pinned"><i class="fa fa-thumb-tack"></i> </span>{{topic.title}}</h4>
                 <p class="no-styling">{{topic.excerpt}}</p>
+                <div class="text-right">
+                    <i class="fa fa-eye margin-right-5px"></i><span class="badge">{{topic.views}}</span>
+                    <i class="fa fa-heart margin-right-5px margin-left-15px"></i><span class="badge">{{topic.like_count}}</span>
+                    <i class="fa fa-list margin-right-5px margin-left-15px"></i><span class="badge">{{topic.posts_count}}</span>
+                    <i class="fa fa-reply margin-right-5px margin-left-15px"></i><span class="badge">{{topic.reply_count}}</span>
+                </div>
             </a>
         </li>
     </ul>

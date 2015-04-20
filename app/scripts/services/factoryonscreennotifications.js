@@ -11,6 +11,7 @@ angular.module('tekForumApp')
   .factory('FactoryOnscreenNotifications', function ($http, $filter) {
       var onscreenExport = {};
       onscreenExport.shown = [];
+      onscreenExport.list = [];
       onscreenExport.init = function(callback) {
           $http.get('JSON/notifications/onscreen.json')
               .then(function(res){

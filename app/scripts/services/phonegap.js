@@ -11,7 +11,7 @@ angular.module('tekForumApp')
     .service('PhoneGap', function ($rootScope, FactoryOnscreenNotifications, $cordovaNetwork, FactoryUserStorage) {
         var PhoneGap = {
             connection: false,
-            connected: null,
+            connected: true,
             paused: false,
             ready: false,
             offline: false,
@@ -88,7 +88,7 @@ angular.module('tekForumApp')
             }
         };
         PhoneGap.checkOffline = function () {
-            // console.log('checOffline');
+            // console.log('checkOffline');
             if(FactoryUserStorage.user.prefs.offlineMode) {
                 // console.log('checkOffline prefs true enabling');
                 PhoneGap.enableOffline();

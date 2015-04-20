@@ -15,24 +15,31 @@
     top: -10px;
 }
 
+.reply-panel {
+    background: #444;
+    padding-bottom: 5px;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
 .pad-top-5 {
     padding-top: 5px;
 }
 
 html,
 body,
-#body {
+#body,
+#wrapper {
     height: 100%;
     margin: 0px;
     padding: 0px;
-}
-
-#body {
     overflow: hidden;
+    transform: translate3d(0, 0, 0);
 }
 
-#wrapper {
+#infinite {
     overflow: auto;
+    overflow-scrolling: touch;
 }
 
 .full-height {
@@ -40,7 +47,8 @@ body,
 }
 
 .full-height-padded {
-    height: calc(100% - 95px);
+    height: calc(100% - 50px);
+    margin-top: 50px;
 }
 
 .no-styling,
@@ -80,7 +88,15 @@ body,
     position: absolute !important;
     display: block !important;
     margin-top: 3px;
-    left: 38px !important;
+    left: 68px !important;
+}
+
+.margin-left-15px {
+    padding-left: 15px;
+}
+
+.margin-right-5px {
+    margin-right: 5px;
 }
 
 .topic-user {
@@ -89,7 +105,7 @@ body,
     color: #fff;
 }
 
-.topic-user p.created_at {
+.topic-user .topic_height {
     line-height: 76px;
 }
 

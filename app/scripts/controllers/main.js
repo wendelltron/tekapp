@@ -65,7 +65,6 @@ angular.module('tekForumApp')
          * @method FetchTopics
          **/
         $scope.FetchTopics = function () {
-            console.log('loading infinite');
             nginfiniteActive = true;
             // set loading flag
             $scope.busyLoadingData = true;
@@ -93,7 +92,7 @@ angular.module('tekForumApp')
         var init = function () {
             // begin listening to the phones network status
             var polling = function () {
-                $interval(function () {
+                /**$interval(function () {
                     if (!nginfiniteActive && !PhoneGap.paused) {
                         wait = 3000;
                         $scope.GetTopics();
@@ -101,7 +100,7 @@ angular.module('tekForumApp')
                     } else {
                         wait = 5000;
                     }
-                }, wait);
+                }, wait); **/ // Temporarily disabled until push nitification pulling is completed, and this is integrated in
             };
             polling();
 

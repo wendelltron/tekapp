@@ -47,7 +47,7 @@ angular.module('tekForumApp')
         userStorage.save = function() {
             localStorageService.set('user', JSON.stringify(userStorage.user));
             $rootScope.$broadcast('FactoryUserStorage:update');
-            console.log('broadcast');
+            // console.log('broadcast FactoryUserStorage:update');
         };
         return userStorage;
     });
