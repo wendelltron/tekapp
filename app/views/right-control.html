@@ -1,13 +1,13 @@
 <ul class="nav navbar-nav">
-    <li ng-if="user.loggedIn">
-        <a href="#/profile" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user fa-2x"></i>
-            </a>
-    </li>
     <li>
         <a href="#/main" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-home fa-2x"></i>
             </a>
     </li>
-    <li>
+    <li ng-if="user.loggedIn">
+        <a href="#/profile" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user fa-2x"></i>
+            </a>
+    </li>
+    <li ng-if="user.loggedIn">
         <a href="#/notifications" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false">
             <i class="fa fa-comment fa-2x"><span ng-if="user.notificationsCount > 0" class="badge bootstrap-fa-badge">{{user.notificationsCount}}</span></i>
         </a>

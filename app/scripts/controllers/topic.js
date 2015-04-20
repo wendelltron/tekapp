@@ -19,6 +19,7 @@ angular.module('tekForumApp')
          **/
         var init = function () {
             FactoryTopic.get($routeParams.id).success(function (data) {
+                console.log(data);
                 $scope.topic = data;
                 $scope.postCount = data.post_stream.posts.length;
                 $scope.MAXPOSTCOUNT = data.posts_count;

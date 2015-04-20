@@ -14,6 +14,12 @@
     position: relative;
     top: -10px;
 }
+.reply-panel {
+	background: #444;
+	padding-bottom: 5px;
+	color: #ccc;
+	margin-bottom: 5px;
+}
 
 .pad-top-5 {
     padding-top: 5px;
@@ -80,7 +86,15 @@ body,
     position: absolute !important;
     display: block !important;
     margin-top: 3px;
-    left: 38px !important;
+    left: 68px !important;
+}
+
+
+.margin-left-15px {
+	padding-left: 15px;
+}
+.margin-right-5px {
+	margin-right: 5px;
 }
 
 .topic-user {
@@ -89,7 +103,7 @@ body,
     color: #fff;
 }
 
-.topic-user p.created_at {
+.topic-user .topic_height {
     line-height: 76px;
 }
 

@@ -1,11 +1,29 @@
 <h4>{{topic.title}}</h4>
 <ul id="topic-board" class="list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchPosts()" infinite-scroll-distance="1" infinite-scroll-container="'#wrapper'">
-    <li class="list-group-item" ng-if="topic" ng-repeat="post in topic.post_stream.posts">
+    <li class="list-group-item" ng-if="topic" ng-attr-id="post-{{post.number}}" ng-repeat="post in topic.post_stream.posts">
         <div class="topic-user col-xs-12 user-panel">
-            <p class="created_at text-right col-xs-6 pull-right"><em>{{post.created_at | moment}}</em></p>
-            <img class="img img-responsive img-rounded pad-top-5" src="http://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{post.username}}/40/{{post.avatar_template | ExtractFile}}" />
-            <p class="username"><strong>{{post.username}}</strong></p>
+            <div class="col-xs-3 col-sm-2 col-md-1">
+                <img ng-if="post.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded pad-top-5" ng-src="http://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{post.username}}/40/{{post.avatar_template | ExtractFile}}">
+                <img ng-if="post.avatar_template.substring(0,15) === '/letter_avatar/'" class="img img-responsive img-rounded pad-top-5" ng-src="http://forum.teksyndicate.com/letter_avatar/{{post.username}}/40/{{post.avatar_template | ExtractFile}}">
+                <p class="username"><strong>{{post.username}}</strong></p>
+            </div>
+            <p class="topic_height col-xs-1 text-left">#{{post.post_number}}</p>
+            <div class="hidden-xs col-sm-4 col-md-6"></div>
+            <p class="topic_height col-xs-6 col-sm-4 text-right"><em>{{post.created_at | moment}}</em></p>
         </div>
+        <a ng-if="post.reply_to_post_number" class="visible-xs-block reply-panel">
+            <i class="fa fa-reply margin-right-5px margin-left-15px"></i>
+            <img class="visible-xs-inline" ng-if="post.reply_to_user.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded pad-top-5" ng-src="http://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{post.reply_to_user.username}}/20/{{post.reply_to_user.avatar_template | ExtractFile}}">
+            <img class="visible-xs-inline" ng-if="post.reply_to_user.avatar_template.substring(0,15) === '/letter_avatar/'" class="img img-responsive img-rounded pad-top-5" ng-src="http://forum.teksyndicate.com/letter_avatar/{{post.reply_to_user.username}}/20/{{post.reply_to_user.avatar_template | ExtractFile}}">
+            <strong>{{post.reply_to_user.username}}</strong>
+            <strong class="pull-right margin-right-5px">#{{post.reply_to_post_number}}</strong>
+        </a>
         <div class="overflow-limit no-styling" ng-bind-html="post.cooked | Sanitize"></div>
+        <div class="row text-left">
+            <span class="col-xs-5 col-sm-9 col-md-9"></span>
+            <i class="fa fa-eye margin-right-5px"></i><span class="badge">{{post.reads}}</span>
+            <i class="fa fa-heart margin-right-5px margin-left-15px"></i><span class="badge">{{post.like_count}}</span>
+            <i class="fa fa-reply margin-right-5px margin-left-15px"></i><span class="badge">{{post.reply_count}}</span>
+        </div>
     </li>
 </ul>

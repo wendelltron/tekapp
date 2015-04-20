@@ -21,7 +21,7 @@ angular.module('tekForumApp')
 
                         // if image path is not fixed, correct image path to a fixed path
                         if (!$(this).attr('src').match('^http')) {
-                            if ($(this).attr('src').match('^/user_avatar') || $(this).attr('src').match('^/images')) {
+                            if ($(this).attr('src').match('^/user_avatar') || $(this).attr('src').match('^/images') || $(this).attr('src').match('^images')) {
                                 $(this).attr('src', 'https://forum.teksyndicate.com' + $(this).attr('src'));
                             } else {
                                 $(this).attr('src', 'http://' + $(this).attr('src'));
