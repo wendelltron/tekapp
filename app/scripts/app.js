@@ -76,23 +76,20 @@ angular
         localStorageServiceProvider.setPrefix('TekForum');
         $httpProvider.defaults.withCredentials = true;
         $httpProvider.defaults.xsrfCookieName = '_t';
-    }).run(function ($rootScope, $q, $location, FactoryUserStorage, $routeParams, $anchorScroll, PhoneGap, FactoryOnscreenNotifications, FactoryUser) {
-          $rootScope.ajaxCall = $q.defer();
-          $rootScope.$watch(function () {
-              return $location.path();
-          },
-          function (a) {
-              $('.canvas-slid').offcanvas('hide');
-          });
-          $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
-              $location.hash($routeParams.scrollTo);
-              $anchorScroll();  
-          });
-          FactoryUserStorage.init(function() {
-              FactoryUser.getAvatar();
-              FactoryOnscreenNotifications.init(function(){
-                  PhoneGap.init();
-                  $rootScope.ajaxCall.resolve();
-              });
-          });
+    }).run(function ($rootScope, $q, $location, FactoryUserStorage, $routeParams, $anchorScroll, PhoneGap, FactoryOnscreenNotifications, FactoryUser, $timeout) {
+        $rootScope.ajaxCall = $q.defer();
+        $rootScope.$on('$routeChangeSuccess', function (newRoute, oldRoute) {
+            $location.hash($routeParams.scrollTo);
+            $anchorScroll();
+            $timeout(function () {
+                $('.canvas-slid').offcanvas('hide')
+            }, 450);
+        });
+        FactoryUserStorage.init(function () {
+            FactoryUser.getAvatar();
+            FactoryOnscreenNotifications.init(function () {
+                PhoneGap.init();
+                $rootScope.ajaxCall.resolve();
+            });
+        });
     });
