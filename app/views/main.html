@@ -19,13 +19,13 @@
                 <h4><span ng-if="topic.pinned"><i class="fa fa-thumb-tack"></i> </span>{{topic.title}}</h4>
                 <p class="no-styling" ng-bind-html="topic.excerpt | Sanitize"></p>
                 <div class="text-right">
-                    <nobr><i class="fa fa-eye margin-right-5px"></i><span class="badge">{{topic.views}}</span>
+                    <nobr><i class="fa fa-eye margin-right-5px"></i><span class="badge badge-default">{{topic.views}}</span>
                     </nobr>
-                    <nobr><i class="fa fa-heart margin-right-5px margin-left-15px"></i><span class="badge">{{topic.like_count}}</span>
+                    <nobr><i class="fa fa-heart margin-right-5px margin-left-15px"></i><span class="badge badge-default">{{topic.like_count}}</span>
                     </nobr>
-                    <nobr><i class="fa fa-list margin-right-5px margin-left-15px"></i><span class="badge">{{topic.posts_count}}</span>
+                    <nobr><i class="fa fa-list margin-right-5px margin-left-15px"></i><span class="badge badge-default">{{topic.posts_count}}</span>
                     </nobr>
-                    <nobr><i class="fa fa-reply margin-right-5px margin-left-15px"></i><span class="badge">{{topic.reply_count}}</span>
+                    <nobr><i class="fa fa-reply margin-right-5px margin-left-15px"></i><span class="badge badge-default">{{topic.reply_count}}</span>
                     </nobr>
                 </div>
             </a>

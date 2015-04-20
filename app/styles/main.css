@@ -100,6 +100,11 @@ body,
     margin-right: 5px;
 }
 
+.badge-default {
+    color: #fff;
+    background-color: #444;
+}
+
 .topic-user {
     border-top: 1px solid #666;
     background-color: #333;
