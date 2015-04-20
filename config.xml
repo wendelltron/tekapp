@@ -20,6 +20,8 @@
     <preference name="exit-on-suspend" value="false" />
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
+	<preference name="SplashScreen" value="screen" />
+	<preference name="SplashScreenDelay" value="3000" />
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
@@ -61,6 +63,7 @@
         <icon src="res/icon/android/icon-72-hdpi.png" density="hdpi" width="72" height="72" />
         <icon src="res/icon/android/icon-96-xhdpi.png" density="xhdpi" width="96" height="96" />
         <icon src="res/icon/android/icon-144-xxhdpi.png" density="xxhdpi" width="144" height="144" />
+        <icon src="res/icon/android/icon-192-xxxhdpi.png" density="xxhdpi" width="192" height="192" />
     </platform>
 	<platform name="blackberry10">
         <icon src="res/icon/blackberry10/icon-86.png" width="86" height="86" />
@@ -112,25 +115,32 @@
 		<splash src="res/screen/android/splash-port-xhdpi.png" density="port-xhdpi"/>
 	</platform>
 	<platform name="ios">
-		<splash src="res/screen/ios/Default~iphone.png" width="320" height="480"/>
-		<splash src="res/screen/ios/Default@2x~iphone.png" width="640" height="960"/>
+		<splash src="res/screen/ios/Default-Portait~iphone.png" width="320" height="480"/>
+		<splash src="res/screen/ios/Default-Landscape~iphone.png" width="480" height="320"/>
+		<splash src="res/screen/ios/Default-Portait@2x~iphone.png" width="640" height="960"/>
+		<splash src="res/screen/ios/Default-Landscape@2x~iphone.png" width="960" height="640"/>
 		<splash src="res/screen/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
-		<splash src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
 		<splash src="res/screen/ios/Default-Landscape~ipad.png" width="1024" height="768"/>
+		<splash src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
 		<splash src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
-		<splash src="res/screen/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
-		<splash src="res/screen/ios/Default-667h.png" width="750" height="1334"/>
-		<splash src="res/screen/ios/Default-736h.png" width="1242" height="2208"/>
+		<splash src="res/screen/ios/Default-Portrait-568h@2x~iphone.png" width="640" height="1136"/>
+		<splash src="res/screen/ios/Default-Landscape-568h@2x~iphone.png" width="1136" height="640"/>
+		<splash src="res/screen/ios/Default-Portrait-667h.png" width="750" height="1334"/>
+		<splash src="res/screen/ios/Default-Landscape-667h.png" width="1134" height="750"/>
+		<splash src="res/screen/ios/Default-Portrait-736h.png" width="1242" height="2208"/>
 		<splash src="res/screen/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
 	</platform>
 	<platform name="wp8">
-		<splash src="res/screen/wp8/SplashScreenImage.jpg" width="768" height="1280"/>
+		<splash src="res/screen/wp8/SplashScreenImage.jpg" width="480" height="800"/>
 	</platform>
 	<platform name="windows8">
 		<splash src="res/screen/windows8/splashscreen.png" width="620" height="300"/>
 	</platform>
 	<platform name="blackberry10">
-		<rim:splash src="res/screen/windows8/splashscreen.png"/>
+		<splash src="res/screen/blackberry10/splashscreen.png" width="64" height="64"/>
+	</platform>
+	<platform name="webos">
+		<splash src="res/screen/webos/splash-64.png" width="64" height="64"/>
 	</platform>
     <access origin="*" />
 </widget>
