@@ -22,64 +22,121 @@ angular
     'angular-flash.flash-alert-directive',
     'toggle-switch',
     'ngFx',
+    'ionic',
     'ngCordova'
   ])
-    .config(function ($routeProvider, localStorageServiceProvider, flashProvider, $httpProvider) {
+    .config(function ($stateProvider, localStorageServiceProvider, flashProvider, $httpProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('app', {
+                url: "/app",
+                abstract: true,
+                templateUrl: "views/right-control.html",
+                controller: 'NavigationCtrl'
+            })
+            .state('app.main', {
+                url: '/',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/main.html',
+                        controller: 'MainCtrl'
+                    }
+                }
+            })
+            .state('app.category.single', {
+                url: '/category/:id',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/main.html',
+                        controller: 'MainCtrl'
+                    }
+                }
+            })
+            .state('app.about', {
+                url: '/about',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/about.html',
+                        controller: 'AboutCtrl'
+                    }
+                }
+            })
+            .state('app.topic.single', {
+                url: '/topic/:id',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/topic.html',
+                        controller: 'TopicCtrl'
+                    }
+                }
+            })
+            .state('app.login', {
+                url: '/login',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/login.html',
+                        controller: 'LoginCtrl'
+                    }
+                }
+            })
+            .state('app.profile', {
+                url: '/profile',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/profile.html',
+                        controller: 'ProfileCtrl'
+                    }
+                }
+            })
+            .state('app.search', {
+                url: '/search/:query',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/search.html',
+                        controller: 'SearchCtrl'
+                    }
+                }
+            })
+            .state('app.notifications', {
+                url: '/notifications',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/notifications.html',
+                        controller: 'NotificationsCtrl'
+                    }
+                }
+            })
+            .state('app.searchTopics', {
+                url: '/searchTopics',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/searchtopics.html',
+                        controller: 'SearchtopicsCtrl'
+                    }
+                }
+            })
+            .state('app.settings', {
+                url: '/settings',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'views/settings.html',
+                        controller: 'SettingsCtrl'
+                    }
+                }
+            });
+
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/');
+        localStorageServiceProvider.setPrefix('TekForum');
+        $httpProvider.defaults.withCredentials = true;
+        $httpProvider.defaults.xsrfCookieName = '_t';
         flashProvider.successClassnames.push('alert-success');
         flashProvider.infoClassnames.push('alert-info');
         flashProvider.warnClassnames.push('alert-warning');
         flashProvider.errorClassnames.push('alert-danger');
-        $routeProvider
-            .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
-            })
-            .when('/category/:id', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
-            })
-            .when('/about', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl'
-            })
-            .when('/topic/:id', {
-                templateUrl: 'views/topic.html',
-                controller: 'TopicCtrl'
-            })
-            .when('/login', {
-                templateUrl: 'views/login.html',
-                controller: 'LoginCtrl'
-            })
-            .when('/profile', {
-                templateUrl: 'views/profile.html',
-                controller: 'ProfileCtrl'
-            })
-            .when('/search/:query', {
-                templateUrl: 'views/search.html',
-                controller: 'SearchCtrl'
-            })
-            .when('/notifications', {
-                templateUrl: 'views/notifications.html',
-                controller: 'NotificationsCtrl'
-            })
-            .when('/searchTopics', {
-                templateUrl: 'views/searchtopics.html',
-                controller: 'SearchtopicsCtrl'
-            })
-            .when('/settings', {
-                templateUrl: 'views/settings.html',
-                controller: 'SettingsCtrl'
-            })
-            .otherwise({
-                redirectTo: '/'
-            });
-        localStorageServiceProvider.setPrefix('TekForum');
-        $httpProvider.defaults.withCredentials = true;
-        $httpProvider.defaults.xsrfCookieName = '_t';
-    }).run(function ($rootScope, $q, $location, FactoryUserStorage, $routeParams, $anchorScroll, PhoneGap, FactoryOnscreenNotifications, FactoryUser, $timeout) {
+    }).run(function ($rootScope, $q, $location, FactoryUserStorage, $stateParams, $anchorScroll, PhoneGap, FactoryOnscreenNotifications, FactoryUser, $timeout) {
         $rootScope.ajaxCall = $q.defer();
-        $rootScope.$on('$routeChangeSuccess', function (newRoute, oldRoute) {
-            $location.hash($routeParams.scrollTo);
+        $rootScope.$on('$stateChangeSuccess', function (newRoute, oldRoute) {
+            $location.hash($stateParams.scrollTo);
             $anchorScroll();
             $timeout(function () {
                 $('.canvas-slid').offcanvas('hide');

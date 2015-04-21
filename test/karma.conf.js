@@ -37,6 +37,9 @@ module.exports = function(config) {
       'app/bower_components/ngCordova/dist/ng-cordova.js',
       'app/bower_components/gsap/src/uncompressed/TweenMax.js',
       'app/bower_components/ngFx/dist/ngFx.js',
+      'app/bower_components/angular-ui-router/release/angular-ui-router.js',
+      'app/bower_components/ionic/release/js/ionic.js',
+      'app/bower_components/ionic/release/js/ionic-angular.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

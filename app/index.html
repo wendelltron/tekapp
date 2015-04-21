@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.css" />
     <link rel="stylesheet" href="bower_components/angular-toggle-switch/angular-toggle-switch.css" />
+    <link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -21,47 +22,6 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/lazyYT.css">
     <!-- endbuild -->
-
-</head>
-
-<body ng-app="tekForumApp">
-    <div id="body" ng-controller="NavigationCtrl" ng-swipe-left="ShowMenu()" ng-swipe-right="SwipeRight()">
-
-        <!-- Menu to the right of the screen -->
-        <nav id="right-menu" class="navmenu navmenu-inverse navmenu-fixed-right offcanvas pad-top-50" role="navigation">
-            <div data-right-control></div>
-        </nav>
-
-        <!-- Menu at the top of the screen -->
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-header col-xs-12">
-                <a class="navbar-brand no-padding" href="#/"><img class="img img-brand" src="images/rtwwhite.png" />
-                </a>
-                <button type="button" class="btn btn-default pull-right" style="margin-top:6px;" data-toggle="offcanvas" data-target="#right-menu">
-                    <span class="sr-only">Toggle navigation</span>
-                    <i class="fa fa-bars"></i>
-                </button>
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-
-        <div class="container-fluid pad-top full-height" id="wrapper">
-            <div class="onscreen-alerts">
-                <div class="onscreen-alert fx-bounce-down" ng-repeat="alert in alerts" role="alert" ng-switch="alert.dissmissable">
-                    <div ng-switch-when="false" ng-attr-class="alert alert-{{alert.style}}">
-                        <strong>{{alert.title}}</strong> {{alert.text}}
-                    </div>
-                    <div ng-switch-when="true" ng-attr-class="alert alert-{{alert.style}} alert-dismissible" role="alert">
-                        <button ng-click="closeAlert(alert.id)" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
-                        </button>
-                        <strong>{{alert.title}}</strong> {{alert.text}}
-                    </div>
-                </div>
-            </div>
-            <div ng-view="" class="full-height-padded fx-fade-up"></div>
-        </div>
-    </div>
-
     <!-- build:js({.tmp,app}) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -82,6 +42,9 @@
     <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
     <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
     <script src="bower_components/ngFx/dist/ngFx.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ionic/release/js/ionic.js"></script>
+    <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -117,6 +80,47 @@
     <!-- endbuild -->
 
     <script src="cordova.js"></script>
+</head>
+
+<body ng-app="tekForumApp">
+    <ion-nav-view></ion-nav-view>
+    <!--
+    <div id="body" ng-controller="NavigationCtrl" ng-swipe-left="ShowMenu()" ng-swipe-right="SwipeRight()">
+        <!-- Menu to the right of the screen -->
+    <!--<nav id="right-menu" class="navmenu navmenu-inverse navmenu-fixed-right offcanvas pad-top-50" role="navigation">
+            <div data-right-control></div>
+        </nav>-->
+
+    <!-- Menu at the top of the screen 
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header col-xs-12">
+                <a class="navbar-brand no-padding" href="#/"><img class="img img-brand" src="images/rtwwhite.png" />
+                </a>
+                <button type="button" class="btn btn-default pull-right" style="margin-top:6px;" data-toggle="offcanvas" data-target="#right-menu">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>-->
+    <!--
+        <div class="container-fluid pad-top full-height" id="wrapper">
+            <div class="onscreen-alerts">
+                <div class="onscreen-alert fx-bounce-down" ng-repeat="alert in alerts" role="alert" ng-switch="alert.dissmissable">
+                    <div ng-switch-when="false" ng-attr-class="alert alert-{{alert.style}}">
+                        <strong>{{alert.title}}</strong> {{alert.text}}
+                    </div>
+                    <div ng-switch-when="true" ng-attr-class="alert alert-{{alert.style}} alert-dismissible" role="alert">
+                        <button ng-click="closeAlert(alert.id)" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>{{alert.title}}</strong> {{alert.text}}
+                    </div>
+                </div>
+            </div>
+            <div ng-view="" class="full-height-padded fx-fade-up"></div>
+        </div>
+    </div> -->
+
+
 
 </body>
 
