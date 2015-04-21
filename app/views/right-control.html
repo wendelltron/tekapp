@@ -1,5 +1,5 @@
-<ion-side-menus enable-menu-with-back-views="false">
-    <ion-side-menu-content>
+<ion-side-menus enable-menu-with-back-views="false" class="full-height">
+    <ion-side-menu-content class="full-height">
         <ion-nav-bar class="bar-stable">
             <ion-nav-back-button>
             </ion-nav-back-button>
@@ -9,7 +9,7 @@
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
-        <ion-nav-view name="menuContent"></ion-nav-view>
+        <ion-nav-view name="menuContent" class="full-height"></ion-nav-view>
     </ion-side-menu-content>
 
     <ion-side-menu side="right" width="50">
@@ -18,8 +18,10 @@
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item nav-clear menu-close href="#/app/main" class="local">
-                    <i class="fa fa-home fa-2x"></i>
+                <ion-item>
+                    <a nav-clear menu-close href="#/app/main" class="local">
+                        <i class="fa fa-home fa-2x"></i>
+                    </a>
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/searchTopics" class="local">
                     <i class="fa fa-search fa-2x"></i>
