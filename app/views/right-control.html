@@ -4,8 +4,10 @@
             </a>
     </li>
     <li ng-if="user.loggedIn">
-        <a href="#/profile" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user fa-2x"></i>
-            </a>
+        <a href="#/profile" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false">
+            <img ng-if="user.profile.user.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded center-block" ng-src="https://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{user.username}}/40/{{user.profile.user.avatar_template | ExtractFile}}">
+            <img ng-if="user.profile.user.avatar_template.substring(0,15) === '/letter_avatar/'" class="img img-responsive img-rounded center-block" ng-src="https://forum.teksyndicate.com/letter_avatar/{{user.username}}/40/{{user.profile.user.avatar_template | ExtractFile}}">
+        </a>
     </li>
     <li ng-if="user.loggedIn">
         <a href="#/notifications" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false">

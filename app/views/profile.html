@@ -1,3 +1,13 @@
 <div class="flex-container full-height">
-    <p>Profile</p>
+    <div ng-if="(user.loggedIn && isUser) || !isUser">
+         <img class="img-responsive" ng-attr-src="https://forum.teksyndicate.com{{profile.user.profile_background}}">
+         <h3>
+            <img ng-if="profile.user.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="visible-xs-inline-block img img-responsive img-rounded" ng-src="https://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{profile.user.username}}/40/{{profile.user.avatar_template | ExtractFile}}">
+            <img ng-if="profile.user.avatar_template.substring(0,15) === '/letter_avatar/'" class="visible-xs-inline-block img img-responsive img-rounded" ng-src="https://forum.teksyndicate.com/letter_avatar/{{profile.user.username}}/40/{{profile.user.avatar_template | ExtractFile}}">
+            {{profile.user.username}}
+        </h3>
+    </div>
+    <div ng-if="!user.loggedIn && isUser" class="alert alert-warning" role="alert">
+        <strong>You are not logged in!</strong> You are not logged in! Please login and view this page again.
+    </div>
 </div>

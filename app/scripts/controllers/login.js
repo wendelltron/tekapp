@@ -27,8 +27,10 @@ angular.module('tekForumApp')
                         $cookies[key] = value;
                     });
                     //localStorageService.set('user', JSON.stringify($user));
-                    FactoryUser.get().success(function (data) {
+                    FactoryUser.get(false).success(function (data) {
                         console.log(data);
+                        FactoryUserStorage.user.profile = data;
+                        FactoryUserStorage.save();
                     });
                     $location.path('/');
                 }, function () {

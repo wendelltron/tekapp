@@ -54,6 +54,10 @@ angular
                 templateUrl: 'views/profile.html',
                 controller: 'ProfileCtrl'
             })
+            .when('/users/:name', {
+                templateUrl: 'views/profile.html',
+                controller: 'ProfileCtrl'
+            })
             .when('/search/:query', {
                 templateUrl: 'views/search.html',
                 controller: 'SearchCtrl'
@@ -86,7 +90,13 @@ angular
             }, 450);
         });
         FactoryUserStorage.init(function () {
-            FactoryUser.getAvatar();
+            if(FactoryUserStorage.user.loggedIn) {
+                FactoryUser.get(false).success(function (data) {
+                    console.log(data);
+                    FactoryUserStorage.user.profile = data;
+                    FactoryUserStorage.save();
+                });
+            }
             FactoryOnscreenNotifications.init(function () {
                 PhoneGap.init();
                 $rootScope.ajaxCall.resolve();

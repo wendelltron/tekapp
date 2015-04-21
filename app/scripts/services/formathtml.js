@@ -29,7 +29,14 @@ angular.module('tekForumApp')
                         }
 
                     });
-
+                    $('#topic-board').find('a').each(function () {
+                        if ($(this).attr('href')) {
+                            if ($(this).attr('href').match('^/users/')) {
+                                $(this).addClass('local');
+                                $(this).attr('href', '#' + $(this).attr('href'));
+                            }
+                        }
+                    });
                     // lazyload youtube
                     $('.lazyYT').lazyYT();
                     $('.lazyYT').addClass('img img-responsive');

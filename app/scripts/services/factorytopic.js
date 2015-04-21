@@ -8,7 +8,7 @@
  * Factory in the tekForumApp.
  */
 angular.module('tekForumApp')
-    .factory('FactoryTopic', function ($http, ServerAddress, flash) {
+    .factory('FactoryTopic', function ($http, ServerAddress) {
         var loadPage = function (page) {
             return '?no_definitions=true&page=' + page + '&slow_platform=true';
         };

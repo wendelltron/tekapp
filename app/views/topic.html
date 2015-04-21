@@ -8,20 +8,22 @@
             -->
             <div class="topic-user col-xs-12 user-panel">
                 <div class="col-xs-3 col-sm-2 col-md-1">
-                    <img ng-if="post.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded pad-top-5" ng-src="http://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{post.username}}/40/{{post.avatar_template | ExtractFile}}">
-                    <img ng-if="post.avatar_template.substring(0,15) === '/letter_avatar/'" class="img img-responsive img-rounded pad-top-5" ng-src="http://forum.teksyndicate.com/letter_avatar/{{post.username}}/40/{{post.avatar_template | ExtractFile}}">
-                    <p class="username"><strong>{{post.username}}</strong>
-                    </p>
+                    <a ng-attr-href="#/users/{{post.username}}" class="local visible-xs-block no-styling">
+                        <img ng-if="post.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded" ng-src="https://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{post.username}}/40/{{post.avatar_template | ExtractFile}}">
+                        <img ng-if="post.avatar_template.substring(0,15) === '/letter_avatar/'" class="img img-responsive img-rounded" ng-src="https://forum.teksyndicate.com/letter_avatar/{{post.username}}/40/{{post.avatar_template | ExtractFile}}">
+                        <p class="username"><strong>{{post.username}}</strong>
+                        </p>
+                    </a>
                 </div>
                 <p class="topic_height col-xs-1 text-left">#{{post.post_number}}</p>
                 <div class="hidden-xs col-sm-4 col-md-6"></div>
                 <p class="topic_height col-xs-6 col-sm-4 text-right"><em>{{post.created_at | moment}}</em>
                 </p>
             </div>
-            <a ng-if="post.reply_to_post_number" class="visible-xs-block reply-panel">
+            <a ng-if="post.reply_to_post_number" class="visible-xs-block reply-panel no-styling">
                 <i class="fa fa-reply margin-right-5px margin-left-15px"></i>
-                <img class="visible-xs-inline" ng-if="post.reply_to_user.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded pad-top-5" ng-src="http://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{post.reply_to_user.username}}/20/{{post.reply_to_user.avatar_template | ExtractFile}}">
-                <img class="visible-xs-inline" ng-if="post.reply_to_user.avatar_template.substring(0,15) === '/letter_avatar/'" class="img img-responsive img-rounded pad-top-5" ng-src="http://forum.teksyndicate.com/letter_avatar/{{post.reply_to_user.username}}/20/{{post.reply_to_user.avatar_template | ExtractFile}}">
+                <img class="visible-xs-inline" ng-if="post.reply_to_user.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded pad-top-5" ng-src="https://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{post.reply_to_user.username}}/20/{{post.reply_to_user.avatar_template | ExtractFile}}">
+                <img class="visible-xs-inline" ng-if="post.reply_to_user.avatar_template.substring(0,15) === '/letter_avatar/'" class="img img-responsive img-rounded pad-top-5" ng-src="https://forum.teksyndicate.com/letter_avatar/{{post.reply_to_user.username}}/20/{{post.reply_to_user.avatar_template | ExtractFile}}">
                 <strong>{{post.reply_to_user.username}}</strong>
                 <strong class="pull-right margin-right-5px">#{{post.reply_to_post_number}}</strong>
             </a>
