@@ -1,7 +1,7 @@
 <div id="infinite" class="full-height">
     <div ng-if="(user.loggedIn && isUser) || !isUser">
         <div class="media" id="profile-header">
-            <img class="img img-responsive" ng-attr-src="https://forum.teksyndicate.com{{profile.user.profile_background}}">
+            <img class="img img-responsive profile-background" ng-attr-src="https://forum.teksyndicate.com{{profile.user.profile_background}}">
             <div id="profile-name">
                 <div class="media-left media-bottom">
                     <img ng-if="profile.user.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="media-object img-rounded" ng-src="https://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{profile.user.username}}/64/{{profile.user.avatar_template | ExtractFile}}">

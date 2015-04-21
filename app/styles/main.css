@@ -32,6 +32,9 @@ a.mention {
     color: #D9D9D9;
 }
 
+.profile-background {
+    min-height: 75px;
+}
 #profile-header {
     position: relative;
 }
