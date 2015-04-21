@@ -1,63 +1,34 @@
-<!--<ul class="nav navbar-nav">
-    <li>
-        <a href="#/main" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-home fa-2x"></i>
-            </a>
-    </li>
-    <li>
-        <a href="#/searchTopics" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-search fa-2x"></i>
-        </a>
-    </li>
-    <li>
-        <a href="#/settings" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-gear fa-2x"></i>
-        </a>
-    </li>
-    <li ng-if="!user.loggedIn">
-        <a href="#/login" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sign-in fa-2x"></i>
-            </a>
-    </li>
-    <li ng-if="user.loggedIn">
-        <a href="#/logout" class="no-styling btn local" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sign-out fa-2x"></i>
-            </a>
-    </li>
-    <li ng-repeat="item in menu">
-
-    </li>
-</ul> -->
-<!-- DEPRECATED -->
 <ion-side-menus enable-menu-with-back-views="false">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-stable">
             <ion-nav-back-button>
             </ion-nav-back-button>
 
-            <ion-nav-buttons side="left">
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear fa fa-bars" menu-toggle="right">
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
 
-    <ion-side-menu side="left">
+    <ion-side-menu side="right" width="50">
         <ion-header-bar class="bar-stable">
             <h1 class="title">Left</h1>
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item nav-clear menu-closehref="#/main">
+                <ion-item nav-clear menu-close href="#/app/main" class="local">
                     <i class="fa fa-home fa-2x"></i>
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/login">
-                    Login
+                <ion-item nav-clear menu-close href="#/app/searchTopics" class="local">
+                    <i class="fa fa-search fa-2x"></i>
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/searchTopics">
-                    Search
+                <ion-item nav-clear menu-close href="#/app/settings" class="local">
+                    <i class="fa fa-gear fa-2x"></i>
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/browse">
-                    Browse
-                </ion-item>
-                <ion-item nav-clear menu-close href="#/app/playlists">
-                    Playlists
+                <ion-item nav-clear menu-close href="#/app/login" class="local">
+                    <i class="fa fa-sign-in fa-2x"></i>
                 </ion-item>
             </ion-list>
         </ion-content>

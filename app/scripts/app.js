@@ -34,7 +34,7 @@ angular
                 controller: 'NavigationCtrl'
             })
             .state('app.main', {
-                url: '/',
+                url: '/main',
                 views: {
                     'menuContent': {
                         templateUrl: 'views/main.html',
@@ -125,7 +125,9 @@ angular
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/app/main');
+
+
         localStorageServiceProvider.setPrefix('TekForum');
         $httpProvider.defaults.withCredentials = true;
         $httpProvider.defaults.xsrfCookieName = '_t';
@@ -134,6 +136,7 @@ angular
         flashProvider.warnClassnames.push('alert-warning');
         flashProvider.errorClassnames.push('alert-danger');
     }).run(function ($rootScope, $q, $location, FactoryUserStorage, $stateParams, $anchorScroll, PhoneGap, FactoryOnscreenNotifications, FactoryUser, $timeout) {
+        console.log("hello")
         $rootScope.ajaxCall = $q.defer();
         $rootScope.$on('$stateChangeSuccess', function (newRoute, oldRoute) {
             $location.hash($stateParams.scrollTo);

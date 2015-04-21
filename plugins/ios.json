@@ -31,6 +31,10 @@
                         {
                             "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -64,6 +68,9 @@
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
         "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         }
     },
