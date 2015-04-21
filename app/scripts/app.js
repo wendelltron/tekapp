@@ -135,7 +135,7 @@ angular
         flashProvider.infoClassnames.push('alert-info');
         flashProvider.warnClassnames.push('alert-warning');
         flashProvider.errorClassnames.push('alert-danger');
-    }).run(function ($rootScope, $q, $location, FactoryUserStorage, $stateParams, $anchorScroll, PhoneGap, FactoryOnscreenNotifications, FactoryUser, $timeout) {
+    }).run(function ($rootScope, $q, $ionicPlatform, $location, FactoryUserStorage, $stateParams, $anchorScroll, PhoneGap, FactoryOnscreenNotifications, FactoryUser, $timeout) {
         console.log("hello")
         $rootScope.ajaxCall = $q.defer();
         $rootScope.$on('$stateChangeSuccess', function (newRoute, oldRoute) {
@@ -151,5 +151,11 @@ angular
                 PhoneGap.init();
                 $rootScope.ajaxCall.resolve();
             });
+        });
+        $ionicPlatform.ready(function () {
+            if (window.StatusBar) {
+                // org.apache.cordova.statusbar required
+                StatusBar.styleDefault();
+            }
         });
     });
