@@ -1,11 +1,19 @@
-<div class="flex-container full-height">
+<div id="infinite" class="full-height">
     <div ng-if="(user.loggedIn && isUser) || !isUser">
-         <img class="img-responsive" ng-attr-src="https://forum.teksyndicate.com{{profile.user.profile_background}}">
-         <h3>
-            <img ng-if="profile.user.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="visible-xs-inline-block img img-responsive img-rounded" ng-src="https://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{profile.user.username}}/40/{{profile.user.avatar_template | ExtractFile}}">
-            <img ng-if="profile.user.avatar_template.substring(0,15) === '/letter_avatar/'" class="visible-xs-inline-block img img-responsive img-rounded" ng-src="https://forum.teksyndicate.com/letter_avatar/{{profile.user.username}}/40/{{profile.user.avatar_template | ExtractFile}}">
-            {{profile.user.username}}
-        </h3>
+        <div class="media" id="profile-header">
+            <img class="img img-responsive" ng-attr-src="https://forum.teksyndicate.com{{profile.user.profile_background}}">
+            <div id="profile-name">
+                <div class="media-left media-bottom">
+                    <img ng-if="profile.user.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="media-object img-rounded" ng-src="https://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{profile.user.username}}/64/{{profile.user.avatar_template | ExtractFile}}">
+                    <img ng-if="profile.user.avatar_template.substring(0,15) === '/letter_avatar/'" class="media-object img-rounded" ng-src="https://forum.teksyndicate.com/letter_avatar/{{profile.user.username}}/64/{{profile.user.avatar_template | ExtractFile}}">
+                </div>
+                <div class="media-body media-bottom">
+                    <h4 class="media-heading">{{profile.user.username}}</h4>
+                    <small>Joined {{profile.user.created_at | moment:"calendar"}}</small>
+                </div>
+            </div>
+        </div>
+        <div class="formatHTML well no-styling overflow-limit" ng-bind-html="(profile.user.bio_cooked || profile.user.bio_excerpt) | Sanitize"></div>
     </div>
     <div ng-if="!user.loggedIn && isUser" class="alert alert-warning" role="alert">
         <strong>You are not logged in!</strong> You are not logged in! Please login and view this page again.

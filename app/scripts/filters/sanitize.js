@@ -10,7 +10,6 @@
  */
 angular.module('tekForumApp')
     .filter('Sanitize', function ($sce) {
-
         return function (htmlCode) {
             return $sce.trustAsHtml(htmlCode);
         };

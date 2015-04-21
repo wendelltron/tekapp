@@ -15,7 +15,7 @@ angular.module('tekForumApp')
             format: function () {
                 return $timeout(function () {
                     // find all images in the posts
-                    $('#topic-board').find('img, iframe').each(function () {
+                    $('.formatHTML').find('img, iframe').each(function () {
                         // add bootstrap classes to the images
                         $(this).addClass('img img-responsive');
 
@@ -29,10 +29,10 @@ angular.module('tekForumApp')
                         }
 
                     });
-                    $('#topic-board').find('a').each(function () {
+                    $('.formatHTML').find('a').each(function () {
                         if ($(this).attr('href')) {
                             if ($(this).attr('href').match('^/users/')) {
-                                $(this).addClass('local');
+                                $(this).addClass('local mention');
                                 $(this).attr('href', '#' + $(this).attr('href'));
                             }
                         }

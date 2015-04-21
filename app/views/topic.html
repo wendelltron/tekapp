@@ -1,6 +1,6 @@
 <div pull-to-refresh="GetPosts()" id="infinite" class="full-height">
     <h4>{{topic.title}}</h4>
-    <ul id="topic-board" class="list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchPosts()" infinite-scroll-distance="2" infinite-scroll-parent="true">
+    <ul id="topic-board" class="formatHTML list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchPosts()" infinite-scroll-distance="2" infinite-scroll-parent="true">
         <li class="list-group-item" ng-if="topic" ng-attr-id="post-{{post.number}}" ng-repeat="post in topic.post_stream.posts">
 
             <!--
@@ -17,7 +17,7 @@
                 </div>
                 <p class="topic_height col-xs-1 text-left">#{{post.post_number}}</p>
                 <div class="hidden-xs col-sm-4 col-md-6"></div>
-                <p class="topic_height col-xs-6 col-sm-4 text-right"><em>{{post.created_at | moment}}</em>
+                <p class="topic_height col-xs-6 col-sm-4 text-right"><em>{{post.created_at | moment:"fromNow"}}</em>
                 </p>
             </div>
             <a ng-if="post.reply_to_post_number" class="visible-xs-block reply-panel no-styling">
