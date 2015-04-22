@@ -1,6 +1,9 @@
 
 <p align="center"><a href="https://github.com/wendelltron/tekapp"><img alt="header image" src="https://cloud.githubusercontent.com/assets/4472083/7058394/eac9cf36-de26-11e4-921a-d786750fabb8.png"/></a></p>
-Built using  Angular, Bootsrap, NodeJS, Yeoman, Grunt, Karma, and PhoneGap
+Built using  Angular, Bootsrap, Bower, NodeJS, Yeoman, Grunt, Karma, and PhoneGap
+
+[![Dependency Status](https://img.shields.io/gemnasium/wendelltron/tekapp.svg)](https://gemnasium.com/wendelltron/tekapp)
+[![Development Dependency Status](https://img.shields.io/david/dev/wendelltron/tekapp.svg)](https://david-dm.org/wendelltron/tekapp#info=devDependencies)
 
 ---
 
