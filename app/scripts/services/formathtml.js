@@ -8,7 +8,7 @@
  * Factory in the tekForumApp.
  */
 angular.module('tekForumApp')
-    .factory('FormatHTML', function ($timeout) {
+    .factory('FormatHTML', function () {
 
         // Public API here
         return {

@@ -85,9 +85,9 @@ angular
         $rootScope.$on('$routeChangeSuccess', function (newRoute, oldRoute) {
             $location.hash($routeParams.scrollTo);
             $anchorScroll();
-            $timeout(function () {
+            //$timeout(function () {
                 $('.canvas-slid').offcanvas('hide');
-            }, 450);
+            //}, 450);
         });
         FactoryUserStorage.init(function () {
             if(FactoryUserStorage.user.loggedIn) {
