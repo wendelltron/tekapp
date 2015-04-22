@@ -1,0 +1,72 @@
+/* Orbitron https://www.theleagueofmoveabletype.com/orbitron */
+@font-face {
+    font-family: 'Orbitron';
+    font-weight: 300;
+    font-style: normal;
+    src: url('../fonts/orbitron-light-webfont.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/orbitron-light-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+/*         url('../fonts/orbitron-light-webfont.woff2') format('woff2'),  Super Modern Browsers */
+         url('../fonts/orbitron-light-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../fonts/orbitron-light-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/orbitron-light-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+@font-face {
+    font-family: 'Orbitron';
+    font-weight: 500;
+    font-style: normal;
+    src: url('../fonts/orbitron-medium-webfont.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/orbitron-medium-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+/*         url('../fonts/orbitron-medium-webfont.woff2') format('woff2'),  Super Modern Browsers */
+         url('../fonts/orbitron-medium-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../fonts/orbitron-medium-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/orbitron-medium-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+@font-face {
+    font-family: 'Orbitron';
+    font-weight: 700;
+    font-style: normal;
+    src: url('../fonts/orbitron-bold-webfont.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/orbitron-bold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+/*         url('../fonts/orbitron-bold-webfont.woff2') format('woff2'),  Super Modern Browsers */
+         url('../fonts/orbitron-bold-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../fonts/orbitron-bold-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/orbitron-bold-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+@font-face {
+    font-family: 'Orbitron';
+    font-weight: 900;
+    font-style: normal;
+    src: url('../fonts/orbitron-black-webfont.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/orbitron-black-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+/*         url('../fonts/orbitron-black-webfont.woff2') format('woff2'),  Super Modern Browsers */
+         url('../fonts/orbitron-black-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../fonts/orbitron-black-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/orbitron-black-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+/* NOTE: There is no 'normal' font weight for this font! */
+.font-orbitron-light {
+    font-family: 'Orbitron';
+    font-weight: 300;
+}
+.font-orbitron-medium {
+    font-family: 'Orbitron';
+    font-weight: 500;
+}
+.font-orbitron-bold {
+    font-family: 'Orbitron';
+    font-weight: 700;
+}
+.font-orbitron-extraBold,
+.font-orbitron-black {
+    font-family: 'Orbitron';
+    font-weight: 900;
+}
+.logo-font {
+    font-size: 36px;
+    font-weight: 700;
+    font-family: 'Orbitron';
+    line-height: 36px;
+    color: #f9f9f9;
+    text-shadow: 0px 1px 1px #232323;
+}
