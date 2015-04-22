@@ -19,7 +19,7 @@ angular.module('tekForumApp')
          **/
         var init = function () {
             FactoryTopic.get($routeParams.id).success(function (data) {
-                $.each(data.post_stream.posts, function(key, value) {
+                $.each(data.post_stream.posts, function (key, value) {
                     data.post_stream.posts[key].cooked = FormatHTML.format(value.cooked);
                 });
                 $scope.topic = data;
@@ -59,10 +59,11 @@ angular.module('tekForumApp')
                 FactoryTopic.getPosts($scope.topic.id, request).success(function (data) {
                     $scope.busyLoadingData = false;
                     console.log(data.post_stream.posts);
-                    $.each(data.post_stream.posts, function(key, value) {
+                    $.each(data.post_stream.posts, function (key, value) {
                         data.post_stream.posts[key].cooked = FormatHTML.format(value.cooked);
                     });
                     $scope.topic.post_stream.posts.push.apply($scope.topic.post_stream.posts, data.post_stream.posts);
+                    $('.canvas-slid').offcanvas('hide');
                 });
             }
         };

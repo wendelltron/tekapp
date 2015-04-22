@@ -16,6 +16,7 @@ angular.module('tekForumApp')
                 $scope.topics = data.topics;
                 $scope.posts = data.posts;
                 FormatHTML.format();
+                $('.canvas-slid').offcanvas('hide');
             });
         };
 

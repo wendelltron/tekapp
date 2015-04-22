@@ -85,12 +85,9 @@ angular
         $rootScope.$on('$routeChangeSuccess', function (newRoute, oldRoute) {
             $location.hash($routeParams.scrollTo);
             $anchorScroll();
-            //$timeout(function () {
-                $('.canvas-slid').offcanvas('hide');
-            //}, 450);
         });
         FactoryUserStorage.init(function () {
-            if(FactoryUserStorage.user.loggedIn) {
+            if (FactoryUserStorage.user.loggedIn) {
                 FactoryUser.get(false).success(function (data) {
                     console.log(data);
                     FactoryUserStorage.user.profile = data;
