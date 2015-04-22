@@ -12,35 +12,39 @@ angular.module('tekForumApp')
 
         // Public API here
         return {
-            format: function () {
-                return $timeout(function () {
-                    // find all images in the posts
-                    $('.formatHTML').find('img, iframe').each(function () {
-                        // add bootstrap classes to the images
-                        $(this).addClass('img img-responsive');
-
-                        // if image path is not fixed, correct image path to a fixed path
-                        if (!$(this).attr('src').match('^http')) {
-                            if ($(this).attr('src').match('^/user_avatar') || $(this).attr('src').match('^/images') || $(this).attr('src').match('^images')) {
-                                $(this).attr('src', 'https://forum.teksyndicate.com' + $(this).attr('src'));
-                            } else {
-                                $(this).attr('src', 'http://' + $(this).attr('src'));
-                            }
+            format: function (inputHTML) {
+                var $inputHTML = $('<div />',{html:inputHTML});
+                // find all images in the posts
+                $($inputHTML).find('img, iframe').each(function () {
+                    console.log("fix img " + $inputHTML);
+                    // add bootstrap classes to the images
+                    $(this).addClass('img img-responsive');
+                    console.log("fix img " + $inputHTML);
+                    
+                    // if image path is not fixed, correct image path to a fixed path
+                    if (!$(this).attr('src').match('^http')) {
+                        if ($(this).attr('src').match('^/user_avatar') || $(this).attr('src').match('^/images')) {
+                            $(this).attr('src', 'https://forum.teksyndicate.com' + $(this).attr('src'));
+                        } else {
+                            $(this).attr('src', 'http://' + $(this).attr('src'));
                         }
-
-                    });
-                    $('.formatHTML').find('a').each(function () {
-                        if ($(this).attr('href')) {
-                            if ($(this).attr('href').match('^/users/')) {
-                                $(this).addClass('local mention');
-                                $(this).attr('href', '#' + $(this).attr('href'));
-                            }
+                    }
+                    
+                });
+                $($inputHTML).find('a').each(function () {
+                    if ($(this).attr('href')) {
+                        if ($(this).attr('href').match('^/users/')) {
+                            $(this).addClass('local mention');
+                            $(this).attr('href', '#' + $(this).attr('href'));
                         }
-                    });
-                    // lazyload youtube
-                    $('.lazyYT').lazyYT();
-                    $('.lazyYT').addClass('img img-responsive');
-                }, 450);
+                    }
+                });
+                return $inputHTML.html();
+            },
+            yt: function () {
+                // lazyload youtube
+                $('.lazyYT').lazyYT();
+                $('.lazyYT').addClass('img img-responsive');
             }
         };
     });

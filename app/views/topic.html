@@ -8,7 +8,7 @@
             -->
             <div class="topic-user col-xs-12 user-panel">
                 <div class="col-xs-3 col-sm-2 col-md-1">
-                    <a ng-attr-href="#/users/{{post.username}}" class="local visible-xs-block no-styling">
+                    <a ng-attr-href="#/users/{{post.username}}" class="local show no-styling">
                         <img ng-if="post.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded" ng-src="https://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{post.username}}/40/{{post.avatar_template | ExtractFile}}">
                         <img ng-if="post.avatar_template.substring(0,15) === '/letter_avatar/'" class="img img-responsive img-rounded" ng-src="https://forum.teksyndicate.com/letter_avatar/{{post.username}}/40/{{post.avatar_template | ExtractFile}}">
                         <p class="username"><strong>{{post.username}}</strong>

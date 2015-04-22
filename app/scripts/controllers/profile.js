@@ -17,10 +17,16 @@ angular.module('tekForumApp')
             }
             else {
                 FactoryUser.get($routeParams.name).success(function (data) {
-                    console.log(data);
+//                    console.log(data);
+                    if (data.user.bio_cooked) {
+                        data.user.bio_cooked = FormatHTML.format(data.user.bio_cooked);
+                    }
+                    else {
+                        data.user.bio_excerpt = FormatHTML.format(data.user.bio_excerpt);
+                    }
                     $scope.profile = data;
                     $scope.isUser = false;
-                    FormatHTML.format();
+                    FormatHTML.yt();
                 });
             }
         });
