@@ -16,10 +16,8 @@ angular.module('tekForumApp')
                 var $inputHTML = $('<div />',{html:inputHTML});
                 // find all images in the posts
                 $($inputHTML).find('img, iframe').each(function () {
-                    console.log("fix img " + $inputHTML);
                     // add bootstrap classes to the images
                     $(this).addClass('img img-responsive');
-                    console.log("fix img " + $inputHTML);
                     
                     // if image path is not fixed, correct image path to a fixed path
                     if (!$(this).attr('src').match('^http')) {
