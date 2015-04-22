@@ -26,7 +26,6 @@ angular.module('tekForumApp')
                     }
                     $scope.profile = data;
                     $scope.isUser = false;
-                    FormatHTML.yt();
                 });
             }
         });

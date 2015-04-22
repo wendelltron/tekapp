@@ -37,12 +37,11 @@ angular.module('tekForumApp')
                         }
                     }
                 });
+                $($inputHTML).find('.lazyYT').each(function () {
+                    $(this).addClass('img img-responsive center-block');
+                    $(this).lazyYT();
+                });
                 return $inputHTML.html();
-            },
-            yt: function () {
-                // lazyload youtube
-                $('.lazyYT').lazyYT();
-                $('.lazyYT').addClass('img img-responsive');
             }
         };
     });

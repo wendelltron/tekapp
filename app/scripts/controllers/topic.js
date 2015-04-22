@@ -26,7 +26,6 @@ angular.module('tekForumApp')
                 console.log(data);
                 $scope.postCount = data.post_stream.posts.length;
                 $scope.MAXPOSTCOUNT = data.posts_count;
-                FormatHTML.yt();
             });
         };
 
@@ -64,7 +63,6 @@ angular.module('tekForumApp')
                         data.post_stream.posts[key].cooked = FormatHTML.format(value.cooked);
                     });
                     $scope.topic.post_stream.posts.push.apply($scope.topic.post_stream.posts, data.post_stream.posts);
-                    FormatHTML.yt();
                 });
             }
         };
