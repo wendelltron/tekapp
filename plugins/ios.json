@@ -65,6 +65,9 @@
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
         }
     },
     "dependent_plugins": {}

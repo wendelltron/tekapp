@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8' ?>
+<?xml version='1.0' encoding='utf-8'?>
 <widget id="com.teksyndicate.tekapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://cordova.apache.org/ns/1.0">
     <name>TekSyndicate</name>
     <description>
@@ -8,6 +8,20 @@
         Tek Syndicate Community
     </author>
     <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
@@ -20,127 +34,109 @@
     <preference name="exit-on-suspend" value="false" />
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
-	<preference name="SplashScreen" value="screen" />
-	<preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
     <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-minSdkVersion" value="17" />
     <preference name="android-installLocation" value="auto" />
-	<preference name="StatusBarOverlaysWebView" value="false" />
-	<preference name="StatusBarBackgroundColor" value="#000000" />
-	<preference name="StatusBarStyle" value="lightcontent" />
-    <!-- <gap:plugin name="org.apache.cordova.battery-status" />
-    <gap:plugin name="org.apache.cordova.camera" />
-    <gap:plugin name="org.apache.cordova.media-capture" />
-    <gap:plugin name="org.apache.cordova.console" />
-    <gap:plugin name="org.apache.cordova.contacts" /> -->
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarStyle" value="lightcontent" />
     <gap:plugin name="org.apache.cordova.device" />
-    <!-- <gap:plugin name="org.apache.cordova.device-motion" />
-    <gap:plugin name="org.apache.cordova.device-orientation" />
-    <gap:plugin name="org.apache.cordova.dialogs" />
-    <gap:plugin name="org.apache.cordova.file" />
-    <gap:plugin name="org.apache.cordova.file-transfer" />
-    <gap:plugin name="org.apache.cordova.geolocation" />
-    <gap:plugin name="org.apache.cordova.globalization" />
-    <gap:plugin name="org.apache.cordova.inappbrowser" />
-    <gap:plugin name="org.apache.cordova.media" /> -->
     <gap:plugin name="org.apache.cordova.network-information" />
-    <!-- <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:plugin name="org.apache.cordova.vibration" /> -->
-	<feature name="NetworkStatus">
-		<param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
-	</feature>
     <icon src="icon.png" />
-	<platform name="amazon-fireos">
-        <icon src="res/icon/android/icon-36-ldpi.png" density="ldpi" width="36" height="36" />
-        <icon src="res/icon/android/icon-48-mdpi.png" density="mdpi" width="48" height="48" />
-        <icon src="res/icon/android/icon-72-hdpi.png" density="hdpi" width="72" height="72" />
-        <icon src="res/icon/android/icon-96-xhdpi.png" density="xhdpi" width="96" height="96" />
-        <icon src="res/icon/android/icon-144-xxhdpi.png" density="xxhdpi" width="144" height="144" />
+    <platform name="amazon-fireos">
+        <icon density="ldpi" height="36" src="res/icon/android/icon-36-ldpi.png" width="36" />
+        <icon density="mdpi" height="48" src="res/icon/android/icon-48-mdpi.png" width="48" />
+        <icon density="hdpi" height="72" src="res/icon/android/icon-72-hdpi.png" width="72" />
+        <icon density="xhdpi" height="96" src="res/icon/android/icon-96-xhdpi.png" width="96" />
+        <icon density="xxhdpi" height="144" src="res/icon/android/icon-144-xxhdpi.png" width="144" />
     </platform>
-	<platform name="android">
-        <icon src="res/icon/android/icon-36-ldpi.png" density="ldpi" width="36" height="36" />
-        <icon src="res/icon/android/icon-48-mdpi.png" density="mdpi" width="48" height="48" />
-        <icon src="res/icon/android/icon-72-hdpi.png" density="hdpi" width="72" height="72" />
-        <icon src="res/icon/android/icon-96-xhdpi.png" density="xhdpi" width="96" height="96" />
-        <icon src="res/icon/android/icon-144-xxhdpi.png" density="xxhdpi" width="144" height="144" />
-        <icon src="res/icon/android/icon-192-xxxhdpi.png" density="xxhdpi" width="192" height="192" />
+    <platform name="android">
+        <icon density="ldpi" height="36" src="res/icon/android/icon-36-ldpi.png" width="36" />
+        <icon density="mdpi" height="48" src="res/icon/android/icon-48-mdpi.png" width="48" />
+        <icon density="hdpi" height="72" src="res/icon/android/icon-72-hdpi.png" width="72" />
+        <icon density="xhdpi" height="96" src="res/icon/android/icon-96-xhdpi.png" width="96" />
+        <icon density="xxhdpi" height="144" src="res/icon/android/icon-144-xxhdpi.png" width="144" />
+        <icon density="xxhdpi" height="192" src="res/icon/android/icon-192-xxxhdpi.png" width="192" />
     </platform>
-	<platform name="blackberry10">
-        <icon src="res/icon/blackberry10/icon-86.png" width="86" height="86" />
-        <icon src="res/icon/blackberry10/icon-150.png" width="150" height="150" />
+    <platform name="blackberry10">
+        <icon height="86" src="res/icon/blackberry10/icon-86.png" width="86" />
+        <icon height="150" src="res/icon/blackberry10/icon-150.png" width="150" />
     </platform>
-	<platform name="firefoxos">
-        <icon src="res/icon/firefoxos/icon-60.png" width="60" height="60" />
+    <platform name="firefoxos">
+        <icon height="60" src="res/icon/firefoxos/icon-60.png" width="60" />
     </platform>
-	<platform name="ios">
-        <icon src="res/icon/ios/icon-60@3x.png" width="180" height="180" />
-        <icon src="res/icon/ios/icon-60.png" width="60" height="60" />
-        <icon src="res/icon/ios/icon-60@2x.png" width="120" height="120" />
-        <icon src="res/icon/ios/icon-76.png" width="76" height="76" />
-        <icon src="res/icon/ios/icon-76@2x.png" width="152" height="152" />
-        <icon src="res/icon/ios/icon-40.png" width="40" height="40" />
-        <icon src="res/icon/ios/icon-40@2x.png" width="80" height="80" />
-        <icon src="res/icon/ios/icon-57-normal.png" width="57" height="57" />
-        <icon src="res/icon/ios/icon-57-normal@2x.png" width="114" height="114" />
-        <icon src="res/icon/ios/icon-72.png" width="72" height="72" />
-        <icon src="res/icon/ios/icon-72@2x.png" width="144" height="144" />
-        <icon src="res/icon/ios/icon-29-small.png" width="29" height="29" />
-        <icon src="res/icon/ios/icon-29-small@2x.png" width="58" height="58" />
-        <icon src="res/icon/ios/icon-50.png" width="50" height="50" />
-        <icon src="res/icon/ios/icon-50@2x.png" width="100" height="100" />
+    <platform name="ios">
+        <icon height="180" src="res/icon/ios/icon-60@3x.png" width="180" />
+        <icon height="60" src="res/icon/ios/icon-60.png" width="60" />
+        <icon height="120" src="res/icon/ios/icon-60@2x.png" width="120" />
+        <icon height="76" src="res/icon/ios/icon-76.png" width="76" />
+        <icon height="152" src="res/icon/ios/icon-76@2x.png" width="152" />
+        <icon height="40" src="res/icon/ios/icon-40.png" width="40" />
+        <icon height="80" src="res/icon/ios/icon-40@2x.png" width="80" />
+        <icon height="57" src="res/icon/ios/icon-57-normal.png" width="57" />
+        <icon height="114" src="res/icon/ios/icon-57-normal@2x.png" width="114" />
+        <icon height="72" src="res/icon/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/icon/ios/icon-72@2x.png" width="144" />
+        <icon height="29" src="res/icon/ios/icon-29-small.png" width="29" />
+        <icon height="58" src="res/icon/ios/icon-29-small@2x.png" width="58" />
+        <icon height="50" src="res/icon/ios/icon-50.png" width="50" />
+        <icon height="100" src="res/icon/ios/icon-50@2x.png" width="100" />
     </platform>
-	<platform name="tizen">
-        <icon src="res/icon/tizen/icon-128.png" width="128" height="128" />
+    <platform name="tizen">
+        <icon height="128" src="res/icon/tizen/icon-128.png" width="128" />
     </platform>
-	<platform name="winphone">
-        <icon src="res/icon/winphone/icon-99-ApplicationIcon.png" width="99" height="99" />
-        <icon src="res/icon/winphone/icon-159-Background.png" width="159" height="159" role="background" />
+    <platform name="winphone">
+        <icon height="99" src="res/icon/winphone/icon-99-ApplicationIcon.png" width="99" />
+        <icon height="159" role="background" src="res/icon/winphone/icon-159-Background.png" width="159" />
     </platform>
-	<platform name="windows8">
-        <icon src="res/icon/windows8/icon-150-logo.png" width="150" height="150" />
-        <icon src="res/icon/windows8/icon-30-smalllogo.png" width="30" height="30" />
-        <icon src="res/icon/windows8/icon-50-storelogo.png" width="50" height="50" />
+    <platform name="windows8">
+        <icon height="150" src="res/icon/windows8/icon-150-logo.png" width="150" />
+        <icon height="30" src="res/icon/windows8/icon-30-smalllogo.png" width="30" />
+        <icon height="50" src="res/icon/windows8/icon-50-storelogo.png" width="50" />
     </platform>
-	<platform name="webos">
-		<icon src="res/icon/webos/icon-64.png" width="64" height="64" />
-	</platform>
-	<platform name="android">
-		<splash src="res/screen/android/splash-land-hdpi.png" density="land-hdpi"/>
-		<splash src="res/screen/android/splash-land-ldpi.png" density="land-ldpi"/>
-		<splash src="res/screen/android/splash-land-mdpi.png" density="land-mdpi"/>
-		<splash src="res/screen/android/splash-land-xhdpi.png" density="land-xhdpi"/>
-		<splash src="res/screen/android/splash-port-hdpi.png" density="port-hdpi"/>
-		<splash src="res/screen/android/splash-port-ldpi.png" density="port-ldpi"/>
-		<splash src="res/screen/android/splash-port-mdpi.png" density="port-mdpi"/>
-		<splash src="res/screen/android/splash-port-xhdpi.png" density="port-xhdpi"/>
-	</platform>
-	<platform name="ios">
-		<splash src="res/screen/ios/Default-Portait~iphone.png" width="320" height="480"/>
-		<splash src="res/screen/ios/Default-Landscape~iphone.png" width="480" height="320"/>
-		<splash src="res/screen/ios/Default-Portait@2x~iphone.png" width="640" height="960"/>
-		<splash src="res/screen/ios/Default-Landscape@2x~iphone.png" width="960" height="640"/>
-		<splash src="res/screen/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
-		<splash src="res/screen/ios/Default-Landscape~ipad.png" width="1024" height="768"/>
-		<splash src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
-		<splash src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
-		<splash src="res/screen/ios/Default-Portrait-568h@2x~iphone.png" width="640" height="1136"/>
-		<splash src="res/screen/ios/Default-Landscape-568h@2x~iphone.png" width="1136" height="640"/>
-		<splash src="res/screen/ios/Default-Portrait-667h.png" width="750" height="1334"/>
-		<splash src="res/screen/ios/Default-Landscape-667h.png" width="1134" height="750"/>
-		<splash src="res/screen/ios/Default-Portrait-736h.png" width="1242" height="2208"/>
-		<splash src="res/screen/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
-	</platform>
-	<platform name="wp8">
-		<splash src="res/screen/wp8/SplashScreenImage.jpg" width="480" height="800"/>
-	</platform>
-	<platform name="windows8">
-		<splash src="res/screen/windows8/splashscreen.png" width="620" height="300"/>
-	</platform>
-	<platform name="blackberry10">
-		<splash src="res/screen/blackberry10/splashscreen.png" width="64" height="64"/>
-	</platform>
-	<platform name="webos">
-		<splash src="res/screen/webos/splash-64.png" width="64" height="64"/>
-	</platform>
-    <access origin="*" />
+    <platform name="webos">
+        <icon height="64" src="res/icon/webos/icon-64.png" width="64" />
+    </platform>
+    <platform name="android">
+        <splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png" />
+        <splash density="land-ldpi" src="res/screen/android/splash-land-ldpi.png" />
+        <splash density="land-mdpi" src="res/screen/android/splash-land-mdpi.png" />
+        <splash density="land-xhdpi" src="res/screen/android/splash-land-xhdpi.png" />
+        <splash density="port-hdpi" src="res/screen/android/splash-port-hdpi.png" />
+        <splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png" />
+        <splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png" />
+        <splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png" />
+    </platform>
+    <platform name="ios">
+        <splash height="480" src="res/screen/ios/Default-Portait~iphone.png" width="320" />
+        <splash height="320" src="res/screen/ios/Default-Landscape~iphone.png" width="480" />
+        <splash height="960" src="res/screen/ios/Default-Portait@2x~iphone.png" width="640" />
+        <splash height="640" src="res/screen/ios/Default-Landscape@2x~iphone.png" width="960" />
+        <splash height="1024" src="res/screen/ios/Default-Portrait~ipad.png" width="768" />
+        <splash height="768" src="res/screen/ios/Default-Landscape~ipad.png" width="1024" />
+        <splash height="2048" src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" />
+        <splash height="1536" src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" />
+        <splash height="1136" src="res/screen/ios/Default-Portrait-568h@2x~iphone.png" width="640" />
+        <splash height="640" src="res/screen/ios/Default-Landscape-568h@2x~iphone.png" width="1136" />
+        <splash height="1334" src="res/screen/ios/Default-Portrait-667h.png" width="750" />
+        <splash height="750" src="res/screen/ios/Default-Landscape-667h.png" width="1134" />
+        <splash height="2208" src="res/screen/ios/Default-Portrait-736h.png" width="1242" />
+        <splash height="1242" src="res/screen/ios/Default-Landscape-736h.png" width="2208" />
+    </platform>
+    <platform name="wp8">
+        <splash height="800" src="res/screen/wp8/SplashScreenImage.jpg" width="480" />
+    </platform>
+    <platform name="windows8">
+        <splash height="300" src="res/screen/windows8/splashscreen.png" width="620" />
+    </platform>
+    <platform name="blackberry10">
+        <splash height="64" src="res/screen/blackberry10/splashscreen.png" width="64" />
+    </platform>
+    <platform name="webos">
+        <splash height="64" src="res/screen/webos/splash-64.png" width="64" />
+    </platform>
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <engine name="android" spec="4.0.0" />
 </widget>
