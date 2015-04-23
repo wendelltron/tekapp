@@ -23,7 +23,7 @@ angular.module('tekForumApp')
                     data.post_stream.posts[key].cooked = FormatHTML.format(value.cooked);
                 });
                 $scope.topic = data;
-                console.log(data);
+//                console.log(data);
                 $scope.postCount = data.post_stream.posts.length;
                 $scope.MAXPOSTCOUNT = data.posts_count;
                 $('.canvas-slid').offcanvas('hide');
@@ -59,7 +59,7 @@ angular.module('tekForumApp')
                 // fetch posts and add to posts array
                 FactoryTopic.getPosts($scope.topic.id, request).success(function (data) {
                     $scope.busyLoadingData = false;
-                    console.log(data.post_stream.posts);
+//                    console.log(data.post_stream.posts);
                     $.each(data.post_stream.posts, function (key, value) {
                         data.post_stream.posts[key].cooked = FormatHTML.format(value.cooked);
                     });
