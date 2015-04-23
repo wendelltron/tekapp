@@ -38,6 +38,10 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
+            .when('/category/:id/:name', {
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            })
             .when('/about', {
                 templateUrl: 'views/about.html',
                 controller: 'AboutCtrl'
@@ -82,7 +86,10 @@ angular
         $httpProvider.defaults.xsrfCookieName = '_t';
     }).run(function ($rootScope, $q, $location, FactoryUserStorage, $routeParams, $anchorScroll, PhoneGap, FactoryOnscreenNotifications, FactoryUser, $timeout) {
         $rootScope.ajaxCall = $q.defer();
+        $rootScope.customNav = { scope:{} };
         $rootScope.$on('$routeChangeSuccess', function (newRoute, oldRoute) {
+            $rootScope.customNav.url = '';
+            $rootScope.customNav.scope = {};
             $location.hash($routeParams.scrollTo);
             $anchorScroll();
         });

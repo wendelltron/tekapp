@@ -8,10 +8,12 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('NavigationCtrl', function ($scope, FactoryUserStorage, FactoryOnscreenNotifications) {
+    .controller('NavigationCtrl', function ($scope, $rootScope, $routeParams, FactoryUserStorage, FactoryOnscreenNotifications) {
       $scope.ajaxCall.promise.then(function() {
           // listen for android options button
           
+          $scope.nav = $rootScope.customNav;
+          $scope.routeParams = $routeParams;
           $scope.menuVisible = false;
           $scope.user = FactoryUserStorage.user;
           $scope.alerts = FactoryOnscreenNotifications.shown;

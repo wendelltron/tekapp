@@ -17,6 +17,10 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
                             "count": 1
                         },
@@ -26,10 +30,6 @@
                         },
                         {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -54,6 +54,9 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
@@ -61,9 +64,6 @@
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
         "org.apache.cordova.splashscreen": {
-            "PACKAGE_NAME": "com.teksyndicate.tekapp"
-        },
-        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         }
     },

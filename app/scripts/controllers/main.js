@@ -8,7 +8,7 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('MainCtrl', function ($scope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $http, $routeParams, $interval, PhoneGap, FactoryUser, ServerAddress) {
+    .controller('MainCtrl', function ($scope, $rootScope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $http, $routeParams, $interval, PhoneGap, FactoryUser, ServerAddress) {
         // set loading flag
         $scope.busyLoadingData = false;
         var nginfiniteActive = false,
@@ -20,7 +20,8 @@ angular.module('tekForumApp')
          **/
         $scope.GetCategories = function () {
             FactoryCategory.get().success(function (Data) {
-                $scope.categoryList = Data.category_list.categories;
+                $rootScope.customNav.url = 'views/nav-main.html';
+                $rootScope.customNav.scope.categoryList = Data.category_list.categories;
                 localStorageService.set('categoryList', JSON.stringify(Data.category_list.categories));
             });
         };
@@ -32,11 +33,16 @@ angular.module('tekForumApp')
         $scope.GetTopics = function () {
             if ($routeParams.id) {
                 FactoryTopic.getLatestCategory($routeParams.id).success(function (Data) {
+                    $scope.category = true;
+                    if ($routeParams.name) {
+                        $scope.categoryName = $routeParams.name;
+                    }
                     $scope.UpdateTopics(Data, null, true);
                 });
 
             } else {
                 FactoryTopic.getLatest().success(function (Data) {
+                    $scope.category = false;
                     $scope.UpdateTopics(Data, localStorageService, true);
                 });
             }
@@ -72,6 +78,10 @@ angular.module('tekForumApp')
             if ($routeParams.id) {
                 FactoryTopic.getLatestCategory($routeParams.id, $scope.page).success(function (Data) {
                     // set loading flag
+                    $scope.category = true;
+                    if ($routeParams.name) {
+                        $scope.categoryName = $routeParams.name;
+                    }
                     $scope.busyLoadingData = false;
                     $scope.UpdateTopics(Data);
                 });
@@ -79,6 +89,7 @@ angular.module('tekForumApp')
             } else {
                 FactoryTopic.getLatest($scope.page).success(function (Data) {
                     // set loading flag
+                    $scope.category = false;
                     $scope.busyLoadingData = false;
                     $scope.UpdateTopics(Data);
                 });
@@ -91,22 +102,22 @@ angular.module('tekForumApp')
          **/
         var init = function () {
             // begin listening to the phones network status
-            var polling = function () {
-                /**$interval(function () {
-                    if (!nginfiniteActive && !PhoneGap.paused) {
-                        wait = 3000;
-                        $scope.GetTopics();
-                        //checkNotifications();
-                    } else {
-                        wait = 5000;
-                    }
-                }, wait); **/ // Temporarily disabled until push nitification pulling is completed, and this is integrated in
-            };
-            polling();
+//            var polling = function () {
+//                $interval(function () {
+//                    if (!nginfiniteActive && !PhoneGap.paused) {
+//                        wait = 3000;
+//                        $scope.GetTopics();
+//                        //checkNotifications();
+//                    } else {
+//                        wait = 5000;
+//                    }
+//                }, wait); // Temporarily disabled until push nitification pulling is completed, and this is integrated in
+//            };
+//            polling();
 
             // if not a category and available, load the categories and topics from local storage, to quickly render results to user before rebuilding from data on server
             if (!$routeParams.id && !$scope.topicList) {
-                $scope.categoryList = localStorageService.get('categoryList');
+                $rootScope.customNav.scope.categoryList = localStorageService.get('categoryList');
                 $scope.topicList = localStorageService.get('topicList') || [];
             }
             $scope.page = 1;
