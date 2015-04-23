@@ -3,7 +3,7 @@
     <ul id="topic-board" class="list-group">
         <li class="list-group-item" ng-repeat="(index, topic) in topics">
             <a href="#/topic/{{topic.id}}" class="local no-styling">
-                <h4>{{topic.fancy_title}}</h4>
+                <h4 ng-bind-html="topic.fancy_title | Sanitize"></h4>
                 <div class="overflow-limit" ng-bind-html="posts[index].cooked | Sanitize"></div>
             </a>
         </li>

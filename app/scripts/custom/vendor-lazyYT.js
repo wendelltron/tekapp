@@ -8,7 +8,7 @@
  * Usage: <div class="lazyYT" data-youtube-id="laknj093n" data-parameters="rel=0">loading...</div>
  */
 
-;
+
 (function ($) {
     'use strict';
 
@@ -47,7 +47,7 @@
         //
         // This HTML will be placed inside 'lazyYT' container
 
-        innerHtml.push('<div class="ytp-thumbnail">');
+        innerHtml.push('<div class="ytp-thumbnail" onClick="' + "(function (e) {e.preventDefault(); console.log('hello'); window.open('https://www.youtube.com/watch?v=" + id + '&' + youtube_parameters + "', '_system');})(event)" + '">');
 
         // Play button from YouTube (exactly as it is in YouTube)
         innerHtml.push('<div class="ytp-large-play-button"');
@@ -93,17 +93,12 @@
         $thumb = $el.find('.ytp-thumbnail').css({
                 'background-image': ['url(https://img.youtube.com/vi/', id, '/', thumb_img, ')'].join('')
             })
-            .addClass('lazyYT-image-loaded')
-            .on('click', function (e) {
-                e.preventDefault();
-                if (!$el.hasClass('lazyYT-video-loaded') && $thumb.hasClass('lazyYT-image-loaded')) {
-                    window.open("https://www.youtube.com/watch?v=" + id + "&" + youtube_parameters, "_system");
-                }
-            });
+            .addClass('lazyYT-image-loaded');
 
-        $.getJSON('https://gdata.youtube.com/feeds/api/videos/' + id + '?v=2&alt=json', function (data) {
-            $el.find('#lazyYT-title-' + id).text(data.entry.title.$t);
-        });
+
+        setTimeout($.getJSON('https://gdata.youtube.com/feeds/api/videos/' + id + '?v=2&alt=json', function (data) {
+            $('body').find('#lazyYT-title-' + id).text(data.entry.title.$t);
+        }), 1000);
 
     }
 

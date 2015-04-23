@@ -16,7 +16,7 @@
     <ul class="list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchTopics()" infinite-scroll-distance="2" infinite-scroll-parent="true">
         <li class="list-group-item" ng-if="topicList" ng-repeat="topic in topicList">
             <a href="#/topic/{{topic.id}}" class="local no-styling">
-                <h4><span ng-if="topic.pinned"><i class="fa fa-thumb-tack"></i> </span>{{topic.title}}</h4>
+                <h4><span ng-if="topic.pinned"><i class="fa fa-thumb-tack"></i> </span><span ng-bind-html="topic.title | Sanitize"></span></h4>
                 <p class="no-styling" ng-bind-html="topic.excerpt | Sanitize"></p>
                 <div class="text-right">
                     <nobr><i class="fa fa-eye margin-right-5px"></i><span class="badge badge-default">{{topic.views}}</span>
