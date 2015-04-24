@@ -63,7 +63,6 @@ angular.module('tekForumApp')
             if (storage) {
                 storage.set('topicList', JSON.stringify(Data.topic_list.topics));
             }
-            $('.canvas-slid').offcanvas('hide');
         };
 
         /**

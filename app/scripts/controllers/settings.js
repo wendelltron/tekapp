@@ -17,6 +17,5 @@ angular.module('tekForumApp')
                     FactoryUserStorage.user.prefs = $scope.userPrefs;
                     FactoryUserStorage.save();
                 };
-                $('.canvas-slid').offcanvas('hide');
             });
     });

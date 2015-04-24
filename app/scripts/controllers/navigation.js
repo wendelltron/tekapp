@@ -14,7 +14,7 @@ angular.module('tekForumApp')
           
           $scope.nav = $rootScope.customNav;
           $scope.routeParams = $routeParams;
-          $scope.menuVisible = false;
+          $rootScope.menuVisible = false;
           $scope.user = FactoryUserStorage.user;
           $scope.alerts = FactoryOnscreenNotifications.shown;
           $scope.closeAlert = function(id) {
@@ -25,8 +25,8 @@ angular.module('tekForumApp')
            * Reveals the off canvas menu
            * @method ShowMenu
            **/
-          $scope.ShowMenu = function () {
-              if (!$scope.menuVisible) {
+          $rootScope.ShowMenu = function () {
+              if (!$rootScope.menuVisible) {
                   $('#right-menu').offcanvas('show');
               }
           };
@@ -35,8 +35,8 @@ angular.module('tekForumApp')
            * Hides the off canvas menu
            * @method HideMenu
            **/
-          $scope.HideMenu = function () {
-              if ($scope.menuVisible) {
+          $rootScope.HideMenu = function () {
+              if ($rootScope.menuVisible) {
                   $('#right-menu').offcanvas('hide');
               }
           };
@@ -45,8 +45,8 @@ angular.module('tekForumApp')
            * Hides the off canvas menu, if open, otherwise navigate back
            * @method SwipeRight
            **/
-          $scope.SwipeRight = function () {
-              if ($scope.menuVisible) {
+          $rootScope.SwipeRight = function () {
+              if ($rootScope.menuVisible) {
                   $('#right-menu').offcanvas('hide');
               } else {
                   window.history.back();
@@ -57,19 +57,19 @@ angular.module('tekForumApp')
            * Toggles the off canvas menu
            * @method ToggleMenu
            **/
-          $scope.ToggleMenu = function () {
+          $rootScope.ToggleMenu = function () {
               $('#right-menu').offcanvas('toggle');
           };
 
           // Bind events for navigating through the app
           $('#right-menu').on('show.bs.offcanvas', function () {
-              $scope.menuVisible = true;
+              $rootScope.menuVisible = true;
           });
           $('#right-menu').on('hide.bs.offcanvas', function () {
-              $scope.menuVisible = false;
+              $rootScope.menuVisible = false;
           });
 
 
-          document.addEventListener('menubutton', $scope.ToggleMenu, false);
+          document.addEventListener('menubutton', $rootScope.ToggleMenu, false);
     });
     });

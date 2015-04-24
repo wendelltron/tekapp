@@ -42,7 +42,6 @@ angular.module('tekForumApp')
         var init = function () {
             FactoryUser.getFormID().success(function (data) {
                 $scope.user.form_build_id = $(data).find('input[name="form_build_id"]').val();
-                $('.canvas-slid').offcanvas('hide');
             });
         };
 

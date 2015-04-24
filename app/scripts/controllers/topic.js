@@ -38,6 +38,7 @@ angular.module('tekForumApp')
 //                console.log('post-' + postNumber);
                 $rootScope.customNav.scope.scrollFormInvalid = false;
                 angular.element(document.getElementsByClassName('infinite')).scrollToElementAnimated(angular.element(document.getElementById('post-' + postNumber)), 0, 750);
+                $rootScope.HideMenu();
             }
             else if (form) {
                 $rootScope.customNav.scope.scrollFormInvalid = true;
