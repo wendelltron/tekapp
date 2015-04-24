@@ -15,4 +15,5 @@
 .navmenu,
 .navbar-offcanvas {
     min-width: 50px !important;
+    overflow-x: hidden;
 }

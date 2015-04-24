@@ -104,9 +104,14 @@ angular
                 });
             }
             FactoryOnscreenNotifications.init(function () {
-                PhoneGap.init(function () {
+                if (!!window.cordova) {
+                    PhoneGap.init(function () {
+                        $rootScope.ajaxCall.resolve();
+                    });
+                }
+                else {
                     $rootScope.ajaxCall.resolve();
-                });
+                }
             });
         });
     });
