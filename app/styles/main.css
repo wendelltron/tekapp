@@ -124,6 +124,10 @@ blockquote {
     color: white;
 }
 
+.margin-bottom-0 {
+    margin-bottom: 0;
+}
+
 .margin-left-15px {
     padding-left: 15px;
 }

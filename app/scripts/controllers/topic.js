@@ -8,10 +8,10 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('TopicCtrl', function ($scope, $routeParams, FactoryTopic, FormatHTML) {
+    .controller('TopicCtrl', function ($scope, $rootScope, $routeParams, FactoryTopic, FormatHTML) {
         // set loading flag
         $scope.busyLoadingData = false;
-
+    
         /**
          * Initializes the controller, and formats the html content on load
          * @method init
@@ -26,10 +26,28 @@ angular.module('tekForumApp')
 //                console.log(data);
                 $scope.postCount = data.post_stream.posts.length;
                 $scope.MAXPOSTCOUNT = data.posts_count;
-                $('.canvas-slid').offcanvas('hide');
+                $rootScope.customNav.scope.maxpostcount = data.posts_count;
+                $rootScope.customNav.scope.scrolledPost = '';
+                $rootScope.customNav.scope.scrollFormInvalid = false;
+                $rootScope.customNav.url = 'views/nav-topic.html';
             });
         };
-
+        
+        $scope.scrollPost = function(postNumber, form) {
+            if (form && !isNaN(postNumber) && postNumber > 0) {
+//                console.log('post-' + postNumber);
+                $rootScope.customNav.scope.scrollFormInvalid = false;
+                angular.element(document.getElementsByClassName('infinite')).scrollToElementAnimated(angular.element(document.getElementById('post-' + postNumber)), 0, 750);
+            }
+            else if (form) {
+                $rootScope.customNav.scope.scrollFormInvalid = true;
+            }
+            else if (!form) {
+                angular.element(document.getElementsByClassName('infinite')).scrollToElementAnimated(angular.element(document.getElementById('post-' + postNumber)), 0, 750);
+            }
+        };
+        $rootScope.customNav.scope.scrollPost = $scope.scrollPost;
+        
         /**
          * Called when nearing bottom of the page, looks for more posts, if available
          * @method FetchPosts

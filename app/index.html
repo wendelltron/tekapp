@@ -38,7 +38,7 @@
         <!-- Menu at the top of the screen -->
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header col-xs-12">
-                <a class="navbar-brand no-padding" href="#/"><img class="img img-brand" src="images/rtwwhite.png" />
+                <a class="navbar-brand no-padding local" href="#/"><img class="img img-brand" src="images/rtwwhite.png" />
                 </a>
                 <button type="button" class="btn btn-default pull-right" style="margin-top:6px;" data-toggle="offcanvas" data-target="#right-menu">
                     <span class="sr-only">Toggle navigation</span>
@@ -48,7 +48,7 @@
             <!-- /.container-fluid -->
         </div>
 
-        <div class="container-fluid pad-top full-height" id="wrapper">
+        <div class="container-fluid pad-top full-height" du-scroll-container id="wrapper">
             <div class="onscreen-alerts">
                 <div class="onscreen-alert fx-bounce-down" ng-repeat="alert in alerts" role="alert" ng-switch="alert.dissmissable">
                     <div ng-switch-when="false" ng-attr-class="alert alert-{{alert.style}}">
@@ -85,6 +85,7 @@
     <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
     <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
     <script src="bower_components/ngFx/dist/ngFx.js"></script>
+    <script src="bower_components/angular-scroll/angular-scroll.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -112,7 +113,6 @@
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/navigation.js"></script>
     <script src="scripts/controllers/notifications.js"></script>
-    <script src="scripts/controllers/search.js"></script>
     <script src="scripts/services/formathtml.js"></script>
     <script src="scripts/directives/right-control.js"></script>
     <script src="scripts/controllers/searchtopics.js"></script>

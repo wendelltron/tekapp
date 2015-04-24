@@ -1,7 +1,7 @@
 <div pull-to-refresh="GetPosts()" class="infinite full-height">
     <h4>{{topic.title}}</h4>
     <ul id="topic-board" class="formatHTML list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchPosts()" infinite-scroll-distance="2" infinite-scroll-parent="true">
-        <li class="list-group-item" ng-if="topic" ng-attr-id="post-{{post.number}}" ng-repeat="post in topic.post_stream.posts">
+        <li class="list-group-item" ng-if="topic" ng-attr-id="post-{{post.post_number}}" ng-repeat="post in topic.post_stream.posts">
 
             <!--
                 User Info panel
@@ -20,7 +20,7 @@
                 <p class="topic_height col-xs-6 col-sm-4 text-right"><em>{{post.created_at | moment:"fromNow"}}</em>
                 </p>
             </div>
-            <a ng-if="post.reply_to_post_number" class="visible-xs-block reply-panel no-styling">
+            <a ng-if="post.reply_to_post_number" href="" ng-click="scrollPost(post.reply_to_post_number, false)" class="visible-xs-block local reply-panel no-styling">
                 <i class="fa fa-reply margin-right-5px margin-left-15px"></i>
                 <img class="visible-xs-inline" ng-if="post.reply_to_user.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded pad-top-5" ng-src="https://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{post.reply_to_user.username}}/20/{{post.reply_to_user.avatar_template | ExtractFile}}">
                 <img class="visible-xs-inline" ng-if="post.reply_to_user.avatar_template.substring(0,15) === '/letter_avatar/'" class="img img-responsive img-rounded pad-top-5" ng-src="https://forum.teksyndicate.com/letter_avatar/{{post.reply_to_user.username}}/20/{{post.reply_to_user.avatar_template | ExtractFile}}">
@@ -47,4 +47,5 @@
             </div>
         </li>
     </ul>
+    <span id="bottom"></span>
 </div>

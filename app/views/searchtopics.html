@@ -1,8 +1,32 @@
-<form ng-submit="search()">
-    <div class="form-group">
-        <input class="form-control" type="text" placeholder="Search..." ng-model="query" />
+<div class="infinite full-height">
+    <form ng-submit="search(query)">
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Search..." ng-model="query" />
+            <input class="form-control btn btn-default" value="Search" type="submit" />
+        </div>
+    </form>
+    <div id="results" ng-if="showTopics">
+        <h4>Search: <small>{{querySearched}}</small></h4>
+        <ul id="topic-board" class="list-group">
+            <li class="list-group-item" ng-repeat="(index, topic) in topics">
+                <a href="#/topic/{{topic.id}}" class="local no-styling">
+                    <h4><span ng-if="topic.pinned"><i class="fa fa-thumb-tack"></i> </span><span ng-bind-html="topic.fancy_title | Sanitize"></span> <small ng-bind-html="topic.last_posted_at | moment:'fromNow'"></small></h4>
+                    <div class="overflow-limit" ng-bind-html="posts[index].blurb | Sanitize"></div>
+                    <div class="text-right">
+                        <nobr><i class="fa fa-eye margin-right-5px"></i><span class="badge badge-default">{{topic.views}}</span>
+                        </nobr>
+                        <nobr><i class="fa fa-heart margin-right-5px margin-left-15px"></i><span class="badge badge-default">{{topic.like_count}}</span>
+                        </nobr>
+                        <nobr><i class="fa fa-list margin-right-5px margin-left-15px"></i><span class="badge badge-default">{{topic.posts_count}}</span>
+                        </nobr>
+                        <nobr><i class="fa fa-reply margin-right-5px margin-left-15px"></i><span class="badge badge-default">{{topic.reply_count}}</span>
+                        </nobr>
+                    </div>
+                </a>
+            </li>
+            <li class="list-group-item" ng-show="!topics.length">
+                <strong><em>No topics found!</em></strong>
+            </li>
+        </ul>
     </div>
-    <div class="form-group">
-        <input class="form-control btn btn-default" value="Search" type="submit" />
-    </div>
-</form>
+</div>

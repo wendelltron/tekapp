@@ -1,5 +1,13 @@
-<h5>Categories</h5>
-<div class="list-group">
-    <a ng-attr-class="list-group-item local {{!routeParams.id && 'active' || '' }}" href="#/">All</a>
-    <a ng-repeat="category in nav.scope.categoryList" ng-attr-class="list-group-item local {{routeParams.id == category.id && 'active' || '' }}" href="#/category/{{category.id}}/{{category.name}}">{{category.name}}</a>
-</ul>
+<hr>
+<div class="panel panel-default">
+    <button class="btn btn-default btn-block" type="button" ng-click="scrollTop();HideMenu();">Jump to Top</button>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h5 class="panel-title">Categories</h5>
+    </div>
+    <div class="list-group">
+        <a ng-attr-class="list-group-item local {{!routeParams.id && 'active' || '' }}" href="#/">All</a>
+        <a ng-repeat="category in nav.scope.categoryList" ng-attr-class="list-group-item local {{routeParams.id == category.id && 'active' || '' }}" href="#/category/{{category.id}}/{{category.name}}">{{category.name}}</a>
+    </div>
+</div>

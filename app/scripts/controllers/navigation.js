@@ -30,6 +30,16 @@ angular.module('tekForumApp')
                   $('#right-menu').offcanvas('show');
               }
           };
+          
+          /**
+           * Hides the off canvas menu
+           * @method HideMenu
+           **/
+          $scope.HideMenu = function () {
+              if ($scope.menuVisible) {
+                  $('#right-menu').offcanvas('hide');
+              }
+          };
 
           /**
            * Hides the off canvas menu, if open, otherwise navigate back
