@@ -6,12 +6,12 @@
         </li>
         <li class="list-group-item">
             <div ng-attr-class="{{nav.scope.scrollFormInvalid && 'has-error ' || '' }}form-group margin-bottom-0">
-                <div class="input-group">
+                <form class="input-group">
                     <input type="number" pattern="\d*" validate min="1" step="1" ng-attr-max="{{nav.scope.maxpostcount}}" ng-model="nav.scope.scrolledPost" class="form-control" ng-attr-placeholder="Jump to Post # (of {{nav.scope.maxpostcount}})">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" ng-click="nav.scope.scrollPost(nav.scope.scrolledPost, true);"><i class="fa fa-arrow-right"></i></button>
+                        <button type="submit" class="btn btn-default" type="button" ng-click="nav.scope.scrollPost(nav.scope.scrolledPost, true);"><i class="fa fa-arrow-right"></i></button>
                     </span>
-                </div>
+                </form>
             </div>
         </li>
         <li class="list-group-item">

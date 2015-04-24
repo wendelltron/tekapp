@@ -9,6 +9,9 @@
     "installed_plugins": {
         "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
         }
     },
     "dependent_plugins": {}

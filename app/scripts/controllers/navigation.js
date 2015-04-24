@@ -68,8 +68,7 @@ angular.module('tekForumApp')
           $('#right-menu').on('hide.bs.offcanvas', function () {
               $rootScope.menuVisible = false;
           });
-
-
+        
           document.addEventListener('menubutton', $rootScope.ToggleMenu, false);
     });
     });

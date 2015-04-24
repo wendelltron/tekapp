@@ -87,6 +87,7 @@ angular
         $rootScope.$on('$routeChangeSuccess', function (newRoute, oldRoute) {
             $rootScope.customNav.url = '';
             $rootScope.customNav.scope = {};
+            $rootScope.HideMenu();
         });
         $rootScope.scrollTop = function() {
             angular.element(document.getElementsByClassName('infinite')).scrollTopAnimated(0, 750);

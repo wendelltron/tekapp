@@ -44,7 +44,7 @@
     <preference name="StatusBarStyle" value="lightcontent" />
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.network-information" />
-    <icon src="icon.png" />
+    <icon src="res/icon/icon.png" />
     <platform name="amazon-fireos">
         <icon density="ldpi" height="36" src="res/icon/android/icon-36-ldpi.png" width="36" />
         <icon density="mdpi" height="48" src="res/icon/android/icon-48-mdpi.png" width="48" />
