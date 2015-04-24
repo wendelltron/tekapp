@@ -104,8 +104,9 @@ angular
                 });
             }
             FactoryOnscreenNotifications.init(function () {
-                PhoneGap.init();
-                $rootScope.ajaxCall.resolve();
+                PhoneGap.init(function () {
+                    $rootScope.ajaxCall.resolve();
+                });
             });
         });
     });

@@ -17,7 +17,7 @@ angular.module('tekForumApp')
             offline: false,
             wifiOffline: false
         };
-        PhoneGap.init = function() {
+        PhoneGap.init = function(callback) {
             // console.log('PhoneGapInit');
             document.addEventListener('deviceready', function () {
                 // console.log('PhoneGapInit device ready');
@@ -65,6 +65,7 @@ angular.module('tekForumApp')
                     PhoneGap.paused = false;
                     PhoneGap.checkWifi();
                 }, false);
+                callback();
             }, false);
         };
         PhoneGap.enableOffline = function() {
