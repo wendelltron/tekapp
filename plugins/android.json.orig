@@ -13,6 +13,10 @@
                             "count": 1
                         },
                         {
+                            "xml": "<preference name=\"webView\" value=\"org.crosswalk.engine.XWalkWebViewEngine\" />",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
@@ -31,10 +35,13 @@
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
+<<<<<<< HEAD
+=======
                         },
                         {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+>>>>>>> 14e64213bcf5709f7718f88a83a17ba2b8cf4ec1
                         }
                     ]
                 }
@@ -55,6 +62,9 @@
         "com.jean1880.CookieJar": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
@@ -69,9 +79,12 @@
         },
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
+<<<<<<< HEAD
+=======
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
+>>>>>>> 14e64213bcf5709f7718f88a83a17ba2b8cf4ec1
         }
     },
     "dependent_plugins": {}

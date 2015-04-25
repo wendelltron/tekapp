@@ -7,10 +7,25 @@
         "files": {}
     },
     "installed_plugins": {
-        "org.apache.cordova.splashscreen": {
+        "com.jean1880.CookieJar": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
         "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         }
     },
