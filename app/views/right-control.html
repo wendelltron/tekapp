@@ -1,36 +1,19 @@
 <div>
-    <ul class="nav navbar-nav">
-        <li>
-            <a href="#/main" class="no-styling btn local" data-toggle="dropdown" role="button"><i class="fa fa-home fa-2x"></i>
+
+    <a href="#/main" class="no-styling btn btn-block local" data-toggle="dropdown" role="button"><i class="fa fa-home fa-2x"></i>
                 </a>
-        </li>
-        <li ng-if="user.loggedIn">
-            <a href="#/profile" class="no-styling btn local" data-toggle="dropdown" role="button">
-                <img ng-if="user.profile.user.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded center-block" ng-src="https://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{user.username}}/40/{{user.profile.user.avatar_template | ExtractFile}}">
-                <img ng-if="user.profile.user.avatar_template.substring(0,15) === '/letter_avatar/'" class="img img-responsive img-rounded center-block" ng-src="https://forum.teksyndicate.com/letter_avatar/{{user.username}}/40/{{user.profile.user.avatar_template | ExtractFile}}">
-            </a>
-        </li>
-        <li ng-if="user.loggedIn">
-            <a href="#/notifications" class="no-styling btn local" data-toggle="dropdown" role="button">
-                <i class="fa fa-comment fa-2x"><span ng-if="user.notificationsCount > 0" class="badge bootstrap-fa-badge">{{user.notificationsCount}}</span></i>
-            </a>
-        </li>
-        <li>
-            <a href="#/searchTopics" class="no-styling btn local" data-toggle="dropdown" role="button"> <i class="fa fa-search fa-2x"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#/settings" class="no-styling btn local" data-toggle="dropdown" role="button"> <i class="fa fa-gear fa-2x"></i>
-            </a>
-        </li>
-        <!--<li ng-if="!user.loggedIn">
-            <a href="#/login" class="no-styling btn local" data-toggle="dropdown" role="button"><i class="fa fa-sign-in fa-2x"></i>
-                </a>
-        </li>--><!-- DISABLED FOR FIRST BETA RELEASE (NO LOGIN RELEASE) -->
-        <li ng-if="user.loggedIn">
-            <a href="#/logout" class="no-styling btn local" data-toggle="dropdown" role="button"><i class="fa fa-sign-out fa-2x"></i>
-                </a>
-        </li>
-    </ul>
+    <div ng-if="user.loggedIn">
+        <a href="#/profile" class="no-styling btn btn-block local" data-toggle="dropdown" role="button">
+            <img ng-if="user.profile.user.avatar_template.substring(0,35) === '/user_avatar/forum.teksyndicate.com'" class="img img-responsive img-rounded center-block" ng-src="https://forum.teksyndicate.com/user_avatar/forum.teksyndicate.com/{{user.username}}/40/{{user.profile.user.avatar_template | ExtractFile}}">
+            <img ng-if="user.profile.user.avatar_template.substring(0,15) === '/letter_avatar/'" class="img img-responsive img-rounded center-block" ng-src="https://forum.teksyndicate.com/letter_avatar/{{user.username}}/40/{{user.profile.user.avatar_template | ExtractFile}}">
+        </a>
+        <a href="#/notifications" class="no-styling btn btn-block local" data-toggle="dropdown" role="button">
+            <i class="fa fa-comment fa-2x"><span ng-if="user.notificationsCount > 0" class="badge bootstrap-fa-badge">{{user.notificationsCount}}</span></i>
+        </a>
+    </div>
+    <a href="#/searchTopics" class="no-styling btn btn-block local" data-toggle="dropdown" role="button"> <i class="fa fa-search fa-2x"></i>
+    </a>
+    <a href="#/settings" class="no-styling btn btn-block local" data-toggle="dropdown" role="button"> <i class="fa fa-gear fa-2x"></i>
+    </a>
     <div ng-include="nav.url"></div>
 </div>
