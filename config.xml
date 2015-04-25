@@ -138,6 +138,10 @@
     <platform name="webos">
         <splash height="64" src="res/screen/webos/splash-64.png" width="64" />
     </platform>
-    <plugin name="cordova-plugin-whitelist" spec="1" />
     <engine name="android" spec="4.0.0" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="cordova-plugin-crosswalk-webview" spec="^1.2.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^1.0.0" />
+    <plugin name="cordova-plugin-network-information" spec="^1.0.0" />
+    <plugin name="cordova-plugin-splashscreen" spec="^2.0.0" />
 </widget>
