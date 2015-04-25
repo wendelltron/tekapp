@@ -66,6 +66,7 @@
     </platform>
     <platform name="firefoxos">
         <icon height="60" src="res/icon/firefoxos/icon-60.png" width="60" />
+        <icon height="60" src="res/icon/firefoxos/icon-128.png" width="128" />
     </platform>
     <platform name="ios">
         <icon height="180" src="res/icon/ios/icon-60@3x.png" width="180" />
