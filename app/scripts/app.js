@@ -40,8 +40,10 @@ angular
                 controller: 'MainCtrl'
             })
             .when('/about', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl'
+                templateUrl: 'views/about.html'
+            })
+            .when('/openSourceCredits', {
+                templateUrl: 'views/openSourceCredits.html'
             })
             .when('/topic/:id', {
                 templateUrl: 'views/topic.html',
@@ -87,7 +89,9 @@ angular
         $rootScope.$on('$routeChangeSuccess', function (newRoute, oldRoute) {
             $rootScope.customNav.url = '';
             $rootScope.customNav.scope = {};
-            $rootScope.HideMenu();
+			$rootScope.ajaxCall.promise.then(function () {
+				$rootScope.HideMenu();
+			});
         });
         $rootScope.scrollTop = function() {
             angular.element(document.getElementsByClassName('infinite')).scrollTopAnimated(0, 750);

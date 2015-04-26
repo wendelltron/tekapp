@@ -9,12 +9,6 @@
  */
 angular.module('tekForumApp')
     .controller('NavigationCtrl', function ($scope, $rootScope, $routeParams, FactoryUserStorage, FactoryOnscreenNotifications) {
-        document.addEventListener('menubutton', function () {
-            $rootScope.ToggleMenu();
-        }, false);
-        document.addEventListener('backbutton', function () {
-            $rootScope.SwipeRight();
-        }, false);
         $scope.ajaxCall.promise.then(function () {
             // listen for android options button
 

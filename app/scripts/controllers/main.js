@@ -42,6 +42,7 @@ angular.module('tekForumApp')
 
             } else {
                 FactoryTopic.getLatest().success(function (Data) {
+//                    console.log(Data);
                     $scope.category = false;
                     $scope.UpdateTopics(Data, localStorageService, true);
                 });

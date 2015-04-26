@@ -8,7 +8,7 @@
  * Service in the tekForumApp.
  */
 angular.module('tekForumApp')
-    .service('PhoneGap', function ($rootScope, FactoryOnscreenNotifications, $cordovaNetwork, FactoryUserStorage) {
+    .service('PhoneGap', function ($rootScope, FactoryOnscreenNotifications, $cordovaNetwork,  $cordovaAppVersion, $cordovaDevice, FactoryUserStorage) {
         var PhoneGap = {
             connection: false,
             connected: true,
@@ -36,6 +36,17 @@ angular.module('tekForumApp')
                 }
                 PhoneGap.checkOffline();
                 PhoneGap.checkWifi();
+                
+                $cordovaAppVersion.getAppVersion().then(function (version) {
+                    $rootScope.appVersion = version;
+                });
+                $rootScope.appDevice = $cordovaDevice.getDevice();
+                $rootScope.appCordova = $cordovaDevice.getCordova();
+                $rootScope.appModel = $cordovaDevice.getModel();
+                $rootScope.appPlatform = $cordovaDevice.getPlatform();
+                $rootScope.appUUID = $cordovaDevice.getUUID();
+                $rootScope.appPlatformVersion = $cordovaDevice.getVersion();
+                
                 $rootScope.$on('FactoryUserStorage:update', function(event, args){
                     // console.log('PhoneGapInit broadcast received');
                     PhoneGap.checkOffline();
@@ -65,6 +76,18 @@ angular.module('tekForumApp')
                     PhoneGap.paused = false;
                     PhoneGap.checkWifi();
                 }, false);
+				document.addEventListener('menubutton', function (event) {
+					// console.log('PhoneGapInit menubutton event');
+					$rootScope.ajaxCall.promise.then(function () {
+						$rootScope.ToggleMenu();
+					});
+				}, false);
+				document.addEventListener('backbutton', function (event) {
+					// console.log('PhoneGapInit backbutton event');
+					$rootScope.ajaxCall.promise.then(function () {
+						$rootScope.SwipeRight();
+					});
+				}, false);
                 callback();
             }, false);
         };

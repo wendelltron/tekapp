@@ -1,7 +1,38 @@
 <div class="infinite full-height">
-    <ul>
-        <li>
-            <a href="https://www.theleagueofmoveabletype.com/orbitron">Orbitron Font</a>
-        </li>
-    </ul>
+    <div class="container-fluid">
+        <h3 class="text-center"><span class="logo-font">tek syndicate app</span><br><small>Created for the community by the comminity itself</small></h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5 class="panel-title"><i class="fa fa-user-plus pull-right"></i>Contributing</h5>
+            </div>
+            <div class="list-group">
+                <a class="list-group-item" href="https://github.com/wendelltron/tekapp"><i class="fa fa-github-alt pull-right"></i>GitHub</a>
+                <a class="list-group-item" href="https://github.com/wendelltron/tekapp/wiki"><i class="fa fa-book pull-right"></i>Wiki</a>
+                <a class="list-group-item" href="https://github.com/wendelltron/tekapp/issues"><i class="fa fa-bug pull-right"></i>Issues</a>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5 class="panel-title"><i class="fa fa-users pull-right"></i>Contributors</h5>
+            </div>
+            <div class="list-group">
+                <a class="list-group-item local" href="#/users/wendell"><i class="fa fa-user pull-right"></i>wendell</a>
+                <a class="list-group-item local" href="#/users/jean1880"><i class="fa fa-user pull-right"></i>jean1880</a>
+                <a class="list-group-item local" href="#/users/DaAwesomeP"><i class="fa fa-user pull-right"></i>DaAwesomeP</a>
+                <p class="list-group-item local"><i class="fa fa-globe pull-right"></i>The Tek Syndicate Community as a whole</p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5 class="panel-title"><i class="fa fa-info pull-right"></i>Details</h5>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">Version: {{appVersion || 'Unknown'}}</li>
+                <li class="list-group-item">OS: {{appPlatform}} {{appPlatformVersion || 'Unknown'}}</li>
+                <li class="list-group-item">Device: {{appModel || 'Unknown'}}</li>
+                <li class="list-group-item">Cordova Version: {{appCordova || 'Unknown'}}</li>
+                <li class="list-group-item">Device UUID: {{appUUID || 'Unknown'}}</li>
+            </ul>
+        </div>
+    </div>
 </div>
