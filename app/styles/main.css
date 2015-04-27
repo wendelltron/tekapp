@@ -10,6 +10,13 @@
     word-wrap: break-word;
 }
 
+.inline {
+    display: inline;
+}
+.inline-block {
+    display: inline-block;
+}
+
 .user-panel {
     position: relative;
     top: -10px;

@@ -18,14 +18,12 @@ angular
     'ngTouch',
     'LocalStorageModule',
     'infinite-scroll',
-    'angular-flash.service',
-    'angular-flash.flash-alert-directive',
     'toggle-switch',
     'ngFx',
     'duScroll',
     'ngCordova'
   ])
-    .config(function ($routeProvider, localStorageServiceProvider, flashProvider, $httpProvider) {
+    .config(function ($routeProvider, localStorageServiceProvider, $httpProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
