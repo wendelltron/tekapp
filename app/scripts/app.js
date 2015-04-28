@@ -83,37 +83,39 @@ angular
         $httpProvider.defaults.xsrfCookieName = '_t';
     }).run(function ($rootScope, $q, $location, FactoryUserStorage, $document, $routeParams, PhoneGap, FactoryOnscreenNotifications, FactoryUser, $timeout) {
         $rootScope.ajaxCall = $q.defer();
-        $rootScope.customNav = { scope:{} };
+        $rootScope.customNav = {
+            scope: {}
+        };
         $rootScope.$on('$routeChangeSuccess', function (newRoute, oldRoute) {
             $rootScope.customNav.url = '';
             $rootScope.customNav.scope = {};
-			$rootScope.ajaxCall.promise.then(function () {
-				$rootScope.HideMenu();
-			});
-        });
-        $rootScope.scrollTop = function() {
-            angular.element(document.getElementsByClassName('infinite')).scrollTopAnimated(0, 750);
-        };
-        $rootScope.scrollBottom = function() {
-            angular.element(document.getElementsByClassName('infinite')).scrollToElementAnimated(angular.element(document.getElementById('bottom')), 0, 750);
-        };
-        FactoryUserStorage.init(function () {
-            if (FactoryUserStorage.user.loggedIn) {
-                FactoryUser.get(false).success(function (data) {
-//                    console.log(data);
-                    FactoryUserStorage.user.profile = data;
-                    FactoryUserStorage.save();
-                });
-            }
-            FactoryOnscreenNotifications.init(function () {
-                if (!!window.cordova) {
-                    PhoneGap.init(function () {
-                        $rootScope.ajaxCall.resolve();
-                    });
-                }
-                else {
-                    $rootScope.ajaxCall.resolve();
-                }
+            $rootScope.ajaxCall.promise.then(function () {
+                $rootScope.HideMenu();
             });
         });
+        $rootScope.scrollTop = function () {
+            angular.element(document.getElementsByClassName('infinite')).scrollTopAnimated(0, 750);
+        };
+        $rootScope.scrollBottom = function () {
+            angular.element(document.getElementsByClassName('infinite')).scrollToElementAnimated(angular.element(document.getElementById('bottom')), 0, 750);
+        };
+        if (!!window.cordova) {
+            PhoneGap.init(function () {
+                $rootScope.ajaxCall.resolve();
+            });
+        } else { // for tessting only
+            FactoryUserStorage.init(function () {
+                if (FactoryUserStorage.user.loggedIn) {
+                    FactoryUser.get(false).success(function (data) {
+                        //                    console.log(data);
+                        FactoryUserStorage.user.profile = data;
+                        FactoryUserStorage.save();
+                    });
+                }
+                FactoryOnscreenNotifications.init(function () {
+                    $rootScope.ajaxCall.resolve();
+                });
+            });
+        }
+
     });

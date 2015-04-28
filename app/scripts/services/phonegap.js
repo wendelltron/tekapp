@@ -20,7 +20,7 @@ angular.module('tekForumApp')
         PhoneGap.init = function (callback) {
             // console.log('PhoneGapInit');
             document.addEventListener('deviceready', function () {
-//                console.log('PhoneGapInit device ready');
+                //                console.log('PhoneGapInit device ready');
                 PhoneGap.ready = true;
                 PhoneGap.connection = $cordovaNetwork.getNetwork();
                 PhoneGap.connected = $cordovaNetwork.isOnline();
@@ -33,8 +33,19 @@ angular.module('tekForumApp')
                         FactoryOnscreenNotifications.add(0);
                     }
                 }
-                PhoneGap.checkOffline();
-                PhoneGap.checkWifi();
+
+                FactoryUserStorage.init(function () {
+                    PhoneGap.checkOffline();
+                    PhoneGap.checkWifi();
+                    if (FactoryUserStorage.user.loggedIn) {
+                        FactoryUser.get(false).success(function (data) {
+                            //                    console.log(data);
+                            FactoryUserStorage.user.profile = data;
+                            FactoryUserStorage.save();
+                        });
+                    }
+                    FactoryOnscreenNotifications.init();
+                });
 
                 $cordovaAppVersion.getAppVersion().then(function (version) {
                     $rootScope.appVersion = version;
@@ -88,7 +99,7 @@ angular.module('tekForumApp')
                     });
                 }, false);
                 document.addEventListener('searchbutton', function (event) {
-//                    console.log('PhoneGapInit searchbutton event');
+                    //                    console.log('PhoneGapInit searchbutton event');
                     $location.path('searchTopics');
                 }, false);
                 callback();
