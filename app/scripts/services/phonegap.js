@@ -8,7 +8,7 @@
  * Service in the tekForumApp.
  */
 angular.module('tekForumApp')
-    .service('PhoneGap', function ($rootScope, FactoryOnscreenNotifications, $cordovaNetwork, $cordovaAppVersion, $cordovaDevice, FactoryUserStorage) {
+    .service('PhoneGap', function ($rootScope, FactoryOnscreenNotifications, $location, $cordovaNetwork, $cordovaAppVersion, $cordovaDevice, FactoryUserStorage) {
         var PhoneGap = {
             connection: false,
             connected: true,
@@ -20,7 +20,7 @@ angular.module('tekForumApp')
         PhoneGap.init = function (callback) {
             // console.log('PhoneGapInit');
             document.addEventListener('deviceready', function () {
-                console.log('PhoneGapInit device ready');
+//                console.log('PhoneGapInit device ready');
                 PhoneGap.ready = true;
                 PhoneGap.connection = $cordovaNetwork.getNetwork();
                 PhoneGap.connected = $cordovaNetwork.isOnline();
@@ -86,6 +86,10 @@ angular.module('tekForumApp')
                     $rootScope.ajaxCall.promise.then(function () {
                         $rootScope.SwipeRight();
                     });
+                }, false);
+                document.addEventListener('searchbutton', function (event) {
+//                    console.log('PhoneGapInit searchbutton event');
+                    $location.path('searchTopics');
                 }, false);
                 callback();
             }, false);

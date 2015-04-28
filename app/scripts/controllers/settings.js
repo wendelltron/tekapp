@@ -14,6 +14,7 @@ angular.module('tekForumApp')
                 $scope.prefs = res.data;
                 $scope.userPrefs = FactoryUserStorage.user.prefs;
                 $scope.change = function () {
+//                    console.log('SettingsCtrl change()');
                     FactoryUserStorage.user.prefs = $scope.userPrefs;
                     FactoryUserStorage.save();
                 };
