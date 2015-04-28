@@ -49,7 +49,7 @@
         </div>
 
         <div class="container-fluid pad-top full-height" du-scroll-container id="wrapper">
-            <div class="onscreen-alerts">
+            <div class="onscreen-alerts ng-cloak">
                 <div class="onscreen-alert fx-bounce-down" ng-repeat="alert in alerts" role="alert" ng-switch="alert.dissmissable">
                     <div ng-switch-when="false" ng-attr-class="alert alert-{{alert.style}}">
                         <strong>{{alert.title}}</strong> {{alert.text}}
