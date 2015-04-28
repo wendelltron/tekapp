@@ -29,6 +29,15 @@ angular.module('tekForumApp')
                     }
                     
                 });
+                $($inputHTML).find('aside.quote').each(function () {
+                    $(this).find('div.title').each(function () {
+                        $(this).find('img.avatar').each(function () {
+                            $(this).before('<i class="inline fa fa-quote-left"></i>');
+                            $(this).removeClass('img-responsive');
+                            $(this).addClass('inline-block');
+                        });
+                    });
+                });
                 $($inputHTML).find('a').each(function () {
                     if ($(this).attr('href')) {
                         if ($(this).attr('href').match('^/users/')) {
