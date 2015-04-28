@@ -43,6 +43,10 @@
                         {
                             "xml": "<feature name=\"AppVersion\"><param name=\"android-package\" value=\"uk.co.whiteoctober.cordova.AppVersion\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -52,6 +56,10 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
                             "count": 1
                         }
                     ]
@@ -85,6 +93,9 @@
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
         "uk.co.whiteoctober.cordova.appversion": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "org.apache.cordova.file": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         }
     },
