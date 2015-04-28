@@ -95,7 +95,7 @@
         "uk.co.whiteoctober.cordova.appversion": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
-        "org.apache.cordova.file": {
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         }
     },

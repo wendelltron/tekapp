@@ -44,6 +44,9 @@
         },
         "uk.co.whiteoctober.cordova.appversion": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
         }
     },
     "dependent_plugins": {}
