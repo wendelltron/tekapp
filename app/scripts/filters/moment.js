@@ -17,5 +17,8 @@ angular.module('tekForumApp')
             else if (type === 'calendar') {
                 return moment(input).calendar();
             }
+            else if (type === 'UnixMs') {
+                return moment(input).format('x');
+           }
         };
     });
