@@ -1,44 +1,46 @@
-<div ng-controller="SettingsCtrl" class="infinite full-height">
+<div ng-controller="SettingsCtrl" class="container-fluid infinite full-height">
     <h3>Settings</h3>
-    <div class="alert alert-info alert-dismissible" role="alert">
+    <!--<div class="alert alert-info alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <strong>Notice:</strong> None of these options currently affect anything.
-    </div>
-    <!--<p>All options are effective immediately.</p>-->
+    </div>-->
+    <p>All options are effective immediately. Double tap an option's name or description to reset it to its default.</p>
     <form name="settingsForm">
-        <ul class="list-group">
-            <li ng-repeat="pref in prefs" class="list-group-item">
-                <div class="container-fluid">
-                    <div class="row">
+        <div class="panel panel-default" ng-repeat="(category, categoryOptions) in prefs" ng-if="!categoryOptions.hide === true">
+            <div class="panel-heading">
+                <h5 class="panel-title"><i ng-if="categoryOptions.faIcon" ng-attr-class="fa fa-{{categoryOptions.faIcon}} pull-right"></i>{{category}}</h5>
+            </div>
+            <ul class="list-group">
+                <li ng-repeat="pref in categoryOptions.options" class="list-group-item" ng-if="!pref.hide === true">
+                    <div class="row" ng-dblclick="!pref.disable && !categoryOptions.disable ? userPrefs[pref.id] = pref.default : return; !pref.disable && !categoryOptions.disable ? change() : return">
                         <div class="col-xs-6 col-md-8 text-left">
                             <strong>{{pref.name}}</strong><small> {{pref.description}}</small>
                         </div>
                         <div class="col-xs-6 col-md-4 text-right">
                             <div ng-switch="pref.type">
-                                <input ng-change="change()" class="form-control input-sm" type="color" ng-switch-when="color" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}"/>
-                                <input ng-change="change()" class="form-control input-sm" type="date" ng-switch-when="date" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.date.min}}" ng-attr-max="{{pref.date.max}}" ng-attr-step="{{pref.date.increment}}"/>
-                                <input ng-change="change()" class="form-control input-sm" type="datetime" ng-switch-when="datetime" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.datetime.min}}" ng-attr-max="{{pref.datetime.max}}" ng-attr-step="{{pref.datetime.increment}}"/>
-                                <input ng-change="change()" class="form-control input-sm" type="datetime-local" ng-switch-when="datetime-local" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref['datetime-local'].min}}" ng-attr-max="{{pref['datetime-local'].max}}" ng-attr-step="{{pref['datetime-local'].increment}}"/>
-                                <input ng-change="change()" class="form-control input-sm" type="email" ng-switch-when="email" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-maxLength="{{pref.email.maxLength}}" ng-attr-placeholder="{{pref.email.placeholder}}" ng-attr-pattern="{{pref.email.pattern}}"/>
-                                <input ng-change="change()" class="form-control input-sm" type="month" ng-switch-when="month" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.month.min}}" ng-attr-max="{{pref.month.max}}" ng-attr-step="{{pref.month.increment}}"/>
-                                <input ng-change="change()" class="form-control input-sm" type="number" ng-switch-when="number" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-min="{{pref.number.min}}" ng-attr-max="{{pref.number.max}}" ng-attr-step="{{pref.number.increment}}"/>
-                                <input ng-change="change()" class="form-control input-sm" type="range" ng-switch-when="range" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-min="{{pref.range.min}}" ng-attr-max="{{pref.range.max}}" ng-attr-step="{{pref.range.increment}}"/><strong ng-switch-when="range">{{userPrefs[pref.id]}}</strong>
-                                <input ng-change="change()" class="form-control input-sm" type="text" ng-switch-when="text" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-maxLength="{{pref.text.maxLength}}" ng-attr-placeholder="{{pref.text.placeholder}}" ng-attr-pattern="{{pref.text.pattern}}"/>
-                                <input ng-change="change()" class="form-control input-sm" type="time" ng-switch-when="time" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.time.min}}" ng-attr-max="{{pref.time.max}}" ng-attr-step="{{pref.time.increment}}"/>
-                                <input ng-change="change()" class="form-control input-sm" type="url" ng-switch-when="url" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-maxLength="{{pref.url.maxLength}}" ng-attr-placeholder="{{pref.url.placeholder}}" ng-attr-pattern="{{pref.url.pattern}}"/>
-                                <input ng-change="change()" class="form-control input-sm" type="week" ng-switch-when="week" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.week.min}}" ng-attr-max="{{pref.week.max}}" ng-attr-step="{{pref.week.increment}}"/>
-                                <select ng-change="change()" class="form-control input-sm" ng-switch-when="select" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-options="item.value as item.label for item in pref.select">
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="color" ng-switch-when="color" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}"/>
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="date" ng-switch-when="date" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.date.min}}" ng-attr-max="{{pref.date.max}}" ng-attr-step="{{pref.date.increment}}"/>
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="datetime" ng-switch-when="datetime" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.datetime.min}}" ng-attr-max="{{pref.datetime.max}}" ng-attr-step="{{pref.datetime.increment}}"/>
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="datetime-local" ng-switch-when="datetime-local" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref['datetime-local'].min}}" ng-attr-max="{{pref['datetime-local'].max}}" ng-attr-step="{{pref['datetime-local'].increment}}"/>
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="email" ng-switch-when="email" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-maxLength="{{pref.email.maxLength}}" ng-attr-placeholder="{{pref.email.placeholder}}" ng-attr-pattern="{{pref.email.pattern}}"/>
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="month" ng-switch-when="month" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.month.min}}" ng-attr-max="{{pref.month.max}}" ng-attr-step="{{pref.month.increment}}"/>
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="number" ng-switch-when="number" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-min="{{pref.number.min}}" ng-attr-max="{{pref.number.max}}" ng-attr-step="{{pref.number.increment}}"/>
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="range" ng-switch-when="range" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-min="{{pref.range.min}}" ng-attr-max="{{pref.range.max}}" ng-attr-step="{{pref.range.increment}}"/><strong ng-switch-when="range">{{userPrefs[pref.id]}}</strong>
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="text" ng-switch-when="text" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-maxLength="{{pref.text.maxLength}}" ng-attr-placeholder="{{pref.text.placeholder}}" ng-attr-pattern="{{pref.text.pattern}}"/>
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="time" ng-switch-when="time" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.time.min}}" ng-attr-max="{{pref.time.max}}" ng-attr-step="{{pref.time.increment}}"/>
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="url" ng-switch-when="url" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-maxLength="{{pref.url.maxLength}}" ng-attr-placeholder="{{pref.url.placeholder}}" ng-attr-pattern="{{pref.url.pattern}}"/>
+                                <input ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" type="week" ng-switch-when="week" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-attr-defaultValue="{{pref.default}}" ng-attr-min="{{pref.week.min}}" ng-attr-max="{{pref.week.max}}" ng-attr-step="{{pref.week.increment}}"/>
+                                <select ng-change="change()" class="form-control input-sm" ng-disabled="pref.disable || categoryOptions.disable" ng-switch-when="select" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" ng-options="item.value as item.label for item in pref.select">
                                     <option ng-repeat="(key, value) in pref.select" ng-attr-value="{{key}}">{{value}}</option>
                                 </select>
-                                <toggle-switch ng-change="change()" ng-switch-when="onoff" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" on-label="On" off-label="Off"></toggle-switch>
+                                <toggle-switch ng-change="change()" ng-disabled="pref.disable || categoryOptions.disable" ng-switch-when="onoff" ng-model="userPrefs[pref.id]" ng-attr-name="{{pref.id}}" on-label="On" off-label="Off"></toggle-switch>
                             </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </form>
-
     <div class="list-group">
         <a class="list-group-item local" href="#/about" role="button">
             About

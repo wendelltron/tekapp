@@ -1,10 +1,4 @@
 {
-    "org.apache.cordova.network-information": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.network-information"
-        }
-    },
     "com.jean1880.CookieManager": {
         "source": {
             "type": "git",
@@ -17,18 +11,6 @@
             "type": "git",
             "url": "https://github.com/jean1880/Phonegap-Cookies-Plugin",
             "subdir": "."
-        }
-    },
-    "org.apache.cordova.console": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.console"
-        }
-    },
-    "org.apache.cordova.splashscreen": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.splashscreen"
         }
     },
     "cordova-plugin-statusbar": {
@@ -87,26 +69,10 @@
         "is_top_level": true,
         "variables": {}
     },
-    "org.apache.cordova.device": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.device"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-device": {
         "source": {
             "type": "registry",
             "id": "cordova-plugin-device"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "org.apache.cordova.file": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.file"
         },
         "is_top_level": true,
         "variables": {}

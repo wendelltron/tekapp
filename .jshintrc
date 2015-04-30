@@ -19,6 +19,7 @@
   "smarttabs": true,
   "globals": {
     "angular": false,
+    "cordova": false,
 	"jQuery": false,
 	"$": false,
 	"moment": false,

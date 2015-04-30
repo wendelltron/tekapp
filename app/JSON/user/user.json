@@ -6,6 +6,7 @@
   "prefs": {
     "offlineMode": false,
 	"wifiOnly": false,
-    "pushFreq": 60
+    "pushFreq": 60,
+    "PostAndTopicFontSize": 14
   }
 }

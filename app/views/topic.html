@@ -31,7 +31,7 @@
             <!-- 
                 Post content
             -->
-            <div class="postSantized overflow-limit no-styling" ng-bind-html="post.cooked | Sanitize"></div>
+            <div class="postSantized overflow-limit no-styling" ng-attr-style="font-size: {{userPrefs.PostAndTopicFontSize}}px;" ng-bind-html="post.cooked | Sanitize"></div>
 
             <!-- 
                 Post data

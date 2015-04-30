@@ -1,53 +1,94 @@
-[
-  {
-    "id": "offlineMode",
-    "name":"Offline Mode",
-    "description":"Stops all network connections",
-    "type":"onoff",
-    "default":false
+{
+  "Data & Network": {
+    "faIcon": "sitemap",
+    "hide": true,
+    "disable": false,
+    "options": [
+      {
+        "id": "offlineMode",
+        "name":"Offline Mode",
+        "description":"Stops all network connections",
+        "hide": false,
+        "disable": false,
+        "type":"onoff",
+        "default":false
+      },
+      {
+        "id": "wifiOnly",
+        "name":"Wifi Only",
+        "description":"Enables offline mode when on cellular",
+        "hide": false,
+        "disable": false,
+        "type":"onoff",
+        "default":false
+      }
+    ]
   },
-  {
-    "id": "wifiOnly",
-    "name":"Wifi Only",
-    "description":"Enables offline mode when on cellular",
-    "type":"onoff",
-    "default":false
+  "Reading": {
+    "faIcon": "book",
+    "hide": false,
+    "disable": false,
+    "options": [
+      {
+        "id": "PostAndTopicFontSize",
+        "name": "Post and Topic Font Size",
+        "description": "Adjusts the topic and post font size in pixels",
+        "hide": false,
+        "disable": false,
+        "type": "number",
+        "number": {
+          "min": 8,
+          "max": 20,
+          "increment": 0.5
+        },
+        "default": 14
+      }
+    ]
   },
-  {
-	"id": "pushFreq",
-    "name":"Push Update Frequency",
-    "description": "Sets how frequently the app checks for notifications when closed. 'Manual' will disable background notifications and instead require the app to be open for a refresh.",
-    "type":"select",
-    "select":[{
-      "id": 0,
-	  "value": 0,
-      "label": "Manual"
-    },
-	{
-      "id": 1,
-	  "value": 15,
-      "label": "15 Minutes"
-    },
-	{
-      "id": 2,
-	  "value": 30,
-      "label": "30 Minutes"
-    },
-	{
-      "id": 3,
-	  "value": 60,
-      "label": "1 Hour"
-    },
-	{
-      "id": 4,
-	  "value": 120,
-      "label": "2 Hours"
-    },
-	{
-      "id": 5,
-	  "value": 180,
-      "label": "3 Hours"
-    }],
-    "default": 60
+  "User (only effective when logged in)": {
+    "faIcon": "user",
+    "hide": true,
+    "disable": false,
+    "options": [
+      {
+        "id": "pushFreq",
+        "name":"Notification Update Frequency",
+        "description": "Adjusts frequently the app checks for notifications. 'Manual' will disable background notifications and instead require the app to be open for a notifications.",
+        "hide": false,
+        "disable": false,
+        "type":"select",
+        "select":[{
+          "id": 0,
+          "value": 0,
+          "label": "Manual"
+        },
+        {
+          "id": 1,
+          "value": 15,
+          "label": "15 Minutes"
+        },
+        {
+          "id": 2,
+          "value": 30,
+          "label": "30 Minutes"
+        },
+        {
+          "id": 3,
+          "value": 60,
+          "label": "1 Hour"
+        },
+        {
+          "id": 4,
+          "value": 120,
+          "label": "2 Hours"
+        },
+        {
+          "id": 5,
+          "value": 180,
+          "label": "3 Hours"
+        }],
+        "default": 60
+      }
+    ]
   }
-]
+}

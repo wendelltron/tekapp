@@ -5,7 +5,7 @@
         <li class="list-group-item" ng-if="topicList" ng-repeat="topic in topicList">
             <a href="#/topic/{{topic.id}}" class="local no-styling">
                 <h4><span ng-if="topic.pinned"><i class="fa fa-thumb-tack"></i> </span><span ng-bind-html="topic.fancy_title | Sanitize"></span> <small ng-bind-html="topic.last_posted_at | moment:'fromNow'"></small></h4>
-                <p class="no-styling" ng-bind-html="topic.excerpt | Sanitize"></p>
+                <p class="no-styling" ng-attr-style="font-size: {{userPrefs.PostAndTopicFontSize}}px;" ng-bind-html="topic.excerpt | Sanitize"></p>
                 <div class="text-right">
                     <nobr><i class="fa fa-eye margin-right-5px"></i><span class="badge badge-default">{{topic.views}}</span>
                     </nobr>

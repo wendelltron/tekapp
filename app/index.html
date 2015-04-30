@@ -49,7 +49,7 @@
         </div>
 
         <div class="container-fluid pad-top full-height" du-scroll-container id="wrapper">
-            <div class="onscreen-alerts ng-cloak">
+            <div class="onscreen-alerts">
                 <div class="onscreen-alert fx-bounce-down" ng-repeat="alert in alerts" role="alert" ng-switch="alert.dissmissable">
                     <div ng-switch-when="false" ng-attr-class="alert alert-{{alert.style}}">
                         <strong>{{alert.title}}</strong> {{alert.text}}
@@ -90,8 +90,8 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js "></script>
+    
     <script src="scripts/services/phonegap.js"></script>
-    <script src="scripts/controllers/main.js"></script>
     <script src="scripts/services/factorycategory.js"></script>
     <script src="scripts/services/factorytopic.js"></script>
     <script src="scripts/services/factorypost.js"></script>
@@ -102,21 +102,25 @@
     <script src="scripts/services/factoryonscreennotifications.js"></script>
     <script src="scripts/services/factoryprivatemessage.js"></script>
     <script src="scripts/services/serveraddress.js"></script>
-    <script src="scripts/controllers/topic.js"></script>
+    <script src="scripts/services/formathtml.js"></script>
+    
     <script src="scripts/filters/sanitize.js"></script>
-    <script src="scripts/custom/aLinkFix.js"></script>
     <script src="scripts/filters/extractfile.js"></script>
     <script src="scripts/filters/moment.js"></script>
+    
+    <script src="scripts/custom/aLinkFix.js"></script>
     <script src="scripts/custom/vendor-lazyYT.js"></script>
+    
+    <script src="scripts/controllers/topic.js"></script>
+    <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/navigation.js"></script>
-    <script src="scripts/controllers/notifications.js"></script>
-    <script src="scripts/services/formathtml.js"></script>
-    <script src="scripts/directives/right-control.js"></script>
     <script src="scripts/controllers/searchtopics.js"></script>
     <script src="scripts/controllers/settings.js"></script>
     <script src="scripts/controllers/profile.js"></script>
-    <script src="scripts/services/fileinterface.js"></script>
+    <script src="scripts/controllers/notifications.js"></script>
+    
+    <script src="scripts/directives/right-control.js"></script>
     <!-- endbuild -->
 
     <script src="cordova.js"></script>

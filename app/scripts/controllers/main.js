@@ -8,9 +8,10 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('MainCtrl', function ($scope, $rootScope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $http, $routeParams, $interval, PhoneGap, FactoryUser, ServerAddress, $cordovaFile) {
+    .controller('MainCtrl', function ($scope, $rootScope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $http, $routeParams, $interval, PhoneGap, FactoryUserStorage, FactoryUser, ServerAddress, $cordovaFile) {
         // set loading flag
         $scope.busyLoadingData = false;
+        $scope.userPrefs = FactoryUserStorage.user.prefs;
         var nginfiniteActive = false,
             wait = 3000,
             topicFile = 'topics.json',
@@ -55,11 +56,7 @@ angular.module('tekForumApp')
                 FactoryTopic.getLatest().success(function (Data) {
                     //                    console.log(Data);
                     $scope.category = false;
-                    if (!!window.cordova.file) {
-                        $scope.UpdateTopics(Data, true, true);
-                    } else {
-                        $scope.UpdateTopics(Data, true, true);
-                    }
+                    $scope.UpdateTopics(Data, true, true);
                 });
             }
         };
@@ -77,7 +74,7 @@ angular.module('tekForumApp')
                 $scope.topicList.push.apply($scope.topicList, Data.topic_list.topics);
             }
             if (storage) {
-                if (!!window.cordova.file) {
+                if (!!window.cordova) {
                     $cordovaFile.writeFile(cordova.file.cacheDirectory, topicFile, JSON.stringify(Data.topic_list.topics), true).then(function (success) {
                         console.log(success);
                     }, function (error) {
@@ -127,7 +124,7 @@ angular.module('tekForumApp')
 
             // if not a category and available, load the categories and topics from local storage, to quickly render results to user before rebuilding from data on server
             if (!$routeParams.id && !$scope.topicList) {
-                if (!!window.cordova.file) {
+                if (!!window.cordova) {
                     $cordovaFile.readAsText(cordova.file.cacheDirectory, topicFile).then(function (success) { // success
                         $scope.topicList = $scope.topicList || JSON.parse(success);
                     }, function (error) { // error

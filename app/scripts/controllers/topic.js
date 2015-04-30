@@ -8,9 +8,10 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('TopicCtrl', function ($scope, $rootScope, $routeParams, FactoryTopic, FormatHTML) {
+    .controller('TopicCtrl', function ($scope, $rootScope, $routeParams, FactoryUserStorage, FactoryTopic, FormatHTML) {
         // set loading flag
         $scope.busyLoadingData = false;
+        $scope.userPrefs = FactoryUserStorage.user.prefs;
     
         /**
          * Initializes the controller, and formats the html content on load
