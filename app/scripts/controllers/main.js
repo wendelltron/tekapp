@@ -26,7 +26,7 @@ angular.module('tekForumApp')
                 $rootScope.customNav.url = 'views/nav-main.html';
                 $rootScope.customNav.scope.categoryList = Data.category_list.categories;
 
-                if (!!window.cordova) {
+                if (!!cordova.file) {
                     $cordovaFile.writeFile(cordova.file.cacheDirectory, categoryFile, JSON.stringify(Data.category_list.categories), true).then(function (success) {
                         console.log(success);
                     }, function (error) {
@@ -54,7 +54,6 @@ angular.module('tekForumApp')
 
             } else {
                 FactoryTopic.getLatest().success(function (Data) {
-                    //                    console.log(Data);
                     $scope.category = false;
                     $scope.UpdateTopics(Data, true, true);
                 });
@@ -66,7 +65,8 @@ angular.module('tekForumApp')
          * @method UpdateTopics
          **/
         $scope.UpdateTopics = function (Data, storage, refresh) {
-            // if refreshing data, rebuild array
+            // if refreshing data, rebuild array 
+            console.log(Data);
             if (refresh) {
                 $scope.page = 1;
                 $scope.topicList = Data.topic_list.topics;
@@ -74,7 +74,7 @@ angular.module('tekForumApp')
                 $scope.topicList.push.apply($scope.topicList, Data.topic_list.topics);
             }
             if (storage) {
-                if (!!window.cordova) {
+                if (!!cordova.file) {
                     $cordovaFile.writeFile(cordova.file.cacheDirectory, topicFile, JSON.stringify(Data.topic_list.topics), true).then(function (success) {
                         console.log(success);
                     }, function (error) {
@@ -121,10 +121,9 @@ angular.module('tekForumApp')
          * @method GetTopics
          **/
         var init = function () {
-
             // if not a category and available, load the categories and topics from local storage, to quickly render results to user before rebuilding from data on server
             if (!$routeParams.id && !$scope.topicList) {
-                if (!!window.cordova) {
+                if (!!cordova.file) {
                     $cordovaFile.readAsText(cordova.file.cacheDirectory, topicFile).then(function (success) { // success
                         $scope.topicList = $scope.topicList || JSON.parse(success);
                     }, function (error) { // error

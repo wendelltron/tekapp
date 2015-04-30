@@ -1,7 +1,7 @@
 <div pull-to-refresh="GetPosts()" class="infinite full-height">
     <h4>{{topic.title}}</h4>
     <ul id="topic-board" class="formatHTML list-group" infinite-scroll-disabled="busyLoadingData" infinite-scroll="FetchPosts()" infinite-scroll-distance="2" infinite-scroll-parent="true">
-        <li class="list-group-item" ng-if="topic" ng-attr-id="post-{{post.post_number}}" ng-repeat="post in topic.post_stream.posts">
+        <li class="list-group-item" ng-if="topic" ng-attr-id="post-{{post.post_number}}" ng-repeat="post in topic.post_stream.posts | orderBy: 'created_at'">
 
             <!--
                 User Info panel
