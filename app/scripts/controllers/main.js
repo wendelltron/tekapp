@@ -8,7 +8,7 @@
  * Controller of the tekForumApp
  */
 angular.module('tekForumApp')
-    .controller('MainCtrl', function ($scope, $rootScope, FactoryCategory, FactoryTopic, $cookies, localStorageService, $http, $routeParams, $interval, PhoneGap, FactoryUserStorage, FactoryUser, ServerAddress, $cordovaFile) {
+    .controller('MainCtrl', function ($scope, $rootScope, FactoryCategory, FactoryTopic, $cookies, FactoryStorage, $routeParams, $interval, PhoneGap, FactoryUserStorage, FactoryUser, ServerAddress, $cordovaFile) {
         // set loading flag
         $scope.busyLoadingData = false;
         $scope.userPrefs = FactoryUserStorage.user.prefs;
@@ -25,16 +25,7 @@ angular.module('tekForumApp')
             FactoryCategory.get().success(function (Data) {
                 $rootScope.customNav.url = 'views/nav-main.html';
                 $rootScope.customNav.scope.categoryList = Data.category_list.categories;
-
-                if (!!cordova.file) {
-                    $cordovaFile.writeFile(cordova.file.cacheDirectory, categoryFile, JSON.stringify(Data.category_list.categories), true).then(function (success) {
-                        console.log(success);
-                    }, function (error) {
-                        console.log(error);
-                    });
-                } else {
-                    localStorageService.set('categoryList', JSON.stringify(Data.category_list.categories));
-                }
+                FactoryStorage.set(categoryFile, JSON.stringify(Data.category_list.categories), function(){});
             });
         };
 
@@ -74,15 +65,7 @@ angular.module('tekForumApp')
                 $scope.topicList.push.apply($scope.topicList, Data.topic_list.topics);
             }
             if (storage) {
-                if (!!cordova.file) {
-                    $cordovaFile.writeFile(cordova.file.cacheDirectory, topicFile, JSON.stringify(Data.topic_list.topics), true).then(function (success) {
-                        console.log(success);
-                    }, function (error) {
-                        console.log(error);
-                    });
-                } else {
-                    localStorageService.set('topicList', JSON.stringify(Data.topic_list.topics));
-                }
+                FactoryStorage.set(topicFile, JSON.stringify(Data.topic_list.topics), function(){});
             }
         };
 
@@ -123,22 +106,16 @@ angular.module('tekForumApp')
         var init = function () {
             // if not a category and available, load the categories and topics from local storage, to quickly render results to user before rebuilding from data on server
             if (!$routeParams.id && !$scope.topicList) {
-                if (!!cordova.file) {
-                    $cordovaFile.readAsText(cordova.file.cacheDirectory, topicFile).then(function (success) { // success
-                        $scope.topicList = $scope.topicList || JSON.parse(success);
-                    }, function (error) { // error
-                        // localstorage copy has not been created yet
-                    });
-                    $cordovaFile.readAsText(cordova.file.cacheDirectory, categoryFile).then(function (success) { // success
-                        $rootScope.customNav.scope.categoryList = $rootScope.customNav.scope.categoryList || JSON.parse(success);
-                    }, function (error) { // error
-                        // localstorage copy has not been created yet
-                    });
-                } else {
-                    // Is not Cordova - Use old method
-                    $rootScope.customNav.scope.categoryList = localStorageService.get('categoryList') || [];
-                    $scope.topicList = localStorageService.get('topicList') || [];
-                }
+                FactoryStorage.getText(topicFile, function(success, data){
+                    if (success) {
+                        $scope.topicList = $scope.topicList || JSON.parse(data);
+                    }
+                });
+                FactoryStorage.getText(categoryFile, function(success, data){
+                    if (success) {
+                        $rootScope.customNav.scope.categoryList = $rootScope.customNav.scope.categoryList || JSON.parse(data);
+                    }
+                });
             }
             $scope.page = 1;
 
@@ -147,7 +124,7 @@ angular.module('tekForumApp')
             $scope.GetTopics();
 
         };
-
+        
         init();
 
     });

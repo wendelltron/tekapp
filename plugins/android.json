@@ -13,19 +13,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<preference name=\"webView\" value=\"org.crosswalk.engine.XWalkWebViewEngine\" />",
+                            "xml": "<feature name=\"AppVersion\"><param name=\"android-package\" value=\"uk.co.whiteoctober.cordova.AppVersion\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
@@ -33,7 +25,19 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "xml": "<preference name=\"webView\" value=\"org.crosswalk.engine.XWalkWebViewEngine\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         },
                         {
@@ -41,11 +45,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"AppVersion\"><param name=\"android-package\" value=\"uk.co.whiteoctober.cordova.AppVersion\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -55,11 +55,11 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
                             "count": 1
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
                             "count": 1
                         }
                     ]
@@ -71,31 +71,31 @@
         "com.jean1880.CookieJar": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
-        "cordova-plugin-crosswalk-webview": {
+        "uk.co.whiteoctober.cordova.appversion": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.teksyndicate.tekapp"
-        },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.teksyndicate.tekapp"
-        },
-        "cordova-plugin-network-information": {
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
-        "cordova-plugin-statusbar": {
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.teksyndicate.tekapp"
+        },
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         },
-        "uk.co.whiteoctober.cordova.appversion": {
-            "PACKAGE_NAME": "com.teksyndicate.tekapp"
-        },
-        "cordova-plugin-file": {
+        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.teksyndicate.tekapp"
         }
     },

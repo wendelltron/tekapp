@@ -36,14 +36,13 @@
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
+	<preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="17" />
     <preference name="android-installLocation" value="auto" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="StatusBarStyle" value="lightcontent" />
-    <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="org.apache.cordova.network-information" />
     <icon src="res/icon/icon.png" />
     <platform name="amazon-fireos">
         <icon density="ldpi" height="36" src="res/icon/android/icon-36-ldpi.png" width="36" />
@@ -138,11 +137,21 @@
     <platform name="webos">
         <splash height="64" src="res/screen/webos/splash-64.png" width="64" />
     </platform>
+		<platform name="browser">
+		<preference name="SplashScreen" value="images/splashscreen.png" />
+		<preference name="SplashScreenDelay" value="10000" />
+		<preference name="SplashScreenBackgroundColor" value="#000" />
+		<preference name="ShowSplashScreen" value="true" />
+		<preference name="SplashScreenWidth" value="480" />
+		<preference name="SplashScreenHeight" value="800" />
+	</platform>
     <engine name="android" spec="4.0.0" />
-    <plugin name="cordova-plugin-whitelist" spec="1" />
-    <plugin name="cordova-plugin-crosswalk-webview" spec="^1.2.0" />
-    <plugin name="cordova-plugin-inappbrowser" spec="^1.0.0" />
-    <plugin name="cordova-plugin-network-information" spec="^1.0.0" />
-    <plugin name="cordova-plugin-splashscreen" spec="^2.0.0" />
-    <plugin name="cordova-plugin-file" spec="^2.0.0" />
+    <plugin name="cordova-plugin-device" spec="1.0.0" />
+    <plugin name="cordova-plugin-whitelist" spec="1.0.1" />
+    <plugin name="cordova-plugin-statusbar" spec="1.0.0" />
+    <plugin name="cordova-plugin-crosswalk-webview" spec="1.2.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="1.0.0" />
+    <plugin name="cordova-plugin-network-information" spec="1.0.0" />
+    <plugin name="cordova-plugin-splashscreen" spec="2.0.0" />
+    <plugin name="cordova-plugin-file" spec="2.0.0" />
 </widget>

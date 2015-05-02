@@ -8,15 +8,15 @@
  * Factory in the tekForumApp.
  */
 angular.module('tekForumApp')
-    .factory('FactoryUser', function ($http, ServerAddress, FactoryUserStorage) {
+    .factory('FactoryUser', function (FactoryHTTP, ServerAddress) {
 
         // Public API here
         return {
             getFormID: function () {
-                return $http.get('https://teksyndicate.com/user/login');
+                return FactoryHTTP.get('https://teksyndicate.com/user/login');
             },
             login: function (request) {
-                return $http({
+                return FactoryHTTP.get({
                     method: 'POST',
                     url: 'https://teksyndicate.com/user/login',
                     data: $.param(request),
@@ -25,18 +25,8 @@ angular.module('tekForumApp')
                     }
                 });
             },
-            get: function (otheruser) {
-                if(!otheruser) {
-                    if(FactoryUserStorage.user.loggedIn) {
-                        return $http.get(ServerAddress + 'users/' + FactoryUserStorage.user.username + '.json');
-                    }
-                    else {
-                        return false;
-                    }
-                }
-                else {
-                    return $http.get(ServerAddress + 'users/' + otheruser + '.json');
-                }
+            get: function (user) {
+                return FactoryHTTP.get(ServerAddress + 'users/' + user + '.json');
             }
         };
     });

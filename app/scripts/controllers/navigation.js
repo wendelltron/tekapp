@@ -10,8 +10,7 @@
 angular.module('tekForumApp')
     .controller('NavigationCtrl', function ($scope, $rootScope, $routeParams, FactoryUserStorage, FactoryOnscreenNotifications) {
         $scope.ajaxCall.promise.then(function () {
-            // listen for android options button
-
+            
             $scope.nav = $rootScope.customNav;
             $scope.routeParams = $routeParams;
             $rootScope.menuVisible = false;
@@ -20,7 +19,7 @@ angular.module('tekForumApp')
             $scope.closeAlert = function (id) {
                 FactoryOnscreenNotifications.remove(id);
             };
-
+            
             /**
              * Reveals the off canvas menu
              * @method ShowMenu
@@ -30,7 +29,7 @@ angular.module('tekForumApp')
                     $('#right-menu').offcanvas('show');
                 }
             };
-
+            
             /**
              * Hides the off canvas menu
              * @method HideMenu
@@ -40,7 +39,7 @@ angular.module('tekForumApp')
                     $('#right-menu').offcanvas('hide');
                 }
             };
-
+            
             /**
              * Hides the off canvas menu, if open, otherwise navigate back
              * @method SwipeRight
@@ -52,7 +51,7 @@ angular.module('tekForumApp')
                     window.history.back();
                 }
             };
-
+            
             /**
              * Toggles the off canvas menu
              * @method ToggleMenu
@@ -60,7 +59,7 @@ angular.module('tekForumApp')
             $rootScope.ToggleMenu = function () {
                 $('#right-menu').offcanvas('toggle');
             };
-
+            
             // Bind events for navigating through the app
             $('#right-menu').on('show.bs.offcanvas', function () {
                 $rootScope.menuVisible = true;
@@ -68,6 +67,5 @@ angular.module('tekForumApp')
             $('#right-menu').on('hide.bs.offcanvas', function () {
                 $rootScope.menuVisible = false;
             });
-
         });
     });
